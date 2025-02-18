@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Mirror
+  - Splitter
+  - ColorReceiver
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -12,8 +15,8 @@ TagManager:
   - Mirror
   - Water
   - UI
-  - 
-  - 
+  - Splitter
+  - Laser
   - 
   - 
   - 
