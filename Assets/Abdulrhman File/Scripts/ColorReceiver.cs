@@ -1,82 +1,107 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleColorReceiver : MonoBehaviour
 {
     [Header("Target Color")]
-    [Tooltip("The color the receiver is looking for (e.g., white).")]
+    [Tooltip("The color the receiver is looking for (e.g., white, purple, etc.).")]
     public Color targetColor = Color.white;
 
-    [Header("Hit Color")]
-    [Tooltip("The color the receiver changes to when hit by the correct laser.")]
-    public Color hitColor = Color.green;
+    [Header("Hit Color (When Activated)")]
+    [Tooltip("The color the receiver changes to when activated.")]
+    public Color activatedColor = Color.white;
 
-    [Header("Default Color")]
-    [Tooltip("The default color of the receiver.")]
-    public Color defaultColor = Color.gray;
+    [Header("Default Color (Base Color)")]
+    [Tooltip("The base color of the receiver before any laser hits it.")]
+    public Color baseDefaultColor = Color.gray;
 
     [Header("Time to Activate")]
     [Tooltip("How long the laser must hit the receiver to activate it.")]
     public float requiredHitTime = 3.0f;
 
-    [Header("Reset Delay")]
-    [Tooltip("How long the receiver stays in the hit color before resetting to the default color.")]
-    public float resetDelay = 1.0f;
-
     private SpriteRenderer spriteRenderer;
-    private bool isHit = false;
     private float hitTimer = 0.0f;
+    private bool isActivated = false;
+
+    private List<Color> laserColors = new List<Color>(); // Stores all laser colors hitting the receiver
+    private Color combinedColor = Color.gray; // Stores the dynamically mixed color
 
     private void Awake()
     {
-        // Get the SpriteRenderer component
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
             Debug.LogError("No SpriteRenderer found on the receiver! Please add one.");
         }
-
-        // Set the default color
-        spriteRenderer.color = defaultColor;
+        spriteRenderer.color = baseDefaultColor;
     }
 
     /// <summary>
-    /// Call this method when the laser hits the receiver.
+    /// Called when a laser hits the receiver.
     /// </summary>
     public void LaserHitting(Color laserColor)
     {
-        // Only progress if the laser's color matches the target color
-        if (laserColor == targetColor)
+        if (!laserColors.Contains(laserColor)) 
         {
-            // Increment the hit timer
+            laserColors.Add(laserColor);
+        }
+    }
+
+    /// <summary>
+    /// Called when lasers are no longer hitting the receiver.
+    /// </summary>
+    public void LaserStopped()
+    {
+        laserColors.Clear();
+        ResetHitTimer();
+        isActivated = false;
+    }
+
+    private void LateUpdate()
+    {
+        // Combine all laser colors
+        combinedColor = Color.black;
+        foreach (Color c in laserColors)
+        {
+            combinedColor = AddColors(combinedColor, c);
+        }
+
+        if (laserColors.Count > 0 && !isActivated)
+        {
+            spriteRenderer.color = combinedColor; // Show the mixed color while lasers hit
+        }
+        else if (!isActivated)
+        {
+            spriteRenderer.color = baseDefaultColor; // Reset if no lasers are hitting
+        }
+
+        // Check if the combined color matches the target color
+        if (ApproximatelyEqual(combinedColor, targetColor))
+        {
             hitTimer += Time.deltaTime;
-
-            // Check if the required hit time has been reached
-            if (hitTimer >= requiredHitTime && !isHit)
+            if (hitTimer >= requiredHitTime && !isActivated)
             {
-                // Change to the hit color
-                spriteRenderer.color = hitColor;
-                isHit = true;
-
-                // Trigger win state or other effects here (optional)
-                Debug.Log("Receiver activated!");
-
-                // Reset after a delay (optional)
-                Invoke(nameof(ResetColor), resetDelay);
+                ActivateReceiver();
             }
         }
         else
         {
-            // Reset the timer if the laser's color is incorrect
             ResetHitTimer();
+            if (isActivated)
+            {
+                isActivated = false;
+                spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+            }
         }
+
+        laserColors.Clear(); // Reset for the next frame
     }
 
-    /// <summary>
-    /// Call this method when the laser is no longer hitting the receiver.
-    /// </summary>
-    public void LaserStopped()
+    private void ActivateReceiver()
     {
-        ResetHitTimer();
+        isActivated = true;
+        spriteRenderer.color = activatedColor;
+        Debug.Log("Receiver activated with color: " + combinedColor);
     }
 
     private void ResetHitTimer()
@@ -84,12 +109,25 @@ public class SimpleColorReceiver : MonoBehaviour
         hitTimer = 0.0f;
     }
 
-    private void ResetColor()
+    /// <summary>
+    /// Adds two colors together using additive color mixing.
+    /// </summary>
+    private Color AddColors(Color a, Color b)
     {
-        if (isHit)
-        {
-            spriteRenderer.color = defaultColor;
-            isHit = false;
-        }
+        return new Color(
+            Mathf.Clamp01(a.r + b.r),
+            Mathf.Clamp01(a.g + b.g),
+            Mathf.Clamp01(a.b + b.b),
+            1f);
+    }
+
+    /// <summary>
+    /// Checks if two colors are approximately equal.
+    /// </summary>
+    private bool ApproximatelyEqual(Color a, Color b, float tolerance = 0.1f)
+    {
+        return Mathf.Abs(a.r - b.r) < tolerance &&
+               Mathf.Abs(a.g - b.g) < tolerance &&
+               Mathf.Abs(a.b - b.b) < tolerance;
     }
 }
