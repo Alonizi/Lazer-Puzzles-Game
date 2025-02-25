@@ -19,6 +19,8 @@ public class LaserScript : MonoBehaviour
 
     // Internal color used by the laser
     private Color laserColor = Color.white;
+    // Flag to prevent Start() from overriding externally set color.
+    private bool initializedExternally = false;
 
     // Cached LineRenderer
     private LineRenderer lineRenderer;
@@ -43,19 +45,21 @@ public class LaserScript : MonoBehaviour
 
     private void Start()
     {
-        // Parse the hex color string
-        if (ColorUtility.TryParseHtmlString(hexColor, out Color parsedColor))
+        // Only parse the hex color if not already set externally
+        if (!initializedExternally)
         {
-            laserColor = parsedColor;
+            if (ColorUtility.TryParseHtmlString(hexColor, out Color parsedColor))
+            {
+                laserColor = parsedColor;
+            }
+            else
+            {
+                Debug.LogWarning($"Invalid hex color \"{hexColor}\". Defaulting to white.");
+                laserColor = Color.white;
+            }
+            // Set the final laser color on the LineRenderer
+            SetLaserColor(laserColor);
         }
-        else
-        {
-            Debug.LogWarning($"Invalid hex color \"{hexColor}\". Defaulting to white.");
-            laserColor = Color.white;
-        }
-
-        // Set the final laser color on the LineRenderer
-        SetLaserColor(laserColor);
     }
 
     private void Update()
@@ -64,18 +68,17 @@ public class LaserScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets the color of the laser (LineRenderer start/end + material).
+    /// Sets the color of the laser (LineRenderer start/end + material) and marks it as externally initialized.
     /// </summary>
     public void SetLaserColor(Color newColor)
     {
         laserColor = newColor;
+        initializedExternally = true;
 
         if (lineRenderer != null)
         {
             lineRenderer.startColor = newColor;
             lineRenderer.endColor = newColor;
-
-            // Also set the material color so it appears correctly unlit
             if (lineRenderer.material != null)
             {
                 lineRenderer.material.color = newColor;
@@ -99,22 +102,22 @@ public class LaserScript : MonoBehaviour
         while (reflections < maxReflections)
         {
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, maxDistance, reflectionMask);
+
             if (hit.collider != null)
             {
-                // Add the hit point
+                Debug.Log($"Laser hit: {hit.collider.name} (Tag: {hit.collider.tag}) at {hit.point}");
+                // Add the hit point to the line renderer.
                 lineRenderer.positionCount++;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
 
-                // Check if the hit object is a SimpleColorReceiver
+                // Check for a SimpleColorReceiver.
                 SimpleColorReceiver receiver = hit.collider.GetComponent<SimpleColorReceiver>();
                 if (receiver != null)
                 {
-                    // Send the laser color to the receiver and notify it's being hit
                     receiver.LaserHitting(laserColor);
                 }
                 else
                 {
-                    // Reset LaserStopped method if we stop hitting a receiver
                     receiver = hit.collider.GetComponent<SimpleColorReceiver>();
                     if (receiver != null)
                     {
@@ -122,7 +125,7 @@ public class LaserScript : MonoBehaviour
                     }
                 }
 
-                // Handle reflections for mirrors and splitters
+                // Handle collisions.
                 if (hit.collider.CompareTag("Mirror"))
                 {
                     rayDirection = Vector2.Reflect(rayDirection, hit.normal);
@@ -130,21 +133,31 @@ public class LaserScript : MonoBehaviour
                 }
                 else if (hit.collider.CompareTag("Splitter"))
                 {
-                    // Handle splitters (optional logic)
+                    Debug.Log("Laser hit a splitter. Calling SplitLaser.");
+                    LaserSplitter splitter = hit.collider.GetComponent<LaserSplitter>();
+                    if (splitter != null)
+                    {
+                        splitter.SplitLaser(hit.point, rayDirection);
+                    }
+                    else
+                    {
+                        Debug.LogWarning("LaserSplitter component not found on the splitter object.");
+                    }
+                    break; // Stop processing after splitting.
                 }
                 else
                 {
-                    break; // Stop if it hits anything else
+                    break;
                 }
             }
             else
             {
-                // Extend the laser to maxDistance if no hit
+                Debug.Log("Laser did not hit any collider.");
+                // Extend laser to maxDistance.
                 lineRenderer.positionCount++;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, rayOrigin + rayDirection * maxDistance);
                 break;
             }
-
             reflections++;
         }
     }

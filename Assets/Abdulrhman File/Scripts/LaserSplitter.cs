@@ -1,6 +1,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Splits an incoming white laser beam into three primary RGB beams (Red, Green, Blue).
+/// The beam that hits the splitter determines which side is blocked; the new beams exit
+/// from the remaining three sides.
+/// </summary>
 public class LaserSplitter : MonoBehaviour
 {
     [Tooltip("Prefab of the laser emitter (must have LaserScript + LineRenderer).")]
@@ -9,16 +14,31 @@ public class LaserSplitter : MonoBehaviour
     [Tooltip("Distance from splitter center to spawn new beams.")]
     public float spawnOffset = 0.5f;
 
+    // Flag to ensure we only split once per hit.
+    private bool hasSplit = false;
+
     /// <summary>
-    /// Splits an incoming white laser into three beams: red, yellow, blue.
-    /// New beams exit from the other three sides (excluding the side hit).
+    /// Splits an incoming white laser into three beams: red, green, blue.
+    /// New beams exit from the three sides not directly hit.
     /// </summary>
+    /// <param name="hitPoint">World point where the laser hit the splitter.</param>
+    /// <param name="incomingDirection">Direction from which the laser is coming.</param>
     public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection)
     {
-        // 1) Convert hitPoint to local space
-        Vector2 localHit = transform.InverseTransformPoint(hitPoint);
+        if (hasSplit)
+        {
+            Debug.Log("Splitter has already split the laser. Skipping further splits.");
+            return;
+        }
+        hasSplit = true;
 
-        // 2) Determine which side was hit (left/right/top/bottom)
+        Debug.Log($"Splitter activated. Hit point: {hitPoint}, Incoming direction: {incomingDirection}");
+
+        // Convert hitPoint to local space.
+        Vector2 localHit = transform.InverseTransformPoint(hitPoint);
+        Debug.Log("Local hit position: " + localHit);
+
+        // Determine which side was hit.
         Vector2 hitSide;
         if (Mathf.Abs(localHit.x) > Mathf.Abs(localHit.y))
         {
@@ -28,48 +48,48 @@ public class LaserSplitter : MonoBehaviour
         {
             hitSide = localHit.y > 0 ? Vector2.up : Vector2.down;
         }
+        Debug.Log("Hit side determined as: " + hitSide);
 
-        // 3) All four cardinal directions
+        // Define the four cardinal directions.
         Vector2[] sides = new Vector2[] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
 
-        // 4) Exclude the side that was hit, keep the other three
+        // Exclude the side that was hit.
         List<Vector2> outputSides = new List<Vector2>();
         foreach (Vector2 side in sides)
         {
-            // If side is basically the same direction as hitSide, skip it
-            if (Vector2.Dot(side, hitSide) > 0.9f) 
+            if (Vector2.Dot(side, hitSide) > 0.9f)
+            {
+                Debug.Log("Skipping side: " + side + " as it matches hit side.");
                 continue;
-
+            }
             outputSides.Add(side);
         }
 
-        // 5) The three main colors (per your request): Red, Yellow, Blue
-        Color[] splitColors = new Color[] { Color.red, Color.yellow, Color.blue };
+        // Define the three **primary RGB** colors.
+        Color[] splitColors = new Color[] { Color.red, Color.green, Color.blue };
 
-        // 6) For each of the three output sides, spawn a new laser
+        // Spawn one laser for each output side.
         for (int i = 0; i < outputSides.Count; i++)
         {
             Vector2 localSide = outputSides[i];
-            // Convert local side to world direction
             Vector2 worldDir = transform.TransformDirection(localSide).normalized;
-
-            // Position to spawn the new laser
             Vector2 spawnPos = (Vector2)transform.position + worldDir * spawnOffset;
+            Debug.Log($"Spawning laser {i} at {spawnPos} with direction {worldDir}");
 
-            // Instantiate the laser prefab
             GameObject newLaser = Instantiate(laserPrefab, spawnPos, Quaternion.identity);
 
-            // Rotate the new laser so its right vector matches the side direction
             float angle = Mathf.Atan2(worldDir.y, worldDir.x) * Mathf.Rad2Deg;
             newLaser.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-            // Get the LaserScript to set its color
             LaserScript laserScript = newLaser.GetComponent<LaserScript>();
             if (laserScript != null)
             {
-                // Make sure the color is set
                 Color c = splitColors[i % splitColors.Length];
                 laserScript.SetLaserColor(c);
+            }
+            else
+            {
+                Debug.LogWarning("LaserScript component not found on the instantiated laser prefab.");
             }
         }
     }
