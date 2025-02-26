@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LaserScript : MonoBehaviour
@@ -31,10 +32,11 @@ public class LaserScript : MonoBehaviour
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
-
+        
         // Ensure the LineRenderer has an unlit material (avoids purple or gray color).
         if (lineRenderer.material == null)
         {
+            Debug.LogWarning(" new material added");
             Material defaultMat = new Material(Shader.Find("Unlit/Color"));
             defaultMat.color = Color.white;  // default to white
             lineRenderer.material = defaultMat;
@@ -46,16 +48,16 @@ public class LaserScript : MonoBehaviour
         // Parse the hex color string
         if (ColorUtility.TryParseHtmlString(hexColor, out Color parsedColor))
         {
-            laserColor = parsedColor;
+            //laserColor = parsedColor;
         }
         else
         {
             Debug.LogWarning($"Invalid hex color \"{hexColor}\". Defaulting to white.");
-            laserColor = Color.white;
+            //laserColor = Color.white;
         }
 
         // Set the final laser color on the LineRenderer
-        SetLaserColor(laserColor);
+        //SetLaserColor(laserColor);
     }
 
     private void Update()
@@ -98,7 +100,8 @@ public class LaserScript : MonoBehaviour
 
         while (reflections < maxReflections)
         {
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, maxDistance, reflectionMask);
+            int layerMask = LayerMask.GetMask("Mirror", "Wall", "Furniture");
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, maxDistance,layerMask);
             if (hit.collider != null)
             {
                 // Add the hit point
@@ -125,6 +128,7 @@ public class LaserScript : MonoBehaviour
                 // Handle reflections for mirrors and splitters
                 if (hit.collider.CompareTag("Mirror"))
                 {
+                    Debug.LogWarning("Lazer Hit a mirror");
                     rayDirection = Vector2.Reflect(rayDirection, hit.normal);
                     rayOrigin = hit.point + rayDirection * 0.01f;
                 }
@@ -132,10 +136,12 @@ public class LaserScript : MonoBehaviour
                 {
                     // Handle splitters (optional logic)
                 }
-                else
+                else if (hit.collider.tag == "Wall")
                 {
+                    Debug.LogWarning("lazer Hit a wall");
                     break; // Stop if it hits anything else
                 }
+                Debug.LogWarning(hit.collider.tag);
             }
             else
             {
