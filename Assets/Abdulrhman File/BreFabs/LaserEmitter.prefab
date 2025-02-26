@@ -104,10 +104,9 @@ MonoBehaviour:
   maxReflections: 5
   maxDistance: 100
   hexColor: '#FFFFFF'
-  lineRenderer: {fileID: 85971650038675057}
   reflectionMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 200
 --- !u!120 &85971650038675057
 LineRenderer:
   serializedVersion: 2
