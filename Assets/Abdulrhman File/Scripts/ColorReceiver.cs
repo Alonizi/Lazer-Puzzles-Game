@@ -26,6 +26,8 @@ public class SimpleColorReceiver : MonoBehaviour
     private List<Color> laserColors = new List<Color>(); // Stores all laser colors hitting the receiver
     private Color combinedColor = Color.gray; // Stores the dynamically mixed color
 
+    public GameObject PanelWin;
+
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -34,6 +36,11 @@ public class SimpleColorReceiver : MonoBehaviour
             Debug.LogError("No SpriteRenderer found on the receiver! Please add one.");
         }
         spriteRenderer.color = baseDefaultColor;
+
+        if (PanelWin != null)
+        {
+            PanelWin.SetActive(false); 
+        }
     }
 
     /// <summary>
@@ -55,6 +62,12 @@ public class SimpleColorReceiver : MonoBehaviour
         laserColors.Clear();
         ResetHitTimer();
         isActivated = false;
+
+        if (PanelWin != null)
+        {
+            PanelWin.SetActive(false);
+        }
+
     }
 
     private void LateUpdate()
@@ -99,6 +112,11 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void ActivateReceiver()
     {
+        if (PanelWin != null)
+        {
+            PanelWin.SetActive(true);
+        }
+
         isActivated = true;
         spriteRenderer.color = activatedColor;
         Debug.Log("Receiver activated with color: " + combinedColor);
