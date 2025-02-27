@@ -494,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: hexColor
-      value: '#FFFF00'
+      value: '#FFFFFF'
       objectReference: {fileID: 0}
     - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: maxReflections
