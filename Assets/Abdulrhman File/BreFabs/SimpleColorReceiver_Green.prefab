@@ -9,20 +9,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7340079915093477653, guid: ebdad528028334ed1a33297b8f2ab7b6, type: 3}
+    - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_Color.a
-      value: 0.54901963
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_Color.b
-      value: 0.31764707
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_Color.g
-      value: 0.63529414
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_Color.r
-      value: 0.30980393
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: targetColor.b
@@ -62,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2717129311927566055, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_Name
-      value: SimpleColorReceiver_Red Variant
+      value: SimpleColorReceiver_Green
       objectReference: {fileID: 0}
     - target: {fileID: 9198659089236773044, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_LocalPosition.x
