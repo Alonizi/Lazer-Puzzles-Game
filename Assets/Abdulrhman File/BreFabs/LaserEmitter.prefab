@@ -106,7 +106,7 @@ MonoBehaviour:
   hexColor: '#FFFFFF'
   reflectionMask:
     serializedVersion: 2
-    m_Bits: 200
+    m_Bits: 456
 --- !u!120 &85971650038675057
 LineRenderer:
   serializedVersion: 2
