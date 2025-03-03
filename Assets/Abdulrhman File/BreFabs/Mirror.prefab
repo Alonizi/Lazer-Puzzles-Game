@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2933247113355976080}
   - component: {fileID: 9000905366110866447}
   - component: {fileID: 6101272007482916040}
+  - component: {fileID: 5753046316365928152}
   m_Layer: 3
   m_Name: Glass
   m_TagString: Mirror
@@ -134,6 +135,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.04, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &5753046316365928152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3789159414114386995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0de77d96a4d9a4fb2b618407807b58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6491287071274957679
 GameObject:
   m_ObjectHideFlags: 0

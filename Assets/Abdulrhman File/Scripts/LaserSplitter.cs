@@ -65,7 +65,7 @@ public class LaserSplitter : MonoBehaviour
             outputSides.Add(side);
         }
 
-        // Define the three **primary RGB** colors.
+        // Define the three primary RGB colors.
         Color[] splitColors = new Color[] { Color.red, Color.green, Color.blue };
 
         // Spawn one laser for each output side.

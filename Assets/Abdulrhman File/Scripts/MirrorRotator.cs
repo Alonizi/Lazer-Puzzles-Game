@@ -4,7 +4,7 @@ using System.Collections;
 public class MirrorRotator : MonoBehaviour
 {
     // Rotation amount per click (in degrees)
-    public float rotationAngle = 45f;
+    public float rotationAngle = 90f;
 
     // Rotation speed in degrees per second (adjustable in the Inspector)
     public float rotationSpeed = 90f;
