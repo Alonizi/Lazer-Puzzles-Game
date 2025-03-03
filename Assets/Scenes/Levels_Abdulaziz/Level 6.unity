@@ -1534,30 +1534,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SimpleColorReceiver_Green
       objectReference: {fileID: 0}
-    - target: {fileID: 3319319559748735195, guid: 084df3bac1fcb4526b0a4bfaacb01176, type: 3}
-      propertyPath: activatedColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3319319559748735195, guid: 084df3bac1fcb4526b0a4bfaacb01176, type: 3}
-      propertyPath: activatedColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3319319559748735195, guid: 084df3bac1fcb4526b0a4bfaacb01176, type: 3}
-      propertyPath: activatedColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3319319559748735195, guid: 084df3bac1fcb4526b0a4bfaacb01176, type: 3}
-      propertyPath: baseDefaultColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3319319559748735195, guid: 084df3bac1fcb4526b0a4bfaacb01176, type: 3}
-      propertyPath: baseDefaultColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3319319559748735195, guid: 084df3bac1fcb4526b0a4bfaacb01176, type: 3}
-      propertyPath: baseDefaultColor.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8183621340971367521, guid: 084df3bac1fcb4526b0a4bfaacb01176, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.5
