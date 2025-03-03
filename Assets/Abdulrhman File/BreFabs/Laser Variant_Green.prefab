@@ -56,6 +56,10 @@ PrefabInstance:
       propertyPath: hexColor
       value: '#A8DAA7'
       objectReference: {fileID: 0}
+    - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: maxReflections
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 5967360214696072799, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: m_Color.b
       value: 0.654902

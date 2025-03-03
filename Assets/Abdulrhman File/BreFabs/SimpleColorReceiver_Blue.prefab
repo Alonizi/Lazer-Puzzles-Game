@@ -21,20 +21,28 @@ PrefabInstance:
       value: SimpleColorReceiver_Blue
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
+      propertyPath: targetColor.b
+      value: 0.88235295
+      objectReference: {fileID: 0}
+    - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: targetColor.g
-      value: 0.20784314
+      value: 0.7647059
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: targetColor.r
-      value: 0
+      value: 0.5294118
+      objectReference: {fileID: 0}
+    - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
+      propertyPath: activatedColor.b
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: activatedColor.g
-      value: 0.20784314
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: activatedColor.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: baseDefaultColor.a
@@ -42,15 +50,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: baseDefaultColor.b
-      value: 0.62352943
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: baseDefaultColor.g
-      value: 0.34509805
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: baseDefaultColor.r
-      value: 0.27450982
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3280124466215547307, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: m_Sprite
