@@ -9,6 +9,7 @@ TagManager:
   - ColorReceiver
   - Laser
   - Walls
+  - Cloner
   layers:
   - Default
   - TransparentFX
@@ -19,7 +20,7 @@ TagManager:
   - Splitter
   - Laser
   - Walls
-  - 
+  - Cloner
   - 
   - 
   - 
