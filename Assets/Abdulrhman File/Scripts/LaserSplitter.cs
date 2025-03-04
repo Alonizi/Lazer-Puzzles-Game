@@ -28,7 +28,7 @@ public class LaserSplitter : MonoBehaviour
     /// </summary>
     /// <param name="hitPoint">World point where the laser hit the splitter.</param>
     /// <param name="incomingDirection">Direction from which the laser is coming.</param>
-    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection)
+    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,Color incomingLazerColor)
     {
         if (hasSplit)
         {
@@ -87,14 +87,20 @@ public class LaserSplitter : MonoBehaviour
             newLaser.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
             LaserScript laserScript = newLaser.GetComponent<LaserScript>();
+            
             if (laserScript != null)
             {
-                if (ColorUtility.TryParseHtmlString(PrimaryColors[i % PrimaryColors.Length], out Color parsedColor))
+                if (MatchColors)
                 {
-                    laserScript.SetLaserColor(parsedColor);
+                    laserScript.SetLaserColor(incomingLazerColor);
                 }
-
-                //Color c = splitColors[i % splitColors.Length];
+                else
+                {
+                    if (ColorUtility.TryParseHtmlString(PrimaryColors[i % PrimaryColors.Length], out Color parsedColor))
+                    {
+                        laserScript.SetLaserColor(parsedColor);
+                    }
+                }
             }
             else
             {
