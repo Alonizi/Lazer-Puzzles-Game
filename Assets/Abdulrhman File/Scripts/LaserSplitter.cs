@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,13 @@ public class LaserSplitter : MonoBehaviour
 
     [Tooltip("Distance from splitter center to spawn new beams.")]
     public float spawnOffset = 0.5f;
+    
+    [Tooltip("Set if the Splitter should match or split the received color")]
+    [SerializeField]private bool MatchColors;
+    
+    [Header("Red-Green-Blue")]
+    [Tooltip("set the color hex of the 3 primary color (Red-Green-Blue) in order.")]
+    [SerializeField] private string[] PrimaryColors = { "#D95952", "#A8DAA7", "#87C3E1" };
 
     // Flag to ensure we only split once per hit.
     private bool hasSplit = false;
@@ -23,7 +31,7 @@ public class LaserSplitter : MonoBehaviour
     /// </summary>
     /// <param name="hitPoint">World point where the laser hit the splitter.</param>
     /// <param name="incomingDirection">Direction from which the laser is coming.</param>
-    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection)
+    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,Color incomingLazerColor)
     {
         if (hasSplit)
         {
@@ -49,7 +57,7 @@ public class LaserSplitter : MonoBehaviour
             hitSide = localHit.y > 0 ? Vector2.up : Vector2.down;
         }
         Debug.Log("Hit side determined as: " + hitSide);
-
+        
         // Define the four cardinal directions.
         Vector2[] sides = new Vector2[] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
 
@@ -66,7 +74,7 @@ public class LaserSplitter : MonoBehaviour
         }
 
         // Define the three primary RGB colors.
-        Color[] splitColors = new Color[] { Color.red, Color.green, Color.blue };
+        // Color[] splitColors = new Color[] { Color.red, Color.green, Color.blue };
 
         // Spawn one laser for each output side.
         for (int i = 0; i < outputSides.Count; i++)
@@ -82,10 +90,20 @@ public class LaserSplitter : MonoBehaviour
             newLaser.transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
             LaserScript laserScript = newLaser.GetComponent<LaserScript>();
+            
             if (laserScript != null)
             {
-                Color c = splitColors[i % splitColors.Length];
-                laserScript.SetLaserColor(c);
+                if (MatchColors)
+                {
+                    laserScript.SetLaserColor(incomingLazerColor);
+                }
+                else
+                {
+                    if (ColorUtility.TryParseHtmlString(PrimaryColors[i % PrimaryColors.Length], out Color parsedColor))
+                    {
+                        laserScript.SetLaserColor(parsedColor);
+                    }
+                }
             }
             else
             {

@@ -137,7 +137,7 @@ public class LaserScript : MonoBehaviour
                     LaserSplitter splitter = hit.collider.GetComponent<LaserSplitter>();
                     if (splitter != null)
                     {
-                        splitter.SplitLaser(hit.point, rayDirection);
+                        splitter.SplitLaser(hit.point, rayDirection,laserColor);
                     }
                     else
                     {
