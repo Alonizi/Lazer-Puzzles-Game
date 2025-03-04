@@ -15,8 +15,11 @@ public class LaserSplitter : MonoBehaviour
     [Tooltip("Distance from splitter center to spawn new beams.")]
     public float spawnOffset = 0.5f;
     
+    [Tooltip("Set if the Splitter should match or split the received color")]
     [SerializeField]private bool MatchColors;
     
+    [Header("Red-Green-Blue")]
+    [Tooltip("set the color hex of the 3 primary color (Red-Green-Blue) in order.")]
     [SerializeField] private string[] PrimaryColors = { "#D95952", "#A8DAA7", "#87C3E1" };
 
     // Flag to ensure we only split once per hit.
