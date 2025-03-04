@@ -26,7 +26,12 @@ public class SimpleColorReceiver : MonoBehaviour
     private List<Color> laserColors = new List<Color>(); // Stores all laser colors hitting the receiver
     private Color combinedColor = Color.gray; // Stores the dynamically mixed color
 
+    [Header("Win Panel")]
     public GameObject PanelWin;
+
+    [Header("Receivers")]
+    public static int totalReceivers = 0;
+    public static int activatedReceivers = 0;
 
     private void Awake()
     {
@@ -37,10 +42,12 @@ public class SimpleColorReceiver : MonoBehaviour
         }
         spriteRenderer.color = baseDefaultColor;
 
-        if (PanelWin != null)
+        totalReceivers++;
+
+        /*if (PanelWin != null)
         {
             PanelWin.SetActive(false); 
-        }
+        }*/
     }
 
     /// <summary>
@@ -61,7 +68,12 @@ public class SimpleColorReceiver : MonoBehaviour
     {
         laserColors.Clear();
         ResetHitTimer();
-        isActivated = false;
+
+        if (isActivated)
+        {
+            isActivated = false;
+            activatedReceivers--;
+        }
 
         if (PanelWin != null)
         {
@@ -103,6 +115,7 @@ public class SimpleColorReceiver : MonoBehaviour
             if (isActivated)
             {
                 isActivated = false;
+                activatedReceivers--;
                 spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
             }
         }
@@ -112,14 +125,21 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void ActivateReceiver()
     {
-        if (PanelWin != null)
-        {
-            PanelWin.SetActive(true);
-        }
-
         isActivated = true;
+        activatedReceivers++;
         spriteRenderer.color = activatedColor;
         Debug.Log("Receiver activated with color: " + combinedColor);
+
+        CheckWinCondition();
+    }
+
+    private void CheckWinCondition()
+    {
+        if (activatedReceivers == totalReceivers && PanelWin != null)
+        {
+            PanelWin.SetActive(true);
+            Debug.Log("All receivers activated! You win!");
+        }
     }
 
     private void ResetHitTimer()
