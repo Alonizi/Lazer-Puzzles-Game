@@ -21,6 +21,7 @@ public class Buttons : MonoBehaviour
     public void Next()
     {
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        ResumeGame();
     }
 
     public void Pause()
@@ -74,5 +75,11 @@ public class Buttons : MonoBehaviour
             element.interactable = false;
             element.blocksRaycasts = false;
         }
+    }
+
+    public void Win()
+    {
+        SetTimeScale(0);
+        EnableUIInteractions();
     }
 }

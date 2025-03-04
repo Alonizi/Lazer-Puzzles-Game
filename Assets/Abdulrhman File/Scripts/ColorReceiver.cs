@@ -32,6 +32,7 @@ public class SimpleColorReceiver : MonoBehaviour
     public GameObject PanelWin;
 
     [Header("Receivers")]
+    public int receiverIndex;
     public static int totalReceivers = 0;
     public static int activatedReceivers = 0;
 
@@ -44,7 +45,8 @@ public class SimpleColorReceiver : MonoBehaviour
         }
         spriteRenderer.color = baseDefaultColor;
 
-        totalReceivers++;
+        totalReceivers = FindObjectsOfType<SimpleColorReceiver>().Length; 
+        activatedReceivers = 0;
 
     }
 
@@ -133,17 +135,28 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void CheckWinCondition()
     {
-        if (activatedReceivers == totalReceivers)
+        SimpleColorReceiver[] receivers = FindObjectsOfType<SimpleColorReceiver>();
+        foreach (SimpleColorReceiver receiver in receivers)
         {
-            if (PanelWin != null)
+            if (!receiver.isActivated)
             {
-                PanelWin.SetActive(true);
+                return; 
             }
-
-            Debug.Log("All receivers activated! You win!");
-
-            UnlockNewLevel();
         }
+
+        if (PanelWin != null)
+        {
+            PanelWin.SetActive(true);
+            var buttons = FindObjectOfType<Buttons>();
+            if (buttons != null)
+            {
+                buttons.Win(); 
+            }
+        }
+
+        Debug.Log("All receivers activated! You win!");
+
+        UnlockNewLevel();
     }
 
     private void ResetHitTimer()
