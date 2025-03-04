@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SimpleColorReceiver : MonoBehaviour
 {
@@ -44,10 +46,6 @@ public class SimpleColorReceiver : MonoBehaviour
 
         totalReceivers++;
 
-        /*if (PanelWin != null)
-        {
-            PanelWin.SetActive(false); 
-        }*/
     }
 
     /// <summary>
@@ -135,16 +133,32 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void CheckWinCondition()
     {
-        if (activatedReceivers == totalReceivers && PanelWin != null)
+        if (activatedReceivers == totalReceivers)
         {
-            PanelWin.SetActive(true);
+            if (PanelWin != null)
+            {
+                PanelWin.SetActive(true);
+            }
+
             Debug.Log("All receivers activated! You win!");
+
+            UnlockNewLevel();
         }
     }
 
     private void ResetHitTimer()
     {
         hitTimer = 0.0f;
+    }
+
+    private void UnlockNewLevel()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
+            PlayerPrefs.Save();
+        }
     }
 
     /// <summary>

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
+    public Image[] lockImages;
 
     private void Awake()
     {
@@ -13,10 +14,12 @@ public class LevelMenu : MonoBehaviour
         for (int i = 0; i < buttons.Length; i++)
         {
             buttons[i].interactable = false;
+            lockImages[i].gameObject.SetActive(true);
         }
         for (int i = 0;i < unlockedLevel; i++)
         {
             buttons[i].interactable |= true;
+            lockImages[i].gameObject.SetActive(false);
         }
     }
 
@@ -26,32 +29,16 @@ public class LevelMenu : MonoBehaviour
         SceneManager.LoadScene(levelName);
     }
 
-    /*
-    
-    > WIN (next level) [7:30]
-
-    
-    using UnityEngine.SceneManagement;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void ResetProgress()
     {
-        if (collision.CompareTag("Player"))
-        {
-          > UnlockNewLevel(); 
-            SceneController.instance.NextLevel();
-        }
-    }
+        PlayerPrefs.DeleteKey("UnlockedLevel");
+        PlayerPrefs.DeleteKey("ReachedIndex");
+        PlayerPrefs.SetInt("UnlockedLevel", 1);
+        PlayerPrefs.Save();
 
-    void UnlockNewLevel()
-    {
-        if(SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
-        {
-           PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
-           PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
-           PlayerPrefs.Save();
-        }
+        // ≈⁄«œ…  Õ„Ì· «·ﬁ«∆„… · ÕœÌÀ Õ«·… «·√“—«—
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
-    */
 }
