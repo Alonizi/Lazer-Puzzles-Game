@@ -26,13 +26,13 @@ public class LaserSplitter : MonoBehaviour
     // Flag to ensure we only split once per hit.
     private bool hasSplit = false;
 
-    private List<LaserScript> AllLazersDevices;
+    //private List<LaserScript> AllLazersDevices;
     private List<GameObject> EmittedLazers;
 
     private void Awake()
     {
         EmittedLazers = new List<GameObject>();
-        AllLazersDevices = FindObjectsByType<LaserScript>(sortMode: FindObjectsSortMode.None).ToList();
+        //AllLazersDevices = FindObjectsByType<LaserScript>(sortMode: FindObjectsSortMode.None).ToList();
     }
 
     /// <summary>
@@ -40,16 +40,16 @@ public class LaserSplitter : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        foreach (var lazer in AllLazersDevices)
-        {
-            lazer.SplitterCollisionEnterEvent += (hitPoint, direction, color) =>
-            {
-                SplitLaser(hitPoint, direction, color,AllLazersDevices.IndexOf(lazer));
-            };
-            
-            lazer.SplitterCollisionExitEvent += () =>  DestroyAllEmittingLazers(AllLazersDevices.IndexOf(lazer));
-
-        }
+        // foreach (var lazer in AllLazersDevices)
+        // {
+        //     lazer.SplitterCollisionEnterEvent += (hitPoint, direction, color) =>
+        //     {
+        //         SplitLaser(hitPoint, direction, color,AllLazersDevices.IndexOf(lazer));
+        //     };
+        //     
+        //     lazer.SplitterCollisionExitEvent += () =>  DestroyAllEmittingLazers(AllLazersDevices.IndexOf(lazer));
+        //
+        // }
     }
 
     /// <summary>
@@ -59,7 +59,7 @@ public class LaserSplitter : MonoBehaviour
     /// <param name="hitPoint">World point where the laser hit the splitter.</param>
     /// <param name="incomingDirection">Direction from which the laser is coming.</param>
     /// <param name="incomingLazerColor">Color of the Lazer hitting the splitter.</param>
-    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,Color incomingLazerColor,int lazerIndex)
+    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,Color incomingLazerColor)
     {
         Debug.LogWarning("Splitter Event Activated");
         if (hasSplit)
@@ -142,7 +142,7 @@ public class LaserSplitter : MonoBehaviour
         }
     }
 
-    private void DestroyAllEmittingLazers(int lazerIndex)
+    public void DestroyAllEmittingLazers()
     {
         Debug.LogWarning("Splitter Exit Collision Event");
         foreach (var laser in EmittedLazers)
