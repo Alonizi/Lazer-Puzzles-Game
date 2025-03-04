@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 606841453820451600, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2304890624034400415, guid: a2bcd517e2476407c911e33c5c2b4986, type: 3}
     - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: hexColor
       value: '#D95952'
