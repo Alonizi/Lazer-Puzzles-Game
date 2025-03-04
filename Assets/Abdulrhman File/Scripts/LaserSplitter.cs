@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -19,11 +20,37 @@ public class LaserSplitter : MonoBehaviour
     [SerializeField]private bool MatchColors;
     
     [Header("Red-Green-Blue")]
-    [Tooltip("set the color hex of the 3 primary color (Red-Green-Blue) in order.")]
+    [Tooltip("set the color-hex values of the 3 primary color (Red-Green-Blue) in order.")]
     [SerializeField] private string[] PrimaryColors = { "#D95952", "#A8DAA7", "#87C3E1" };
 
     // Flag to ensure we only split once per hit.
     private bool hasSplit = false;
+
+    private List<LaserScript> AllLazersDevices;
+    private List<GameObject> EmittedLazers;
+
+    private void Awake()
+    {
+        EmittedLazers = new List<GameObject>();
+        AllLazersDevices = FindObjectsByType<LaserScript>(sortMode: FindObjectsSortMode.None).ToList();
+    }
+
+    /// <summary>
+    /// find all the lazers and subscribe to their events  
+    /// </summary>
+    private void Start()
+    {
+        foreach (var lazer in AllLazersDevices)
+        {
+            lazer.SplitterCollisionEnterEvent += (hitPoint, direction, color) =>
+            {
+                SplitLaser(hitPoint, direction, color,AllLazersDevices.IndexOf(lazer));
+            };
+            
+            lazer.SplitterCollisionExitEvent += () =>  DestroyAllEmittingLazers(AllLazersDevices.IndexOf(lazer));
+
+        }
+    }
 
     /// <summary>
     /// Splits an incoming white laser into three beams: red, green, blue.
@@ -31,8 +58,10 @@ public class LaserSplitter : MonoBehaviour
     /// </summary>
     /// <param name="hitPoint">World point where the laser hit the splitter.</param>
     /// <param name="incomingDirection">Direction from which the laser is coming.</param>
-    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,Color incomingLazerColor)
+    /// <param name="incomingLazerColor">Color of the Lazer hitting the splitter.</param>
+    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,Color incomingLazerColor,int lazerIndex)
     {
+        Debug.LogWarning("Splitter Event Activated");
         if (hasSplit)
         {
             Debug.Log("Splitter has already split the laser. Skipping further splits.");
@@ -104,11 +133,23 @@ public class LaserSplitter : MonoBehaviour
                         laserScript.SetLaserColor(parsedColor);
                     }
                 }
+                EmittedLazers.Add(newLaser);
             }
             else
             {
                 Debug.LogWarning("LaserScript component not found on the instantiated laser prefab.");
             }
         }
+    }
+
+    private void DestroyAllEmittingLazers(int lazerIndex)
+    {
+        Debug.LogWarning("Splitter Exit Collision Event");
+        foreach (var laser in EmittedLazers)
+        {
+            Destroy(laser);
+        }
+        hasSplit = false; 
+
     }
 }

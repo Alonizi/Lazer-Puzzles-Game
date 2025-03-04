@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.Playables;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -24,6 +26,12 @@ public class LaserScript : MonoBehaviour
 
     // Cached LineRenderer
     private LineRenderer lineRenderer;
+    
+    // Events to inform the splitter it was hit/not-hit by lazer
+    public event Action<Vector2,Vector2,Color> SplitterCollisionEnterEvent;
+    public event Action SplitterCollisionExitEvent;
+    private bool HitSplitter;
+    private int counter;
 
     /// <summary>
     /// Public getter for the laser's color (used by external scripts, e.g. ColorReceiver).
@@ -45,6 +53,8 @@ public class LaserScript : MonoBehaviour
 
     private void Start()
     {
+        counter = 0; 
+        HitSplitter = false; 
         // Only parse the hex color if not already set externally
         if (!initializedExternally)
         {
@@ -65,6 +75,7 @@ public class LaserScript : MonoBehaviour
     private void Update()
     {
         DrawLaser();
+        counter++;
     }
 
     /// <summary>
@@ -109,7 +120,17 @@ public class LaserScript : MonoBehaviour
                 // Add the hit point to the line renderer.
                 lineRenderer.positionCount++;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
-
+                
+                if (HitSplitter && !hit.collider.CompareTag("Splitter"))
+                {
+                    if (SplitterCollisionExitEvent is not null)
+                    {
+                        Debug.LogError($"on exit splitter : {counter}");
+                        SplitterCollisionExitEvent();
+                        HitSplitter = false; 
+                    }
+                }
+                
                 // Check for a SimpleColorReceiver.
                 SimpleColorReceiver receiver = hit.collider.GetComponent<SimpleColorReceiver>();
                 if (receiver != null)
@@ -131,13 +152,19 @@ public class LaserScript : MonoBehaviour
                     rayDirection = Vector2.Reflect(rayDirection, hit.normal);
                     rayOrigin = hit.point + rayDirection * 0.01f;
                 }
-                else if (hit.collider.CompareTag("Splitter"))
+                else if (hit.collider.CompareTag("Splitter") && !HitSplitter)
                 {
                     Debug.Log("Laser hit a splitter. Calling SplitLaser.");
                     LaserSplitter splitter = hit.collider.GetComponent<LaserSplitter>();
                     if (splitter != null)
                     {
-                        splitter.SplitLaser(hit.point, rayDirection,laserColor);
+                        if (SplitterCollisionEnterEvent is not null)
+                        {
+                            Debug.LogError($"on Enter splitter : {counter}");
+                            HitSplitter = true; 
+                            SplitterCollisionEnterEvent(hit.point, rayDirection,laserColor);
+                        }
+                        //splitter.SplitLaser(hit.point, rayDirection,laserColor);
                     }
                     else
                     {
