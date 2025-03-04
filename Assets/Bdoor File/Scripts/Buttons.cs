@@ -18,6 +18,11 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
+    public void Next()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
     public void Pause()
     {
         pauseMenu.SetActive(true);

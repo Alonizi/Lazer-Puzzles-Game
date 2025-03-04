@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SimpleColorReceiver : MonoBehaviour
 {
@@ -26,7 +28,12 @@ public class SimpleColorReceiver : MonoBehaviour
     private List<Color> laserColors = new List<Color>(); // Stores all laser colors hitting the receiver
     private Color combinedColor = Color.gray; // Stores the dynamically mixed color
 
+    [Header("Win Panel")]
     public GameObject PanelWin;
+
+    [Header("Receivers")]
+    public static int totalReceivers = 0;
+    public static int activatedReceivers = 0;
 
     private void Awake()
     {
@@ -37,10 +44,8 @@ public class SimpleColorReceiver : MonoBehaviour
         }
         spriteRenderer.color = baseDefaultColor;
 
-        if (PanelWin != null)
-        {
-            PanelWin.SetActive(false); 
-        }
+        totalReceivers++;
+
     }
 
     /// <summary>
@@ -61,7 +66,12 @@ public class SimpleColorReceiver : MonoBehaviour
     {
         laserColors.Clear();
         ResetHitTimer();
-        isActivated = false;
+
+        if (isActivated)
+        {
+            isActivated = false;
+            activatedReceivers--;
+        }
 
         if (PanelWin != null)
         {
@@ -103,6 +113,7 @@ public class SimpleColorReceiver : MonoBehaviour
             if (isActivated)
             {
                 isActivated = false;
+                activatedReceivers--;
                 spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
             }
         }
@@ -112,19 +123,42 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void ActivateReceiver()
     {
-        if (PanelWin != null)
-        {
-            PanelWin.SetActive(true);
-        }
-
         isActivated = true;
+        activatedReceivers++;
         spriteRenderer.color = activatedColor;
         Debug.Log("Receiver activated with color: " + combinedColor);
+
+        CheckWinCondition();
+    }
+
+    private void CheckWinCondition()
+    {
+        if (activatedReceivers == totalReceivers)
+        {
+            if (PanelWin != null)
+            {
+                PanelWin.SetActive(true);
+            }
+
+            Debug.Log("All receivers activated! You win!");
+
+            UnlockNewLevel();
+        }
     }
 
     private void ResetHitTimer()
     {
         hitTimer = 0.0f;
+    }
+
+    private void UnlockNewLevel()
+    {
+        if (SceneManager.GetActiveScene().buildIndex >= PlayerPrefs.GetInt("ReachedIndex"))
+        {
+            PlayerPrefs.SetInt("ReachedIndex", SceneManager.GetActiveScene().buildIndex + 1);
+            PlayerPrefs.SetInt("UnlockedLevel", PlayerPrefs.GetInt("UnlockedLevel", 1) + 1);
+            PlayerPrefs.Save();
+        }
     }
 
     /// <summary>
