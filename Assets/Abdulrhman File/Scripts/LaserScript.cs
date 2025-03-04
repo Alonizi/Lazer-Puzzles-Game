@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.Playables;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -24,6 +26,11 @@ public class LaserScript : MonoBehaviour
 
     // Cached LineRenderer
     private LineRenderer lineRenderer;
+    
+    // Events to inform the splitter it was hit/not-hit by lazer
+    public event Action<Vector2,Vector2,Color> SplitterCollisionEnterEvent;
+    public event Action SplitterCollisionExitEvent;
+    private bool SplitterActivated;
 
     /// <summary>
     /// Public getter for the laser's color (used by external scripts, e.g. ColorReceiver).
@@ -45,6 +52,7 @@ public class LaserScript : MonoBehaviour
 
     private void Start()
     {
+        SplitterActivated = false; 
         // Only parse the hex color if not already set externally
         if (!initializedExternally)
         {
@@ -98,7 +106,8 @@ public class LaserScript : MonoBehaviour
         lineRenderer.SetPosition(0, rayOrigin);
 
         int reflections = 0;
-
+        bool reachedSplitter = false;
+        
         while (reflections < maxReflections)
         {
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, rayDirection, maxDistance, reflectionMask);
@@ -109,7 +118,7 @@ public class LaserScript : MonoBehaviour
                 // Add the hit point to the line renderer.
                 lineRenderer.positionCount++;
                 lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.point);
-
+                
                 // Check for a SimpleColorReceiver.
                 SimpleColorReceiver receiver = hit.collider.GetComponent<SimpleColorReceiver>();
                 if (receiver != null)
@@ -137,7 +146,13 @@ public class LaserScript : MonoBehaviour
                     LaserSplitter splitter = hit.collider.GetComponent<LaserSplitter>();
                     if (splitter != null)
                     {
-                        splitter.SplitLaser(hit.point, rayDirection,laserColor);
+                        if (SplitterCollisionEnterEvent is not null)
+                        {
+                            SplitterActivated = true;
+                            reachedSplitter = true; 
+                            SplitterCollisionEnterEvent(hit.point, rayDirection,laserColor);
+                        }
+                        //splitter.SplitLaser(hit.point, rayDirection,laserColor);
                     }
                     else
                     {
@@ -159,6 +174,15 @@ public class LaserScript : MonoBehaviour
                 break;
             }
             reflections++;
+        }
+        
+        if (SplitterActivated && !reachedSplitter)
+        {
+            if (SplitterCollisionExitEvent is not null)
+            {
+                SplitterCollisionExitEvent();
+                SplitterActivated = false;
+            }
         }
     }
 }
