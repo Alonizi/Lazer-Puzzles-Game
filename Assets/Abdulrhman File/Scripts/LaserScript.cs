@@ -31,6 +31,8 @@ public class LaserScript : MonoBehaviour
     public event Action<Vector2,Vector2,Color> SplitterCollisionEnterEvent;
     public event Action SplitterCollisionExitEvent;
     private bool SplitterActivated;
+    LaserSplitter SplitterOnContact = null; 
+
 
     /// <summary>
     /// Public getter for the laser's color (used by external scripts, e.g. ColorReceiver).
@@ -143,16 +145,19 @@ public class LaserScript : MonoBehaviour
                 else if (hit.collider.CompareTag("Splitter"))
                 {
                     Debug.Log("Laser hit a splitter. Calling SplitLaser.");
-                    LaserSplitter splitter = hit.collider.GetComponent<LaserSplitter>();
-                    if (splitter != null)
+                    SplitterOnContact = hit.collider.GetComponent<LaserSplitter>();
+                    if (SplitterOnContact != null)
                     {
-                        if (SplitterCollisionEnterEvent is not null)
-                        {
-                            SplitterActivated = true;
-                            reachedSplitter = true; 
-                            SplitterCollisionEnterEvent(hit.point, rayDirection,laserColor);
-                        }
-                        //splitter.SplitLaser(hit.point, rayDirection,laserColor);
+                        // if (SplitterCollisionEnterEvent is not null)
+                        // {
+                        //     splitterOnContact = hit.collider.gameObject;
+                        //     SplitterActivated = true;
+                        //     reachedSplitter = true; 
+                        //     SplitterCollisionEnterEvent(hit.point, rayDirection,laserColor);
+                        // }
+                        SplitterActivated = true;
+                        reachedSplitter = true; 
+                        SplitterOnContact.SplitLaser(hit.point, rayDirection,laserColor);
                     }
                     else
                     {
@@ -178,11 +183,10 @@ public class LaserScript : MonoBehaviour
         
         if (SplitterActivated && !reachedSplitter)
         {
-            if (SplitterCollisionExitEvent is not null)
-            {
-                SplitterCollisionExitEvent();
+            SplitterOnContact.DestroyAllEmittingLazers();
+                //SplitterCollisionExitEvent();
                 SplitterActivated = false;
-            }
+                SplitterOnContact = null; 
         }
     }
 }
