@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/Levels_Abdulaziz/Level 0.unity.meta
 guid: 88252cac5795d2049930e5d37297e61a
+========
+guid: 1dab60b2b1ab84c18b25b24da75b55c8
+>>>>>>>> main:Assets/Scenes/Levels_Abdulaziz/Level 6.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
