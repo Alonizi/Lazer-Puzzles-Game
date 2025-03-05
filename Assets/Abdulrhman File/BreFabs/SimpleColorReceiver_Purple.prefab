@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &1025171397183747285
+--- !u!1001 &3823828561116256964
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -11,86 +11,50 @@ PrefabInstance:
     - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7340079915093477653, guid: ebdad528028334ed1a33297b8f2ab7b6, type: 3}
-    - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 117649766769028973, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: m_Color.r
+      objectReference: {fileID: -2709431193161945679, guid: ebdad528028334ed1a33297b8f2ab7b6, type: 3}
+    - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
+      propertyPath: two
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: targetColor.b
-      value: 0.65882355
+      value: 0.3254902
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: targetColor.g
-      value: 0.854902
+      value: 0.34901962
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: targetColor.r
-      value: 0.65882355
+      value: 0.8470589
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: activatedColor.b
-      value: 1
+      propertyPath: targetColor2.b
+      value: 0.87843144
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: activatedColor.g
-      value: 1
+      propertyPath: targetColor2.g
+      value: 0.7607844
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: activatedColor.r
-      value: 1
+      propertyPath: targetColor2.r
+      value: 0.5294118
       objectReference: {fileID: 0}
     - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: baseDefaultColor.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: baseDefaultColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: baseDefaultColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2317863393606984718, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: baseDefaultColor.r
-      value: 1
+      propertyPath: useTwoTargetColors
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2717129311927566055, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_Name
-      value: SimpleColorReceiver_Green
-      objectReference: {fileID: 0}
-    - target: {fileID: 9198659089236773044, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 9198659089236773044, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 9198659089236773044, guid: f8e86b7cf1876418786eafba74057574, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.75
+      value: SimpleColorReceiver_Purple
       objectReference: {fileID: 0}
     - target: {fileID: 9198659089236773044, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.5
+      value: 4.0313234
       objectReference: {fileID: 0}
     - target: {fileID: 9198659089236773044, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 0.49919355
       objectReference: {fileID: 0}
     - target: {fileID: 9198659089236773044, guid: f8e86b7cf1876418786eafba74057574, type: 3}
       propertyPath: m_LocalPosition.z

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,11 @@ public class SimpleColorReceiver : MonoBehaviour
     [Header("Target Color")]
     [Tooltip("The color the receiver is looking for (e.g., white, purple, etc.).")]
     public Color targetColor = Color.white;
+    public Color targetColor2 = Color.white;
+
+    [Header("Use Two Target Colors")]
+    [Tooltip("If true, the receiver will look for two colors.")]
+    public bool two = false;
 
     [Header("Hit Color (When Activated)")]
     [Tooltip("The color the receiver changes to when activated.")]
@@ -47,7 +53,6 @@ public class SimpleColorReceiver : MonoBehaviour
 
         totalReceivers = FindObjectsOfType<SimpleColorReceiver>().Length; 
         activatedReceivers = 0;
-
     }
 
     /// <summary>
@@ -79,44 +84,67 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             PanelWin.SetActive(false);
         }
-
     }
 
     private void LateUpdate()
     {
-        // Combine all laser colors
-        combinedColor = Color.black;
+        bool color1Reached = false;
+        bool color2Reached = false;
+
         foreach (Color c in laserColors)
         {
-            combinedColor = AddColors(combinedColor, c);
-        }
-
-        if (laserColors.Count > 0 && !isActivated)
-        {
-            spriteRenderer.color = combinedColor; // Show the mixed color while lasers hit
-        }
-        else if (!isActivated)
-        {
-            spriteRenderer.color = baseDefaultColor; // Reset if no lasers are hitting
-        }
-
-        // Check if the combined color matches the target color
-        if (ApproximatelyEqual(combinedColor, targetColor))
-        {
-            hitTimer += Time.deltaTime;
-            if (hitTimer >= requiredHitTime && !isActivated)
+            if (ApproximatelyEqual(c, targetColor))
             {
-                ActivateReceiver();
+                color1Reached = true;
+            }
+            if (two && ApproximatelyEqual(c, targetColor2))
+            {
+                color2Reached = true;
+            }
+        }
+
+        bool onlyTargetColors = laserColors.Count == 1 && color1Reached || (two && laserColors.Count == 2 && color1Reached && color2Reached);
+
+        if (two)
+        {
+            if (onlyTargetColors)
+            {
+                hitTimer += Time.deltaTime;
+                if (hitTimer >= requiredHitTime && !isActivated)
+                {
+                    ActivateReceiver();
+                }
+            }
+            else
+            {
+                ResetHitTimer();
+                if (isActivated)
+                {
+                    isActivated = false;
+                    activatedReceivers--;
+                    spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+                }
             }
         }
         else
         {
-            ResetHitTimer();
-            if (isActivated)
+            if (onlyTargetColors)
             {
-                isActivated = false;
-                activatedReceivers--;
-                spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+                hitTimer += Time.deltaTime;
+                if (hitTimer >= requiredHitTime && !isActivated)
+                {
+                    ActivateReceiver();
+                }
+            }
+            else
+            {
+                ResetHitTimer();
+                if (isActivated)
+                {
+                    isActivated = false;
+                    activatedReceivers--;
+                    spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+                }
             }
         }
 
@@ -128,7 +156,7 @@ public class SimpleColorReceiver : MonoBehaviour
         isActivated = true;
         activatedReceivers++;
         spriteRenderer.color = activatedColor;
-        Debug.Log("Receiver activated with color: " + combinedColor);
+        Debug.Log("Receiver activated with colors");
 
         CheckWinCondition();
     }
