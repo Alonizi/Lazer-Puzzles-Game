@@ -17,7 +17,7 @@ public class ItemSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        Selector.OnItemSelected += (item) => SelectItem(item);
+        Selector.OnItemSelected += SelectItem;
     }
 
     /// <summary>
@@ -62,6 +62,10 @@ public class ItemSpawner : MonoBehaviour
         SelectedItem = item; 
         Debug.LogWarning($"{item} Was Selected");
     }
-    
-    
+
+    private void OnDisable()
+    {
+        Selector.OnItemSelected -= SelectItem;
+
+    }
 }
