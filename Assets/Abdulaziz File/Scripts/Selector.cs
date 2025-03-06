@@ -1,54 +1,18 @@
+using System;
 using System.Collections.Generic;
+using Abdulaziz_File.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 public class Selector : MonoBehaviour
 {
-    private LaserSplitter SplitterPrefab;
-    private LaserSplitter SplitterRgbPrefab;
-    private MirrorRotator MirrorPrefab; 
-    private Grid world;
-    private Mechanic? CurrentSelection;
-    private Stack<GameObject> SpawnedItems; 
-    public enum Mechanic
-    {
-        Mirror,
-        Splitter_RGB,
-        Splitter,
-        Rotator,
-        Delete,
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        CurrentSelection = null; 
-        world = FindAnyObjectByType<Grid>();
-    }
+    public static event Action<Mechanic> OnItemSelected;
+    private static Mechanic? CurrentSelection;
 
-    // Update is called once per frame
-    void Update()
+    public static void SelectMechanic(int mechanic)
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (CurrentSelection is not null)
-            {
-                //Instantiate()
-            }
-            Debug.Log("Pressed Left Click");
-            Debug.Log($"Grid Position {CurrentPositionToGrid()}");
-        }
-    }
-
-    private Vector3Int CurrentPositionToGrid()
-    {
-        var worldposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        return world.WorldToCell(worldposition);
-    }
-
-    public void SelectMechanic(Mechanic mechanic)
-    {
-        switch (mechanic)
+        switch ((Mechanic) mechanic)
         {
             case Mechanic.Mirror:
                 CurrentSelection = Mechanic.Mirror;
@@ -71,5 +35,10 @@ public class Selector : MonoBehaviour
                 Debug.Log("Delete Selected");
                 break; 
         }
+    }
+
+    public void HI(int i)
+    {
+        
     }
 }
