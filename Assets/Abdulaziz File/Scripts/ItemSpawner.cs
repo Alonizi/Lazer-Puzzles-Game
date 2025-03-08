@@ -1,6 +1,8 @@
 //copyrights Abdulaziz Alonizi 2025
+
+using System;
+using System.Collections.Generic;
 using Abdulaziz_File.Scripts;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -17,19 +19,25 @@ public class ItemSpawner : MonoBehaviour
     private Grid World;
     private Tilemap[] Tiles;
     private Mechanic? SelectedItem;
+    private Dictionary<int, Transform> TilesTransforms;
     
     private void Awake()
     {
+        TilesTransforms = new Dictionary<int, Transform>();
         SelectedItem = null; 
         World = FindAnyObjectByType<Grid>();
         Tiles = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
+        foreach (var tile in Tiles)
+        {
+            TilesTransforms.Add(tile.gameObject.layer,tile.transform);
+        }
     }
     
     private void OnEnable()
     {
         Selector.OnItemSelected += (mechanic) => SelectItem(mechanic);
     }
-    
+
     /// <summary>
     /// check for user input , and spawn items accordingly
     /// </summary>
@@ -44,8 +52,7 @@ public class ItemSpawner : MonoBehaviour
             if (SelectedItem is not null && cellAvailable && cellWithinBorders)
             {
                 Debug.Log($"Spawning {SelectedItem} Item");
-                SpawnItem(cellPosition);
-                //SelectedItem = null;
+                Interaction(cellPosition);
             }
         }
     }
@@ -53,7 +60,7 @@ public class ItemSpawner : MonoBehaviour
     /// <summary>
     /// Spawn Item on Grid
     /// </summary>
-    private void SpawnItem(Vector3Int cellPosition)
+    private void Interaction(Vector3Int cellPosition)
     {
         switch (SelectedItem)
         {
@@ -65,8 +72,6 @@ public class ItemSpawner : MonoBehaviour
                 break;
             case Mechanic.Splitter_RGB:
                 SpawnSplitter(cellPosition,true);
-                break; 
-            case Mechanic.Rotator:
                 break; 
             case Mechanic.Delete:
                 break; 
@@ -108,7 +113,7 @@ public class ItemSpawner : MonoBehaviour
                 if (itemExist)
                 {
                     Debug.Log($"Check at Position {World.CellToLocal(cellPosition)} in World");
-                    Debug.LogError($"Item {item.name} Exists at cell position {World.WorldToCell(item.position)} !");
+                    Debug.LogWarning($"Item {item.name} Exists at cell position {World.WorldToCell(item.position)} !");
                     return true;
                 }
             }
@@ -118,34 +123,21 @@ public class ItemSpawner : MonoBehaviour
 
     private void SpawnMirror(Vector3Int cellPosition)
     {
-        Transform spawnTile = null;
-        foreach (var tile in Tiles)
-        {
-            if (tile.gameObject.layer == LayerMask.NameToLayer("Mirror"))
-            {
-                spawnTile = tile.transform; 
-            }
-        }
-        Instantiate(Mirror, World.GetCellCenterWorld(cellPosition), Quaternion.Euler(new Vector3(0,0,45)),parent:spawnTile);
+        Transform parentTile = TilesTransforms[LayerMask.NameToLayer("Mirror")];
+        Instantiate(Mirror, World.GetCellCenterWorld(cellPosition), Quaternion.Euler(new Vector3(0,0,45)),parent:parentTile);
     }
     
     private void SpawnSplitter(Vector3Int cellPosition , bool isRGB)
     {
-        Transform spawnTile = null;
-        foreach (var tile in Tiles)
-        {
-            if (tile.gameObject.layer == LayerMask.NameToLayer("Splitter"))
-            {
-                spawnTile = tile.transform; 
-            }
-        }
+        Transform parentTile = TilesTransforms[LayerMask.NameToLayer("Splitter")];
+
         if (isRGB)
         {
-            Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: spawnTile);
+            Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
         }
         else
         {
-            Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: spawnTile);
+            Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
         }
     }
     

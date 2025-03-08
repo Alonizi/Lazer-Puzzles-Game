@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 45031186}
   - component: {fileID: 45031188}
   - component: {fileID: 45031187}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Receivers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 1095339007}
   - component: {fileID: 1095339009}
   - component: {fileID: 1095339008}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lazers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2107,9 +2107,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2503854762867131847, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6859753841101636791, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: m_Name
       value: Laser_White
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859753841101636791, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2430,9 +2438,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2503854762867131847, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6859753841101636791, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: m_Name
       value: Laser_White
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859753841101636791, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
