@@ -20,9 +20,11 @@ public class ItemSpawner : MonoBehaviour
     private Tilemap[] Tiles;
     private Mechanic? SelectedItem;
     private Dictionary<int, Transform> TilesTransforms;
+    private Stack<GameObject> AddedItems; 
     
     private void Awake()
     {
+        AddedItems = new Stack<GameObject>();
         TilesTransforms = new Dictionary<int, Transform>();
         SelectedItem = null; 
         World = FindAnyObjectByType<Grid>();
@@ -52,7 +54,7 @@ public class ItemSpawner : MonoBehaviour
             if (SelectedItem is not null && cellAvailable && cellWithinBorders)
             {
                 Debug.Log($"Spawning {SelectedItem} Item");
-                Interaction(cellPosition);
+                PerformAction(cellPosition);
             }
         }
     }
@@ -60,7 +62,7 @@ public class ItemSpawner : MonoBehaviour
     /// <summary>
     /// Spawn Item on Grid
     /// </summary>
-    private void Interaction(Vector3Int cellPosition)
+    private void PerformAction(Vector3Int cellPosition)
     {
         switch (SelectedItem)
         {
@@ -72,8 +74,6 @@ public class ItemSpawner : MonoBehaviour
                 break;
             case Mechanic.Splitter_RGB:
                 SpawnSplitter(cellPosition,true);
-                break; 
-            case Mechanic.Delete:
                 break; 
         }
     }
@@ -95,6 +95,11 @@ public class ItemSpawner : MonoBehaviour
     {
         SelectedItem = item; 
         Debug.LogWarning($"{SelectedItem} Was Selected");
+
+        if (SelectedItem == Mechanic.Delete && AddedItems.Count > 0)
+        {
+            DeleteItem();
+        }
     }
 
     /// <summary>
@@ -124,7 +129,8 @@ public class ItemSpawner : MonoBehaviour
     private void SpawnMirror(Vector3Int cellPosition)
     {
         Transform parentTile = TilesTransforms[LayerMask.NameToLayer("Mirror")];
-        Instantiate(Mirror, World.GetCellCenterWorld(cellPosition), Quaternion.Euler(new Vector3(0,0,45)),parent:parentTile);
+        var item = Instantiate(Mirror, World.GetCellCenterWorld(cellPosition), Quaternion.Euler(new Vector3(0,0,45)),parent:parentTile);
+        AddedItems.Push(item.gameObject);
     }
     
     private void SpawnSplitter(Vector3Int cellPosition , bool isRGB)
@@ -133,12 +139,19 @@ public class ItemSpawner : MonoBehaviour
 
         if (isRGB)
         {
-            Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
+            var item = Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
+            AddedItems.Push(item.gameObject);
         }
         else
         {
-            Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
+            var item = Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
+            AddedItems.Push(item.gameObject);
         }
+    }
+
+    private void DeleteItem()
+    {
+        Destroy(AddedItems.Pop());
     }
     
     private bool WithinGridBorders(Vector3Int cellPosition)
