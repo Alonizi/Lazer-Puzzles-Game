@@ -1,6 +1,6 @@
-using System;
+//copyrights Abdulaziz Alonizi 2025
 using Abdulaziz_File.Scripts;
-using UnityEditor.Tilemaps;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -9,7 +9,6 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField]private MirrorRotator Mirror; 
     [SerializeField]private LaserSplitter Splitter;
     [SerializeField]private LaserSplitter Splitter_RGB;
-
     
     [SerializeField] private int Mirrors_MaxCount;
     [SerializeField] private int Splitter_RGB_MaxCount;
@@ -23,11 +22,12 @@ public class ItemSpawner : MonoBehaviour
     {
         SelectedItem = null; 
         World = FindAnyObjectByType<Grid>();
+        Tiles = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
     }
     
     private void OnEnable()
     {
-        Selector.OnItemSelected += SelectItem;
+        Selector.OnItemSelected += (mechanic) => SelectItem(mechanic);
     }
     
     /// <summary>
@@ -35,31 +35,36 @@ public class ItemSpawner : MonoBehaviour
     /// </summary>
     void Update()
     {
-        
         if (Input.GetMouseButtonDown(0))
         {
-            ItemExistInGrid(GetCurrentPositionToGrid());
-            if (SelectedItem is not null )
+            Vector3Int cellPosition = MousePositionToGrid();
+            bool cellAvailable = !ItemExistInGrid(cellPosition);
+            bool cellWithinBorders = WithinGridBorders(cellPosition);
+            
+            if (SelectedItem is not null && cellAvailable && cellWithinBorders)
             {
-                SpawnItem();
+                Debug.Log($"Spawning {SelectedItem} Item");
+                SpawnItem(cellPosition);
+                //SelectedItem = null;
             }
-            Debug.Log("Pressed Left Click");
-            Debug.Log($"Grid Position {GetCurrentPositionToGrid()}");
         }
     }
 
     /// <summary>
     /// Spawn Item on Grid
     /// </summary>
-    private void SpawnItem()
+    private void SpawnItem(Vector3Int cellPosition)
     {
         switch (SelectedItem)
         {
             case Mechanic.Mirror: 
+                SpawnMirror(cellPosition);
                 break;
             case Mechanic.Splitter:
+                SpawnSplitter(cellPosition,false);
                 break;
             case Mechanic.Splitter_RGB:
+                SpawnSplitter(cellPosition,true);
                 break; 
             case Mechanic.Rotator:
                 break; 
@@ -71,7 +76,7 @@ public class ItemSpawner : MonoBehaviour
     /// Get mouse position and convert it to Grid Position
     /// </summary>
     /// <returns></returns>
-    private Vector3Int GetCurrentPositionToGrid()
+    private Vector3Int MousePositionToGrid()
     {
         var worldposition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         return World.WorldToCell(worldposition);
@@ -81,10 +86,10 @@ public class ItemSpawner : MonoBehaviour
     /// Store the item that was selected by the user 
     /// </summary>
     /// <param name="item"></param>
-    private void SelectItem(Mechanic item)
+    private void SelectItem(Mechanic? item)
     {
         SelectedItem = item; 
-        Debug.LogWarning($"{item} Was Selected");
+        Debug.LogWarning($"{SelectedItem} Was Selected");
     }
 
     /// <summary>
@@ -92,18 +97,65 @@ public class ItemSpawner : MonoBehaviour
     /// </summary>
     /// <param name="gridPosition"> cell position </param>
     /// <returns> true if item exit , false otherwise</returns>
-    private bool ItemExistInGrid(Vector3Int gridPosition)
+    private bool ItemExistInGrid(Vector3Int cellPosition)
     {
         bool itemExist = false; 
-        var tiles = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
-        foreach (Tilemap tile in tiles)
+        foreach (Tilemap tile in Tiles)
         {
             foreach (Transform item in tile.transform)
             { 
-                itemExist = World.WorldToCell(item.position) == gridPosition ;
+                itemExist = World.WorldToCell(item.position) == cellPosition ;
+                if (itemExist)
+                {
+                    Debug.Log($"Check at Position {World.CellToLocal(cellPosition)} in World");
+                    Debug.LogError($"Item {item.name} Exists at cell position {World.WorldToCell(item.position)} !");
+                    return true;
+                }
             }
         }
-        return itemExist;
+        return false;
+    }
+
+    private void SpawnMirror(Vector3Int cellPosition)
+    {
+        Transform spawnTile = null;
+        foreach (var tile in Tiles)
+        {
+            if (tile.gameObject.layer == LayerMask.NameToLayer("Mirror"))
+            {
+                spawnTile = tile.transform; 
+            }
+        }
+        Instantiate(Mirror, World.GetCellCenterWorld(cellPosition), Quaternion.Euler(new Vector3(0,0,45)),parent:spawnTile);
+    }
+    
+    private void SpawnSplitter(Vector3Int cellPosition , bool isRGB)
+    {
+        Transform spawnTile = null;
+        foreach (var tile in Tiles)
+        {
+            if (tile.gameObject.layer == LayerMask.NameToLayer("Splitter"))
+            {
+                spawnTile = tile.transform; 
+            }
+        }
+        if (isRGB)
+        {
+            Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: spawnTile);
+        }
+        else
+        {
+            Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: spawnTile);
+        }
+    }
+    
+    private bool WithinGridBorders(Vector3Int cellPosition)
+    {
+        if ((cellPosition.x < 12 && cellPosition.x > -8) && (cellPosition.y > -3 && cellPosition.y < 8))
+        {
+            return true;
+        }
+        return false; 
     }
     
     private void OnDisable()
