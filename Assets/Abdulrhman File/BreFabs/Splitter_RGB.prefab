@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8040208715707939523}
   m_Layer: 6
   m_Name: Splitter_RGB
-  m_TagString: Splitter
+  m_TagString: Splitter_RGB
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
