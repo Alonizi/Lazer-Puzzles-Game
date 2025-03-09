@@ -142,7 +142,7 @@ public class LaserScript : MonoBehaviour
                     rayDirection = Vector2.Reflect(rayDirection, hit.normal);
                     rayOrigin = hit.point + rayDirection * 0.01f;
                 }
-                else if (hit.collider.CompareTag("Splitter"))
+                else if (hit.collider.CompareTag("Splitter") || hit.collider.CompareTag("Splitter_RGB") )
                 {
                     Debug.Log("Laser hit a splitter. Calling SplitLaser.");
                     SplitterOnContact = hit.collider.GetComponent<LaserSplitter>();
