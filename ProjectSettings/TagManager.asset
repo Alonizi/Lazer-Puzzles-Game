@@ -10,6 +10,7 @@ TagManager:
   - Laser
   - Walls
   - Cloner
+  - Splitter_RGB
   layers:
   - Default
   - TransparentFX
