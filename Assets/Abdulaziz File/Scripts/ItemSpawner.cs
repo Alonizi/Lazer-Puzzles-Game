@@ -59,10 +59,12 @@ public class ItemSpawner : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3Int cellPosition = MousePositionToGrid();
+            
+            bool noWallExist = !CheckWallExist(cellPosition);
             bool cellAvailable = !ItemExistInGrid(cellPosition);
             bool cellWithinBorders = WithinGridBorders(cellPosition);
             
-            if (SelectedItem is not null && cellAvailable && cellWithinBorders)
+            if (SelectedItem is not null && cellAvailable && cellWithinBorders && noWallExist)
             {
                 Debug.Log($"Spawning {SelectedItem} Item");
                 PerformAction(cellPosition);
@@ -125,14 +127,18 @@ public class ItemSpawner : MonoBehaviour
         bool itemExist = false; 
         foreach (Tilemap tile in Tiles)
         {
-            foreach (Transform item in tile.transform)
-            { 
-                itemExist = World.WorldToCell(item.position) == cellPosition ;
-                if (itemExist)
+            {
+                foreach (Transform item in tile.transform)
                 {
-                    Debug.Log($"Check at Position {World.CellToLocal(cellPosition)} in World");
-                    Debug.LogWarning($"Item {item.name} Exists at cell position {World.WorldToCell(item.position)} !");
-                    return true;
+
+                    itemExist = World.WorldToCell(item.position) == cellPosition;
+                    if (itemExist)
+                    {
+                        Debug.Log($"Check at Position {World.CellToLocal(cellPosition)} in World");
+                        Debug.LogWarning(
+                            $"Item {item.name} Exists at cell position {World.WorldToCell(item.position)} !");
+                        return true;
+                    }
                 }
             }
         }
@@ -208,6 +214,19 @@ public class ItemSpawner : MonoBehaviour
             return true;
         }
         return false; 
+    }
+
+    private bool CheckWallExist(Vector3Int cellPosition)
+    {
+        foreach (var tile in Tiles)
+        {
+            var wallSprite = tile.GetSprite(cellPosition);
+            if (wallSprite is not null)
+            {
+                return true;
+            }
+        }
+        return false;
     }
     
     private void OnDisable()
