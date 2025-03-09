@@ -31,6 +31,11 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        VolumeSettings volumeSettings = FindObjectOfType<VolumeSettings>();
+        if (volumeSettings != null)
+        {
+            volumeSettings.LoadVolume(); 
+        }
         PlayMusic(0);
     }
 

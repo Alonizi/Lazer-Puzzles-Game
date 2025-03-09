@@ -151,6 +151,6 @@ MonoBehaviour:
   spawnOffset: 0.51
   MatchColors: 0
   PrimaryColors:
-  - '#D95952'
-  - '#A8DAA7'
-  - '#87C3E1'
+  - '#D85953'
+  - '#A8DAA8'
+  - '#87C2E0'
