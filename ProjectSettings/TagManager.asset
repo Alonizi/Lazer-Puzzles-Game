@@ -10,6 +10,7 @@ TagManager:
   - Laser
   - Walls
   - Cloner
+  - Audio
   - Splitter_RGB
   layers:
   - Default
