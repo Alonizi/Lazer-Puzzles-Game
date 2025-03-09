@@ -11,21 +11,24 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels_Abdulaziz/Level 0.unity
     guid: 88252cac5795d2049930e5d37297e61a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels_Abdulaziz/Level 4.unity
-    guid: 4b7f71be0b85c40219d9f2d85770efc3
-  - enabled: 1
+    guid: 2b129298d70e04dfdaa7fec43eb0b3ee
+  - enabled: 0
     path: Assets/Scenes/Levels_Abdulaziz/Level 2.unity
     guid: 71f9da50c485745ce92889c407b13207
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Levels_Abdulaziz/Level 3.unity
     guid: cee0bd96ab4e54d25a8c07733271bc7c
-  - enabled: 1
-    path: Assets/Scenes/Levels_Abdulaziz/Level 6.unity
+  - enabled: 0
+    path: Assets/Scenes/Levels_Abdulaziz/Level 4.unity
     guid: 2b129298d70e04dfdaa7fec43eb0b3ee
+  - enabled: 1
+    path: Assets/Scenes/Level Abdulrhman/Levels.unity
+    guid: d2fa05f2a2932be4c9feda99ee4be82f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
