@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 
@@ -42,6 +43,10 @@ public class SimpleColorReceiver : MonoBehaviour
     public static int totalReceivers = 0;
     public static int activatedReceivers = 0;
 
+    [Header("effects")] 
+    public Light2D[] DiagonalLights;
+    public Light2D CenterLight;
+    
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -147,6 +152,11 @@ public class SimpleColorReceiver : MonoBehaviour
                 }
             }
         }
+        
+        if (two)
+        {
+            ActivateEffects(color1Reached, color2Reached);
+        }
 
         laserColors.Clear(); // Reset for the next frame
     }
@@ -222,5 +232,14 @@ public class SimpleColorReceiver : MonoBehaviour
         return Mathf.Abs(a.r - b.r) < tolerance &&
                Mathf.Abs(a.g - b.g) < tolerance &&
                Mathf.Abs(a.b - b.b) < tolerance;
+    }
+
+    private void ActivateEffects(bool color1 , bool color2)
+    {
+        CenterLight.enabled = color1 && color2 ;
+        foreach (var light in DiagonalLights)
+        {
+            light.enabled = color1 || color2 ;
+        }
     }
 }
