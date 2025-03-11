@@ -163,6 +163,12 @@ public class SimpleColorReceiver : MonoBehaviour
             RotateBase(color1Reached, color2Reached);
             ActivateEffects(color1Reached, color2Reached);
         }
+        else
+        {
+            RotateBase(color1Reached, true);
+            ActivateEffects(color1Reached, true);
+
+        }
 
         laserColors.Clear(); // Reset for the next frame
     }
@@ -251,7 +257,7 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void RotateBase( bool color1 , bool color2)
     {
-        ReactorRigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
+        //ReactorRigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
         ReactorRigids[1].rotation -= 35f * Time.deltaTime * (color1 && color2 ? 1:0); 
     }
 }
