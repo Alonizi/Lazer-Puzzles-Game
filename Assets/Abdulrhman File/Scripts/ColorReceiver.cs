@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -155,6 +156,7 @@ public class SimpleColorReceiver : MonoBehaviour
         
         if (two)
         {
+            RotateBase(color1Reached, color2Reached);
             ActivateEffects(color1Reached, color2Reached);
         }
 
@@ -241,5 +243,13 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             light.enabled = color1 || color2 ;
         }
+    }
+
+    private void RotateBase( bool color1 , bool color2)
+    {
+        var rigids = transform.GetComponentsInChildren<Rigidbody2D>();
+            rigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
+            rigids[1].rotation -= 35f * Time.deltaTime * (color1 && color2 ? 1:0); 
+        
     }
 }
