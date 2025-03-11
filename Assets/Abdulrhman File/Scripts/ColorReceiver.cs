@@ -10,20 +10,20 @@ public class SimpleColorReceiver : MonoBehaviour
 {
     [Header("Target Color")]
     [Tooltip("The color the receiver is looking for (e.g., white, purple, etc.).")]
-    public Color targetColor = Color.white;
-    public Color targetColor2 = Color.white;
+    public CustomColors targetColor ;
+    public CustomColors targetColor2 ;
 
     [Header("Use Two Target Colors")]
     [Tooltip("If true, the receiver will look for two colors.")]
     public bool two = false;
 
-    [Header("Hit Color (When Activated)")]
-    [Tooltip("The color the receiver changes to when activated.")]
-    public Color activatedColor = Color.white;
+    // [Header("Hit Color (When Activated)")]
+    // [Tooltip("The color the receiver changes to when activated.")]
+    // public Color activatedColor = Color.white;
 
-    [Header("Default Color (Base Color)")]
-    [Tooltip("The base color of the receiver before any laser hits it.")]
-    public Color baseDefaultColor = Color.gray;
+    // [Header("Default Color (Base Color)")]
+    // [Tooltip("The base color of the receiver before any laser hits it.")]
+    // public Color baseDefaultColor = Color.gray;
 
     [Header("Time to Activate")]
     [Tooltip("How long the laser must hit the receiver to activate it.")]
@@ -33,8 +33,8 @@ public class SimpleColorReceiver : MonoBehaviour
     private float hitTimer = 0.0f;
     private bool isActivated = false;
 
-    private List<Color> laserColors = new List<Color>(); // Stores all laser colors hitting the receiver
-    private Color combinedColor = Color.gray; // Stores the dynamically mixed color
+    private List<CustomColors> laserColors = new List<CustomColors>(); // Stores all laser colors hitting the receiver
+    // private Color combinedColor = Color.gray; // Stores the dynamically mixed color
 
     [Header("Win Panel")]
     public GameObject PanelWin;
@@ -57,7 +57,7 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             Debug.LogError("No SpriteRenderer found on the receiver! Please add one.");
         }
-        spriteRenderer.color = baseDefaultColor;
+        // spriteRenderer.color = baseDefaultColor;
 
         totalReceivers = FindObjectsOfType<SimpleColorReceiver>().Length; 
         activatedReceivers = 0;
@@ -68,7 +68,7 @@ public class SimpleColorReceiver : MonoBehaviour
     /// <summary>
     /// Called when a laser hits the receiver.
     /// </summary>
-    public void LaserHitting(Color laserColor)
+    public void LaserHitting(CustomColors laserColor)
     {
         if (!laserColors.Contains(laserColor)) 
         {
@@ -101,13 +101,13 @@ public class SimpleColorReceiver : MonoBehaviour
         bool color1Reached = false;
         bool color2Reached = false;
 
-        foreach (Color c in laserColors)
+        foreach (CustomColors c in laserColors)
         {
-            if (ApproximatelyEqual(c, targetColor))
+            if (c == targetColor)
             {
                 color1Reached = true;
             }
-            if (two && ApproximatelyEqual(c, targetColor2))
+            if (two && c==targetColor2)
             {
                 color2Reached = true;
             }
@@ -132,7 +132,7 @@ public class SimpleColorReceiver : MonoBehaviour
                 {
                     isActivated = false;
                     activatedReceivers--;
-                    spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+                    //spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
                 }
             }
         }
@@ -153,7 +153,7 @@ public class SimpleColorReceiver : MonoBehaviour
                 {
                     isActivated = false;
                     activatedReceivers--;
-                    spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+                    //spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
                 }
             }
         }
@@ -171,7 +171,7 @@ public class SimpleColorReceiver : MonoBehaviour
     {
         isActivated = true;
         activatedReceivers++;
-        spriteRenderer.color = activatedColor;
+        //spriteRenderer.color = activatedColor;
         Debug.Log("Receiver activated with colors");
 
         CheckWinCondition();

@@ -107,6 +107,10 @@ MonoBehaviour:
   reflectionMask:
     serializedVersion: 2
     m_Bits: 456
+  RedMat: {fileID: 2100000, guid: edfaf97a4983e4405a563b94380a239d, type: 2}
+  BlueMat: {fileID: 2100000, guid: cec6fb739bad14cf69294cd1a8fccf7a, type: 2}
+  GreenMat: {fileID: 2100000, guid: a3dde7a3ecc654ea39bb8d73c73bf80e, type: 2}
+  WhiteMat: {fileID: 2100000, guid: 637546fd6fcae46c1b15f24a11831278, type: 2}
 --- !u!120 &85971650038675057
 LineRenderer:
   serializedVersion: 2
@@ -130,8 +134,7 @@ LineRenderer:
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -163,7 +166,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.044887602
+        value: 0.055541992
         inSlope: 0
         outSlope: 0
         tangentMode: 0
