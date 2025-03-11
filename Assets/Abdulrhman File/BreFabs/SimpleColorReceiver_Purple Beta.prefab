@@ -49,7 +49,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.763
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -5459914714122719740, guid: 4cd43d51f026e42f2bede96b2be16c3a, type: 3}
+  m_Sprite: {fileID: 7341044989253196326, guid: f8d9d07dae171436ca6c8fb10ec3be91, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -218,9 +218,9 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.989
-  m_Color: {r: 0.9837978, g: 1, b: 0, a: 1}
-  m_Intensity: 0.5
+  m_FalloffIntensity: 0.8
+  m_Color: {r: 1, g: 0, b: 0.12156863, a: 1}
+  m_Intensity: 7
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -239,8 +239,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.009050012, y: 0.009250045, z: 0}
-    m_Extent: {x: 2.44285, y: 2.43885, z: 0}
+    m_Center: {x: -0.00910002, y: 0.009150028, z: 0}
+    m_Extent: {x: 1.4414, y: 1.43875, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.064047456
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 2
+  m_ShapeLightFalloffSize: 1
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -0.4521683, y: -0.2189904, z: 0}
@@ -381,7 +381,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.763
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -526,7 +526,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.763
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.763
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -742,7 +742,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1199603914541736995, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: m_Name
-      value: SimpleColorReceiver_Yellow Variant
+      value: SimpleColorReceiver_Yellow Variant 1
       objectReference: {fileID: 0}
     - target: {fileID: 1529609415743815370, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: CenterLight
@@ -750,7 +750,7 @@ PrefabInstance:
       objectReference: {fileID: 1770613916892318975}
     - target: {fileID: 1529609415743815370, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: targetColor2
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1529609415743815370, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: targetColor2.b
@@ -802,15 +802,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3796831388229907881, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: m_Color.b
-      value: 0.39215687
+      value: 0.89411765
       objectReference: {fileID: 0}
     - target: {fileID: 3796831388229907881, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: m_Color.g
-      value: 0.9137255
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 3796831388229907881, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: m_Color.r
-      value: 0.95686275
+      value: 0.5176471
       objectReference: {fileID: 0}
     - target: {fileID: 3796831388229907881, guid: 138532feaddb2e743b59e89a2761b1cd, type: 3}
       propertyPath: m_WasSpriteAssigned
