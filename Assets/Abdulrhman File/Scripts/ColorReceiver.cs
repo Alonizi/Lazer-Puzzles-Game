@@ -47,6 +47,8 @@ public class SimpleColorReceiver : MonoBehaviour
     [Header("effects")] 
     public Light2D[] DiagonalLights;
     public Light2D CenterLight;
+
+    private Rigidbody2D[] ReactorRigids; 
     
     private void Awake()
     {
@@ -59,6 +61,8 @@ public class SimpleColorReceiver : MonoBehaviour
 
         totalReceivers = FindObjectsOfType<SimpleColorReceiver>().Length; 
         activatedReceivers = 0;
+
+        ReactorRigids = transform.GetComponentsInChildren<Rigidbody2D>();
     }
 
     /// <summary>
@@ -247,9 +251,7 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void RotateBase( bool color1 , bool color2)
     {
-        var rigids = transform.GetComponentsInChildren<Rigidbody2D>();
-            rigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
-            rigids[1].rotation -= 35f * Time.deltaTime * (color1 && color2 ? 1:0); 
-        
+        ReactorRigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
+        ReactorRigids[1].rotation -= 35f * Time.deltaTime * (color1 && color2 ? 1:0); 
     }
 }
