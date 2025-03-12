@@ -261,14 +261,14 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             if (CenterLight.intensity < InitialCenterLightIntensity)
             {
-                CenterLight.intensity += .001f;
+                CenterLight.intensity += .01f;
             }
         }
         else
         {
             if (CenterLight.intensity > 0)
             {
-                CenterLight.intensity -= .005f;
+                CenterLight.intensity -= .015f;
             }
         }
 
@@ -280,14 +280,14 @@ public class SimpleColorReceiver : MonoBehaviour
             {
                 if (light.intensity < InitialDiagonalLightIntensity)
                 {
-                    light.intensity += .0009f;
+                    light.intensity += .01f;
                 }
             }
             else
             {
                 if (light.intensity > 0)
                 {
-                    light.intensity -= .001f;
+                    light.intensity -= .01f;
                 }
             }
         }
@@ -303,14 +303,14 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             if (ReactorSpinSpeed < 250f)
             {
-                ReactorSpinSpeed += .195f;
+                ReactorSpinSpeed += .5f;
             }
         }
         else
         {
             if (ReactorSpinSpeed > 0)
             {
-                ReactorSpinSpeed -= 0.225f;
+                ReactorSpinSpeed -= 0.5f;
             }
         }
         ReactorRigids[1].rotation -= ReactorSpinSpeed * Time.deltaTime;
