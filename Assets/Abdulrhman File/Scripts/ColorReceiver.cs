@@ -48,10 +48,17 @@ public class SimpleColorReceiver : MonoBehaviour
     public Light2D[] DiagonalLights;
     public Light2D CenterLight;
 
-    private Rigidbody2D[] ReactorRigids; 
+    private Rigidbody2D[] ReactorRigids;
+
+    private float ReactorSpinSpeed = 0f;
+    private float InitialCenterLightIntensity;
+    private float InitialDiagonalLightIntensity;
+
     
     private void Awake()
     {
+        InitialCenterLightIntensity = CenterLight.intensity;
+        InitialDiagonalLightIntensity = DiagonalLights[0].intensity;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
         {
@@ -248,16 +255,64 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void ActivateEffects(bool color1 , bool color2)
     {
-        CenterLight.enabled = color1 && color2 ;
+        //CenterLight.enabled = color1 && color2 ;
+        CenterLight.enabled = true;
+        if (color1 && color2)
+        {
+            if (CenterLight.intensity < InitialCenterLightIntensity)
+            {
+                CenterLight.intensity += .001f;
+            }
+        }
+        else
+        {
+            if (CenterLight.intensity > 0)
+            {
+                CenterLight.intensity -= .005f;
+            }
+        }
+
         foreach (var light in DiagonalLights)
         {
-            light.enabled = color1 || color2 ;
+            light.enabled = true;
+            //light.enabled = color1 || color2 ;
+            if (color1 || color2)
+            {
+                if (light.intensity < InitialDiagonalLightIntensity)
+                {
+                    light.intensity += .0009f;
+                }
+            }
+            else
+            {
+                if (light.intensity > 0)
+                {
+                    light.intensity -= .001f;
+                }
+            }
         }
+        
     }
 
     private void RotateBase( bool color1 , bool color2)
-    {
+    { 
         //ReactorRigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
-        ReactorRigids[1].rotation -= 35f * Time.deltaTime * (color1 && color2 ? 1:0); 
+        // ReactorRigids[1].rotation -= ReactorSpinSpeed * Time.deltaTime * (color1 && color2 ? 1:0);
+       
+        if( color1 && color2)
+        {
+            if (ReactorSpinSpeed < 250f)
+            {
+                ReactorSpinSpeed += .195f;
+            }
+        }
+        else
+        {
+            if (ReactorSpinSpeed > 0)
+            {
+                ReactorSpinSpeed -= 0.225f;
+            }
+        }
+        ReactorRigids[1].rotation -= ReactorSpinSpeed * Time.deltaTime;
     }
 }
