@@ -56,8 +56,15 @@ public class SimpleColorReceiver : MonoBehaviour
     private float InitialDiagonalLightIntensity;
     private float LightTimer = 0;
     
+    [SerializeField] private AudioSource Reactor_ON;
+    [SerializeField] private AudioSource Reactor_OFF;
+    [SerializeField] private AudioSource Reactor_Running;
+    private int OnCounter= 0;
+    private int OffCounter =0;
+    
     private void Awake()
     {
+        //Reactor_Running.loop = true; 
         InitialCenterLightIntensity = CenterLight.intensity;
         InitialDiagonalLightIntensity = DiagonalLights[0].intensity;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -168,16 +175,16 @@ public class SimpleColorReceiver : MonoBehaviour
         
         if (two)
         {
+            PlayAudio(color1Reached && color2Reached);
             RotateBase(color1Reached, color2Reached);
             ActivateEffects(color1Reached, color2Reached);
         }
         else
         {
-            RotateBase(color1Reached, true);
-            ActivateEffects(color1Reached, true);
-
+            PlayAudio(color1Reached);
+            RotateBase(color1Reached, color1Reached);
+            ActivateEffects(color1Reached, color1Reached);
         }
-
         laserColors.Clear(); // Reset for the next frame
     }
 
@@ -278,13 +285,17 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             light.enabled = true;
             //light.enabled = color1 || color2 ;
-            if (color1 || color2)
+            if (color1 && color2)
+            {
+                if (light.intensity < InitialDiagonalLightIntensity)
+                {
+                    light.intensity += .01f;
+                }
+                
+            }
+            else if (color1 || color2)
             {
                 lightstrobe(light,freq);
-                // if (light.intensity < InitialDiagonalLightIntensity)
-                // {
-                //     light.intensity += .01f;
-                // }
             }
             else
             {
@@ -326,6 +337,32 @@ public class SimpleColorReceiver : MonoBehaviour
             light.intensity = Random.Range(0f, 3f);
             LightTimer = 0; 
         }
+    }
+
+    private void PlayAudio(bool on )
+    {
+        if (on && OnCounter <1)
+        {
+            Reactor_Running.Stop();
+            Reactor_OFF.Stop();
+            Reactor_ON.Play();
+            OnCounter++;
+            OffCounter = 0; 
+        }
+        if (on && !Reactor_ON.isPlaying && !Reactor_Running.isPlaying)
+        {
+            Reactor_Running.Play();
+        }
+        if (!on && OffCounter<1 )
+        {
+            OffCounter++;
+            OnCounter = 0; 
+            Reactor_ON.Stop();
+            Reactor_Running.Stop();
+            Reactor_OFF.Play();
+        }
+
+
     }
     
 }
