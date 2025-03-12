@@ -21,6 +21,14 @@ PrefabInstance:
       value: SimpleColorReceiver_Blue
       objectReference: {fileID: 0}
     - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
+      propertyPath: targetColor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
+      propertyPath: targetColor2
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 868660904485976776, guid: 1ea29529783a65c49aaf8d3691ac6baf, type: 3}
       propertyPath: targetColor.b
       value: 0.88235295
       objectReference: {fileID: 0}

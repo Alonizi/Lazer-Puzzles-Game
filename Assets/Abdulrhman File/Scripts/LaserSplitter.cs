@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -21,7 +19,7 @@ public class LaserSplitter : MonoBehaviour
     
     [Header("Red-Green-Blue")]
     [Tooltip("set the color-hex values of the 3 primary color (Red-Green-Blue) in order.")]
-    [SerializeField] private string[] PrimaryColors = { "#D95952", "#A8DAA7", "#87C3E1" };
+    private CustomColors[] PrimaryColors = { CustomColors.red, CustomColors.green, CustomColors.blue };
 
     // Flag to ensure we only split once per hit.
     private bool hasSplit = false;
@@ -36,30 +34,13 @@ public class LaserSplitter : MonoBehaviour
     }
 
     /// <summary>
-    /// find all the lazers and subscribe to their events  
-    /// </summary>
-    private void Start()
-    {
-        // foreach (var lazer in AllLazersDevices)
-        // {
-        //     lazer.SplitterCollisionEnterEvent += (hitPoint, direction, color) =>
-        //     {
-        //         SplitLaser(hitPoint, direction, color,AllLazersDevices.IndexOf(lazer));
-        //     };
-        //     
-        //     lazer.SplitterCollisionExitEvent += () =>  DestroyAllEmittingLazers(AllLazersDevices.IndexOf(lazer));
-        //
-        // }
-    }
-
-    /// <summary>
     /// Splits an incoming white laser into three beams: red, green, blue.
     /// New beams exit from the three sides not directly hit.
     /// </summary>
     /// <param name="hitPoint">World point where the laser hit the splitter.</param>
     /// <param name="incomingDirection">Direction from which the laser is coming.</param>
     /// <param name="incomingLazerColor">Color of the Lazer hitting the splitter.</param>
-    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,Color incomingLazerColor)
+    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,CustomColors incomingLazerColor )
     {
         Debug.LogWarning("Splitter Event Activated");
         if (hasSplit)
@@ -128,10 +109,7 @@ public class LaserSplitter : MonoBehaviour
                 }
                 else
                 {
-                    if (ColorUtility.TryParseHtmlString(PrimaryColors[i % PrimaryColors.Length], out Color parsedColor))
-                    {
-                        laserScript.SetLaserColor(parsedColor);
-                    }
+                    laserScript.SetLaserColor(PrimaryColors[i % PrimaryColors.Length]);
                 }
                 EmittedLazers.Add(newLaser);
             }
