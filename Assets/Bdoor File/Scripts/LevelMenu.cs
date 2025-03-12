@@ -1,3 +1,4 @@
+using EasyTransition;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
     public Image[] lockImages;
+    public TransitionSettings transition; 
+    public float startDelay = 0.5f;
 
     private void Awake()
     {
@@ -16,7 +19,7 @@ public class LevelMenu : MonoBehaviour
             buttons[i].interactable = false;
             lockImages[i].gameObject.SetActive(true);
         }
-        for (int i = 0;i < unlockedLevel; i++)
+        for (int i = 0; i < unlockedLevel; i++)
         {
             buttons[i].interactable |= true;
             lockImages[i].gameObject.SetActive(false);
@@ -26,7 +29,7 @@ public class LevelMenu : MonoBehaviour
     public void OpenLevel(int levelId)
     {
         string levelName = "Level " + levelId;
-        SceneManager.LoadScene(levelName);
+        TransitionManager.Instance().Transition(levelName, transition, startDelay);
     }
 
     public void ResetProgress()
@@ -36,9 +39,7 @@ public class LevelMenu : MonoBehaviour
         PlayerPrefs.SetInt("UnlockedLevel", 1);
         PlayerPrefs.Save();
 
-        // ÅÚÇÏÉ ÊÍãíá ÇáÞÇÆãÉ áÊÍÏíË ÍÇáÉ ÇáÃÒÑÇÑ
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
 
 }
