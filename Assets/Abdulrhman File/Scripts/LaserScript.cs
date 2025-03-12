@@ -1,26 +1,27 @@
 using System;
 //using UnityEditor.Playables;
 using UnityEngine;
+using ColorUtility = UnityEngine.ColorUtility;
 
 [RequireComponent(typeof(LineRenderer))]
 public class LaserScript : MonoBehaviour
 {
+    
     [Header("Laser Settings")]
     [Tooltip("Maximum number of reflections before stopping.")]
     public int maxReflections = 5;
     [Tooltip("Maximum distance for each raycast segment.")]
     public float maxDistance = 100f;
 
-    [Header("Laser Color (Hex)")]
-    [Tooltip("Hex color for the laser, e.g. #FFFFFF for white.")]
-    public string hexColor = "#FFFFFF";
+    [Header("Laser Color")]
+    public CustomColors LaserColor = CustomColors.white ;
 
     [Header("Layer Mask")]
     [Tooltip("Layer mask for objects the laser can hit (Mirrors, Splitters, etc.).")]
     public LayerMask reflectionMask;
 
     // Internal color used by the laser
-    private Color laserColor = Color.white;
+    //private CustomColors LaserColor = CustomColors.white;
     // Flag to prevent Start() from overriding externally set color.
     private bool initializedExternally = false;
 
@@ -32,24 +33,45 @@ public class LaserScript : MonoBehaviour
     public event Action SplitterCollisionExitEvent;
     private bool SplitterActivated;
     LaserSplitter SplitterOnContact = null; 
-
-
+    
+    //Material and colors
+    [SerializeField] private Material RedMat;
+    [SerializeField] private Material BlueMat;
+    [SerializeField] private Material GreenMat;
+    [SerializeField] private Material WhiteMat;
+    
     /// <summary>
     /// Public getter for the laser's color (used by external scripts, e.g. ColorReceiver).
     /// </summary>
-    public Color LaserColor => laserColor;
+    //public Color LaserColor => laserColor;
 
     private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        
+        switch (LaserColor)
+        {
+            case CustomColors.white://White
+                lineRenderer.materials = new[] { WhiteMat };
+                break;
+            case CustomColors.red://red
+                lineRenderer.materials = new[] { RedMat };
+                break; 
+            case CustomColors.green://green 
+                lineRenderer.materials = new[] { GreenMat };
+                break; 
+            case CustomColors.blue://blue 
+                lineRenderer.materials = new[] { BlueMat };
+                break; 
+        }
 
         // Ensure the LineRenderer has an unlit material (avoids purple or gray color).
-        if (lineRenderer.material == null)
-        {
-            Material defaultMat = new Material(Shader.Find("Unlit/Color"));
-            defaultMat.color = Color.white;  // default to white
-            lineRenderer.material = defaultMat;
-        }
+        // if (lineRenderer.material == null)
+        // {
+        //     Material defaultMat = new Material(Shader.Find("Unlit/Color"));
+        //     defaultMat.color = Color.white;  // default to white
+        //     lineRenderer.material = defaultMat;
+        // }
     }
 
     private void Start()
@@ -58,17 +80,8 @@ public class LaserScript : MonoBehaviour
         // Only parse the hex color if not already set externally
         if (!initializedExternally)
         {
-            if (ColorUtility.TryParseHtmlString(hexColor, out Color parsedColor))
-            {
-                laserColor = parsedColor;
-            }
-            else
-            {
-                Debug.LogWarning($"Invalid hex color \"{hexColor}\". Defaulting to white.");
-                laserColor = Color.white;
-            }
             // Set the final laser color on the LineRenderer
-            SetLaserColor(laserColor);
+            SetLaserColor(LaserColor);
         }
     }
 
@@ -80,19 +93,31 @@ public class LaserScript : MonoBehaviour
     /// <summary>
     /// Sets the color of the laser (LineRenderer start/end + material) and marks it as externally initialized.
     /// </summary>
-    public void SetLaserColor(Color newColor)
+    public void SetLaserColor(CustomColors newColor)
     {
-        laserColor = newColor;
+        LaserColor = newColor;
         initializedExternally = true;
 
         if (lineRenderer != null)
         {
-            lineRenderer.startColor = newColor;
-            lineRenderer.endColor = newColor;
-            if (lineRenderer.material != null)
-            {
-                lineRenderer.material.color = newColor;
-            }
+            lineRenderer.startColor = CustomColorsUtility.CustomColorToUnityColor(LaserColor);
+            lineRenderer.endColor = CustomColorsUtility.CustomColorToUnityColor(LaserColor);
+        }
+
+        switch (LaserColor)
+        {
+            case CustomColors.white://White
+                lineRenderer.materials = new[] { WhiteMat };
+                break;
+            case CustomColors.red://red
+                lineRenderer.materials = new[] { RedMat };
+                break; 
+            case CustomColors.green://green 
+                lineRenderer.materials = new[] { GreenMat };
+                break; 
+            case CustomColors.blue://blue 
+                lineRenderer.materials = new[] { BlueMat };
+                break; 
         }
     }
 
@@ -125,7 +150,7 @@ public class LaserScript : MonoBehaviour
                 SimpleColorReceiver receiver = hit.collider.GetComponent<SimpleColorReceiver>();
                 if (receiver != null)
                 {
-                    receiver.LaserHitting(laserColor);
+                    receiver.LaserHitting(LaserColor);
                 }
                 else
                 {
@@ -157,7 +182,7 @@ public class LaserScript : MonoBehaviour
                         // }
                         SplitterActivated = true;
                         reachedSplitter = true; 
-                        SplitterOnContact.SplitLaser(hit.point, rayDirection,laserColor);
+                        SplitterOnContact.SplitLaser(hit.point, rayDirection,LaserColor);
                     }
                     else
                     {

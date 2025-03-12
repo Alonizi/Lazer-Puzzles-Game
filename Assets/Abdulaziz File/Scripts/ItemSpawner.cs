@@ -1,12 +1,13 @@
 //copyrights Abdulaziz Alonizi 2025
 
-using System;
 using System.Collections.Generic;
 using Abdulaziz_File.Scripts;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+/// <summary>
+/// Responsible for Spawning/Deleting Items from Grid
+/// </summary>
 public class ItemSpawner : MonoBehaviour
 {
     [SerializeField]private MirrorRotator Mirror; 
@@ -22,37 +23,42 @@ public class ItemSpawner : MonoBehaviour
     private Mechanic? SelectedItem;
     private Dictionary<int, Transform> TilesTransforms;
     private Stack<GameObject> AddedItems;
-    private Mechanic? LastAddedItemType;
     private Selector ItemSelector; 
     
-    
+    /// <summary>
+    /// cache/instantiate necessary objects
+    /// </summary>
     private void Awake()
     {
         ItemSelector = FindAnyObjectByType<Selector>();
-        LastAddedItemType = null; 
         AddedItems = new Stack<GameObject>();
         TilesTransforms = new Dictionary<int, Transform>();
         SelectedItem = null; 
         World = FindAnyObjectByType<Grid>();
         Tiles = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
-        foreach (var tile in Tiles)
+        foreach (var tile in Tiles) 
         {
+            // save each <tilemap,layer> combination in the scene in a Dictionary
             TilesTransforms.Add(tile.gameObject.layer,tile.transform);
         }
     }
-    
+    /// <summary>
+    /// subscribe to item selected event 
+    /// </summary>
     private void OnEnable()
     {
         ItemSelector.OnItemSelected += (mechanic) => ItemSelected(mechanic);
     }
-
+    /// <summary>
+    /// update Item menu buttons 
+    /// </summary>
     private void Start()
     {
         ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
     }
 
     /// <summary>
-    /// check for user input , and spawn items accordingly
+    /// check for user input , and spawn items on selected cell
     /// </summary>
     void Update()
     {
@@ -60,9 +66,9 @@ public class ItemSpawner : MonoBehaviour
         {
             Vector3Int cellPosition = MousePositionToGrid();
             
-            bool noWallExist = !CheckWallExist(cellPosition);
-            bool cellAvailable = !ItemExistInGrid(cellPosition);
-            bool cellWithinBorders = WithinGridBorders(cellPosition);
+            bool noWallExist = !CheckWallExist(cellPosition); // check if no wall was drawn on cell
+            bool cellAvailable = !ItemExistInGrid(cellPosition); // check if no items is availble on cell
+            bool cellWithinBorders = WithinGridBorders(cellPosition); // cehck if cell is within allowed borders
             
             if (SelectedItem is not null && cellAvailable && cellWithinBorders && noWallExist)
             {
@@ -73,7 +79,7 @@ public class ItemSpawner : MonoBehaviour
     }
 
     /// <summary>
-    /// Spawn Item on Grid
+    /// Spawn an Item on Grid
     /// </summary>
     private void PerformAction(Vector3Int cellPosition)
     {
@@ -127,24 +133,26 @@ public class ItemSpawner : MonoBehaviour
         bool itemExist = false; 
         foreach (Tilemap tile in Tiles)
         {
+            // loop through all tilemaps in scene
+            foreach (Transform item in tile.transform)
             {
-                foreach (Transform item in tile.transform)
+                // loop through all items in a tilemap
+                itemExist = World.WorldToCell(item.position) == cellPosition;
+                if (itemExist)
                 {
-
-                    itemExist = World.WorldToCell(item.position) == cellPosition;
-                    if (itemExist)
-                    {
-                        Debug.Log($"Check at Position {World.CellToLocal(cellPosition)} in World");
-                        Debug.LogWarning(
-                            $"Item {item.name} Exists at cell position {World.WorldToCell(item.position)} !");
-                        return true;
-                    }
+                    Debug.Log($"Check at Position {World.CellToLocal(cellPosition)} in World");
+                    Debug.LogWarning(
+                        $"Item {item.name} Exists at cell position {World.WorldToCell(item.position)} !");
+                    return true;
                 }
             }
         }
         return false;
     }
-
+    /// <summary>
+    /// spawn a mirror Item in Grid
+    /// </summary>
+    /// <param name="cellPosition"> cell at which to spawn the mirror</param>
     private void SpawnMirror(Vector3Int cellPosition)
     {
         if (Mirrors_MaxCount > 0)
@@ -152,35 +160,37 @@ public class ItemSpawner : MonoBehaviour
             Transform parentTile = TilesTransforms[LayerMask.NameToLayer("Mirror")];
             var item = Instantiate(Mirror, World.GetCellCenterWorld(cellPosition),
                 Quaternion.Euler(new Vector3(0, 0, 45)), parent: parentTile);
-            AddedItems.Push(item.gameObject);
-            LastAddedItemType = Mechanic.Mirror;
-            Mirrors_MaxCount--;
-            ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
+            AddedItems.Push(item.gameObject); // keep track of added items
+            Mirrors_MaxCount--; // reduce available mirrors count 
+            ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount); // update buttons text
         }
     }
     
+    /// <summary>
+    /// spawn a Splitter/Splitter_RgGB Item in Grid
+    /// </summary>
+    /// <param name="cellPosition"> cell position at which to spawn the item</param>
+    /// <param name="isRGB"> is the splitter required of type RGB </param>
     private void SpawnSplitter(Vector3Int cellPosition , bool isRGB)
     {
         Transform parentTile = TilesTransforms[LayerMask.NameToLayer("Splitter")];
-        if (isRGB && Splitter_RGB_MaxCount > 0)
+        if (isRGB && Splitter_RGB_MaxCount > 0) // spawn RGB splitter
         {
             var item = Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
             AddedItems.Push(item.gameObject);
-            LastAddedItemType = Mechanic.Splitter_RGB;
             Splitter_RGB_MaxCount--;
         }
-        else if (!isRGB && Splitter_MaxCount > 0)
+        else if (!isRGB && Splitter_MaxCount > 0) // spawn non-rgb Splitter
         {
             var item = Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
             AddedItems.Push(item.gameObject);
-            LastAddedItemType = Mechanic.Splitter;
             Splitter_MaxCount--;
         }
         ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
     }
 
     /// <summary>
-    /// delete last item added by the user 
+    /// delete last item added by the user and update items count accordingly
     /// </summary>
     private void DeleteItem()
     { 
@@ -205,7 +215,7 @@ public class ItemSpawner : MonoBehaviour
     /// <summary>
     /// check if cellPosition is withing Grid borders
     /// </summary>
-    /// <param name="cellPosition"></param>
+    /// <param name="cellPosition"> cell position to check</param>
     /// <returns></returns>
     private bool WithinGridBorders(Vector3Int cellPosition)
     {
@@ -215,7 +225,12 @@ public class ItemSpawner : MonoBehaviour
         }
         return false; 
     }
-
+    
+    /// <summary>
+    /// check if a wall or other was drawn on the cell 
+    /// </summary>
+    /// <param name="cellPosition">cellposition to check </param>
+    /// <returns></returns>
     private bool CheckWallExist(Vector3Int cellPosition)
     {
         foreach (var tile in Tiles)
@@ -229,6 +244,9 @@ public class ItemSpawner : MonoBehaviour
         return false;
     }
     
+    /// <summary>
+    /// unsubscribe for item selected event 
+    /// </summary>
     private void OnDisable()
     {
         ItemSelector.OnItemSelected -= ItemSelected;

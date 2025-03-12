@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 
@@ -8,20 +10,20 @@ public class SimpleColorReceiver : MonoBehaviour
 {
     [Header("Target Color")]
     [Tooltip("The color the receiver is looking for (e.g., white, purple, etc.).")]
-    public Color targetColor = Color.white;
-    public Color targetColor2 = Color.white;
+    public CustomColors targetColor ;
+    public CustomColors targetColor2 ;
 
     [Header("Use Two Target Colors")]
     [Tooltip("If true, the receiver will look for two colors.")]
     public bool two = false;
 
-    [Header("Hit Color (When Activated)")]
-    [Tooltip("The color the receiver changes to when activated.")]
-    public Color activatedColor = Color.white;
+    // [Header("Hit Color (When Activated)")]
+    // [Tooltip("The color the receiver changes to when activated.")]
+    // public Color activatedColor = Color.white;
 
-    [Header("Default Color (Base Color)")]
-    [Tooltip("The base color of the receiver before any laser hits it.")]
-    public Color baseDefaultColor = Color.gray;
+    // [Header("Default Color (Base Color)")]
+    // [Tooltip("The base color of the receiver before any laser hits it.")]
+    // public Color baseDefaultColor = Color.gray;
 
     [Header("Time to Activate")]
     [Tooltip("How long the laser must hit the receiver to activate it.")]
@@ -31,8 +33,8 @@ public class SimpleColorReceiver : MonoBehaviour
     private float hitTimer = 0.0f;
     private bool isActivated = false;
 
-    private List<Color> laserColors = new List<Color>(); // Stores all laser colors hitting the receiver
-    private Color combinedColor = Color.gray; // Stores the dynamically mixed color
+    private List<CustomColors> laserColors = new List<CustomColors>(); // Stores all laser colors hitting the receiver
+    // private Color combinedColor = Color.gray; // Stores the dynamically mixed color
 
     [Header("Win Panel")]
     public GameObject PanelWin;
@@ -42,6 +44,12 @@ public class SimpleColorReceiver : MonoBehaviour
     public static int totalReceivers = 0;
     public static int activatedReceivers = 0;
 
+    [Header("effects")] 
+    public Light2D[] DiagonalLights;
+    public Light2D CenterLight;
+
+    private Rigidbody2D[] ReactorRigids; 
+    
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -49,16 +57,18 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             Debug.LogError("No SpriteRenderer found on the receiver! Please add one.");
         }
-        spriteRenderer.color = baseDefaultColor;
+        // spriteRenderer.color = baseDefaultColor;
 
         totalReceivers = FindObjectsOfType<SimpleColorReceiver>().Length; 
         activatedReceivers = 0;
+
+        ReactorRigids = transform.GetComponentsInChildren<Rigidbody2D>();
     }
 
     /// <summary>
     /// Called when a laser hits the receiver.
     /// </summary>
-    public void LaserHitting(Color laserColor)
+    public void LaserHitting(CustomColors laserColor)
     {
         if (!laserColors.Contains(laserColor)) 
         {
@@ -91,13 +101,13 @@ public class SimpleColorReceiver : MonoBehaviour
         bool color1Reached = false;
         bool color2Reached = false;
 
-        foreach (Color c in laserColors)
+        foreach (CustomColors c in laserColors)
         {
-            if (ApproximatelyEqual(c, targetColor))
+            if (c == targetColor)
             {
                 color1Reached = true;
             }
-            if (two && ApproximatelyEqual(c, targetColor2))
+            if (two && c==targetColor2)
             {
                 color2Reached = true;
             }
@@ -122,7 +132,7 @@ public class SimpleColorReceiver : MonoBehaviour
                 {
                     isActivated = false;
                     activatedReceivers--;
-                    spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+                    //spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
                 }
             }
         }
@@ -143,9 +153,21 @@ public class SimpleColorReceiver : MonoBehaviour
                 {
                     isActivated = false;
                     activatedReceivers--;
-                    spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
+                    //spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
                 }
             }
+        }
+        
+        if (two)
+        {
+            RotateBase(color1Reached, color2Reached);
+            ActivateEffects(color1Reached, color2Reached);
+        }
+        else
+        {
+            RotateBase(color1Reached, true);
+            ActivateEffects(color1Reached, true);
+
         }
 
         laserColors.Clear(); // Reset for the next frame
@@ -155,7 +177,7 @@ public class SimpleColorReceiver : MonoBehaviour
     {
         isActivated = true;
         activatedReceivers++;
-        spriteRenderer.color = activatedColor;
+        //spriteRenderer.color = activatedColor;
         Debug.Log("Receiver activated with colors");
 
         CheckWinCondition();
@@ -222,5 +244,20 @@ public class SimpleColorReceiver : MonoBehaviour
         return Mathf.Abs(a.r - b.r) < tolerance &&
                Mathf.Abs(a.g - b.g) < tolerance &&
                Mathf.Abs(a.b - b.b) < tolerance;
+    }
+
+    private void ActivateEffects(bool color1 , bool color2)
+    {
+        CenterLight.enabled = color1 && color2 ;
+        foreach (var light in DiagonalLights)
+        {
+            light.enabled = color1 || color2 ;
+        }
+    }
+
+    private void RotateBase( bool color1 , bool color2)
+    {
+        //ReactorRigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
+        ReactorRigids[1].rotation -= 35f * Time.deltaTime * (color1 && color2 ? 1:0); 
     }
 }

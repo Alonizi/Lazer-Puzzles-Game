@@ -1,5 +1,9 @@
+//copyrights Abdulaziz Alonizi 2025
 namespace Abdulaziz_File.Scripts
 {
+    /// <summary>
+    /// Mechanics Available for the user
+    /// </summary>
     public enum Mechanic
     {
         Mirror,             //0

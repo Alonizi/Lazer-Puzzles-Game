@@ -92,7 +92,7 @@ public class LaserCloner : MonoBehaviour
             LaserScript ls = newLaser.GetComponent<LaserScript>();
             if (ls != null)
             {
-                ls.SetLaserColor(laserColor);
+                //ls.SetLaserColor(laserColor);
                 Debug.Log("[LaserCloner] LaserScript found on cloned laser; color set to: " + laserColor);
             }
             else

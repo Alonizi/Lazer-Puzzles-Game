@@ -53,8 +53,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8470013753041258571, guid: a2bcd517e2476407c911e33c5c2b4986, type: 3}
     - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: RedMat
+      value: 
+      objectReference: {fileID: 2100000, guid: edfaf97a4983e4405a563b94380a239d, type: 2}
+    - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: BlueMat
+      value: 
+      objectReference: {fileID: 2100000, guid: cec6fb739bad14cf69294cd1a8fccf7a, type: 2}
+    - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: GreenMat
+      value: 
+      objectReference: {fileID: 2100000, guid: a3dde7a3ecc654ea39bb8d73c73bf80e, type: 2}
+    - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: WhiteMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 637546fd6fcae46c1b15f24a11831278, type: 2}
+    - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: hexColor
       value: '#87C3E1'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
+      propertyPath: LaserColor
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2850277679526206453, guid: dd4a25acf1c6c174096ea48757d0a8c1, type: 3}
       propertyPath: maxReflections
