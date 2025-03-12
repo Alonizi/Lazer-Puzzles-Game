@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 
 public class SimpleColorReceiver : MonoBehaviour
@@ -53,7 +54,7 @@ public class SimpleColorReceiver : MonoBehaviour
     private float ReactorSpinSpeed = 0f;
     private float InitialCenterLightIntensity;
     private float InitialDiagonalLightIntensity;
-
+    private float LightTimer = 0;
     
     private void Awake()
     {
@@ -272,16 +273,18 @@ public class SimpleColorReceiver : MonoBehaviour
             }
         }
 
+        var freq =  Random.Range(.25f, 1f);
         foreach (var light in DiagonalLights)
         {
             light.enabled = true;
             //light.enabled = color1 || color2 ;
             if (color1 || color2)
             {
-                if (light.intensity < InitialDiagonalLightIntensity)
-                {
-                    light.intensity += .01f;
-                }
+                lightstrobe(light,freq);
+                // if (light.intensity < InitialDiagonalLightIntensity)
+                // {
+                //     light.intensity += .01f;
+                // }
             }
             else
             {
@@ -291,7 +294,6 @@ public class SimpleColorReceiver : MonoBehaviour
                 }
             }
         }
-        
     }
 
     private void RotateBase( bool color1 , bool color2)
@@ -315,4 +317,15 @@ public class SimpleColorReceiver : MonoBehaviour
         }
         ReactorRigids[1].rotation -= ReactorSpinSpeed * Time.deltaTime;
     }
+
+    private void lightstrobe(Light2D light , float freq)
+    {
+        LightTimer += Time.deltaTime;
+        if (LightTimer > freq)
+        {
+            light.intensity = Random.Range(0f, 3f);
+            LightTimer = 0; 
+        }
+    }
+    
 }
