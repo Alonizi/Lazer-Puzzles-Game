@@ -1,3 +1,4 @@
+using EasyTransition;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,11 @@ public class Buttons : MonoBehaviour
     public GameObject pauseButton;
     [SerializeField] GameObject pauseMenu;
     [SerializeField] LayerMask uiLayer;
+    public float startDelay = 0.5f;
+
+    public TransitionSettings homeTransition;
+    public TransitionSettings nextTransition;
+    public TransitionSettings restartTransition;
 
     private void SetTimeScale(float scale)
     {
@@ -20,7 +26,8 @@ public class Buttons : MonoBehaviour
 
     public void Next()
     {
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        //SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+        TransitionManager.Instance().Transition(SceneManager.GetActiveScene().buildIndex + 1, nextTransition,startDelay);
         ResumeGame();
     }
 
@@ -34,7 +41,8 @@ public class Buttons : MonoBehaviour
 
     public void Home()
     {
-        SceneManager.LoadScene("MainMenu");
+        //SceneManager.LoadScene("MainMenu");
+        TransitionManager.Instance().Transition("MainMenu", homeTransition, startDelay);
         ResumeGame();
     }
 
@@ -47,7 +55,8 @@ public class Buttons : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        TransitionManager.Instance().Transition(SceneManager.GetActiveScene().name, restartTransition, startDelay );
         ResumeGame();
     }
 
