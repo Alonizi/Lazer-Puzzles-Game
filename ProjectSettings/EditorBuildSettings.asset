@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels_Abdulaziz/Level 1.unity
     guid: aa41e61eba1ea41a2af460ee7463c8b9
   - enabled: 1
-    path: Assets/Scenes/Levels_Abdulaziz/Level 2.unity
+    path: Assets/Scenes/Levels_Abdulaziz/Drag&Drop Test 3.unity
     guid: 71f9da50c485745ce92889c407b13207
   - enabled: 1
     path: Assets/Scenes/Levels_Abdulaziz/Level 3.unity
@@ -30,7 +30,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels_Abdulaziz/Level 6.unity
     guid: 1dab60b2b1ab84c18b25b24da75b55c8
   - enabled: 1
-    path: Assets/Scenes/Level Abdulrhman/Level 7.unity
+    path: Assets/Scenes/Level Abdulrhman/Level 16.unity
     guid: d2fa05f2a2932be4c9feda99ee4be82f
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}

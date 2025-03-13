@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 /// <summary>
 /// Splits an incoming white laser beam into three primary RGB beams (Red, Green, Blue).
@@ -27,11 +29,28 @@ public class LaserSplitter : MonoBehaviour
     //private List<LaserScript> AllLazersDevices;
     private List<GameObject> EmittedLazers;
 
+    [SerializeField] private Light2D SingleColorSplitterLight; 
+    private float LightTimer = 0;
+    private float LightInitialIntensity;
+
+    private Color IncomingColor = CustomColorsUtility.CustomColorToUnityColor(CustomColors.white); 
+
     private void Awake()
     {
+        // if (MatchColors)
+        // {
+        //     LightInitialIntensity = SingleColorSplitterLight.intensity;
+        // }
+
         EmittedLazers = new List<GameObject>();
         //AllLazersDevices = FindObjectsByType<LaserScript>(sortMode: FindObjectsSortMode.None).ToList();
     }
+
+    // private void Update()
+    // {
+    //     LightTimer += Time.deltaTime; 
+    //     SingleColorSplitterLightToggle(IncomingColor);
+    // }
 
     /// <summary>
     /// Splits an incoming white laser into three beams: red, green, blue.
@@ -106,6 +125,8 @@ public class LaserSplitter : MonoBehaviour
                 if (MatchColors)
                 {
                     laserScript.SetLaserColor(incomingLazerColor);
+                    IncomingColor = CustomColorsUtility.CustomColorToUnityColor(incomingLazerColor);
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().color = IncomingColor;
                 }
                 else
                 {
@@ -128,6 +149,31 @@ public class LaserSplitter : MonoBehaviour
             Destroy(laser);
         }
         hasSplit = false; 
+        IncomingColor = CustomColorsUtility.CustomColorToUnityColor(CustomColors.white); 
+    }
+
+    private void SingleColorSplitterLightToggle(Color lightColor)
+    {
+        SingleColorSplitterLight.color = lightColor; 
+        
+        if (LightTimer > 0.1)
+        {
+            if (hasSplit)
+            {
+                if (SingleColorSplitterLight.intensity < LightInitialIntensity)
+                {
+                    SingleColorSplitterLight.intensity += 0.01f;
+                }
+            }
+            else
+            {
+                if (SingleColorSplitterLight.intensity > 0)
+                {
+                    SingleColorSplitterLight.intensity -= 0.01f;
+                } 
+            }
+            LightTimer = 0; 
+        }
 
     }
 }
