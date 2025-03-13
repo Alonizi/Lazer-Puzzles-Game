@@ -106,6 +106,8 @@ public class LaserSplitter : MonoBehaviour
                 if (MatchColors)
                 {
                     laserScript.SetLaserColor(incomingLazerColor);
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().color =
+                        CustomColorsUtility.CustomColorToUnityColor(incomingLazerColor);
                 }
                 else
                 {
