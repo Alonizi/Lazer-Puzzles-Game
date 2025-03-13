@@ -4,6 +4,8 @@ using System;
 using Abdulaziz_File.Scripts;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+using System.Collections.Generic;
 
 /// <summary>
 /// Responsible for Selecting Mechanics from the Items Menu 
@@ -13,8 +15,18 @@ public class Selector : MonoBehaviour
     [SerializeField] private Button SplitterRgbButton;
     [SerializeField] private Button SplitterButton;
     [SerializeField] private Button MirrorButton;
+    [SerializeField] private Button UndoButton;
     public event Action<Mechanic?> OnItemSelected;
     private Mechanic? CurrentSelection;
+    private Stack<string> UndoStack = new Stack<string>();
+    private int itemCount = 0;
+
+    private void UpdateUndoButton()
+    {
+        UndoButton.interactable = UndoStack.Count > 0 && itemCount > 0;
+        Canvas.ForceUpdateCanvases();
+    }
+
 
     /// <summary>
     /// identify and cache the selected mechanic , and trigger an event signaling an item was selected 
@@ -22,25 +34,37 @@ public class Selector : MonoBehaviour
     /// <param name="mechanic"></param>
     public void SelectMechanic(int mechanic)
     {
-        switch ((Mechanic) mechanic)
+        switch ((Mechanic)mechanic)
         {
             case Mechanic.Mirror:
                 CurrentSelection = Mechanic.Mirror;
+                UndoStack.Push("Mirror");
+                itemCount++; 
                 break;
             case Mechanic.Splitter:
                 CurrentSelection = Mechanic.Splitter;
+                UndoStack.Push("Splitter");
+                itemCount++;
                 break;
             case Mechanic.Splitter_RGB:
                 CurrentSelection = Mechanic.Splitter_RGB;
-                break; 
+                UndoStack.Push("Splitter_RGB");
+                itemCount++;
+                break;
             case Mechanic.Rotator:
                 CurrentSelection = Mechanic.Rotator;
-                break; 
+                UndoStack.Push("Rotator");
+                itemCount++;
+                break;
             case Mechanic.Delete:
                 CurrentSelection = Mechanic.Delete;
-                break; 
+                UndoStack.Push("Delete");
+                itemCount++;
+                break;
         }
+
         OnItemSelected(CurrentSelection);
+        UpdateUndoButton();
     }
 
     /// <summary>
@@ -49,16 +73,65 @@ public class Selector : MonoBehaviour
     /// <param name="mirrorsCount"> number of available mirrors </param>
     /// <param name="splittersCount"> number of available Splitters</param>
     /// <param name="splittersRgbCount"> number of available Splitter_RGB</param>
-    public void UpdateButtons(int mirrorsCount , int splittersCount , int splittersRgbCount)
+    /*public void UpdateButtons(int mirrorsCount , int splittersCount , int splittersRgbCount)
     {
-        MirrorButton.transform.GetChild(0).GetComponent<Text>().text = $"Mirrors ({mirrorsCount})";
+        MirrorButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = mirrorsCount.ToString();
         MirrorButton.enabled = mirrorsCount > 0 ;
         
-        SplitterButton.transform.GetChild(0).GetComponent<Text>().text = $"Splitters ({splittersCount})";
+        SplitterButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = splittersCount.ToString();
         SplitterButton.enabled = splittersCount > 0;
         
-        SplitterRgbButton.transform.GetChild(0).GetComponent<Text>().text = $"Splitters_RGB ({splittersRgbCount})";
+        SplitterRgbButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = splittersRgbCount.ToString();
         SplitterRgbButton.enabled = splittersRgbCount > 0; 
+    }*/
+
+    public void UpdateButtons(int mirrorsCount, int splittersCount, int splittersRgbCount)
+    {
+        if (mirrorsCount <= 0)
+        {
+            MirrorButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+            MirrorButton.interactable = false;
+        }
+        else
+        {
+            MirrorButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.Max(mirrorsCount, 1).ToString();
+            MirrorButton.interactable = true;
+        }
+
+        if (splittersCount <= 0)
+        {
+            SplitterButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+            SplitterButton.interactable = false;
+        }
+        else
+        {
+            SplitterButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.Max(splittersCount, 1).ToString();
+            SplitterButton.interactable = true;
+        }
+
+        if (splittersRgbCount <= 0)
+        {
+            SplitterRgbButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "";
+            SplitterRgbButton.interactable = false;
+        }
+        else
+        {
+            SplitterRgbButton.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = Mathf.Max(splittersRgbCount, 1).ToString();
+            SplitterRgbButton.interactable = true;
+        }
+
+        UpdateUndoButton();
+        Canvas.ForceUpdateCanvases();
     }
-    
+
+    public void UndoAction()
+    {
+        if (UndoStack.Count > 0)
+        {
+            UndoStack.Pop();
+            itemCount = Mathf.Max(itemCount - 1, 0);
+        }
+        UpdateUndoButton();
+    }
+
 }

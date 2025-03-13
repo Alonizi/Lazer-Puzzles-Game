@@ -1351,6 +1351,17 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1272432987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7650879745870390579, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+  m_PrefabInstance: {fileID: 7459574632118978045}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1450462006
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2824,9 +2835,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3427621495583329411, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: UndoButton
+      value: 
+      objectReference: {fileID: 1272432987}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
       value: Items Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781253413287847479, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650879745870390579, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7650879745870390579, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 2616291737498673045, guid: b9866d3adab3ffb4da510fc02d5e85ad, type: 3}
+    - target: {fileID: 7650879745870390579, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
