@@ -159,7 +159,7 @@ public class ItemSpawner : MonoBehaviour
         {
             Transform parentTile = TilesTransforms[LayerMask.NameToLayer("Mirror")];
             var item = Instantiate(Mirror, World.GetCellCenterWorld(cellPosition),
-                Quaternion.Euler(new Vector3(0, 0, 45)), parent: parentTile);
+                Quaternion.Euler(new Vector3(0, 0, 0)), parent: parentTile);
             AddedItems.Push(item.gameObject); // keep track of added items
             Mirrors_MaxCount--; // reduce available mirrors count 
             ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount); // update buttons text

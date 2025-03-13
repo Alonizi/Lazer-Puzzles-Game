@@ -2845,14 +2845,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Items Spawner
       objectReference: {fileID: 0}
-    - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
-      propertyPath: Splitter_MaxCount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
-      propertyPath: Splitter_RGB_MaxCount
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8293439381792703216, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.11
