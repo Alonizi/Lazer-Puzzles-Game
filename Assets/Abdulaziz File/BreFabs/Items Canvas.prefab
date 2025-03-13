@@ -164,7 +164,7 @@ RectTransform:
   m_GameObject: {fileID: 2628170156541818328}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8106246269103996559}
@@ -172,7 +172,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -450, y: 10}
+  m_AnchoredPosition: {x: -500, y: 10}
   m_SizeDelta: {x: 158, y: 119}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5157839270711125410
@@ -390,6 +390,7 @@ MonoBehaviour:
   SplitterRgbButton: {fileID: 5499589371666655584}
   SplitterButton: {fileID: 695979698128293819}
   MirrorButton: {fileID: 3744153906043547122}
+  UndoButton: {fileID: 7650879745870390579}
 --- !u!1 &4223334604871035834
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +555,7 @@ RectTransform:
   m_GameObject: {fileID: 4958660621856138423}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9050347183873838488}
@@ -562,7 +563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -320, y: 10}
+  m_AnchoredPosition: {x: -420, y: 10}
   m_SizeDelta: {x: 158, y: 119}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &2875828842887311630
@@ -687,7 +688,7 @@ RectTransform:
   m_GameObject: {fileID: 5548856012268865300}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8153794075808638209}
@@ -820,14 +821,14 @@ RectTransform:
   m_GameObject: {fileID: 8634654111144431975}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 136239153409597797}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -195, y: 10}
+  m_AnchoredPosition: {x: -345, y: 10}
   m_SizeDelta: {x: 92, y: 92}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &1034233087335569222
@@ -898,8 +899,8 @@ MonoBehaviour:
     m_FadeDuration: 0.1
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 2616291737498673045, guid: b9866d3adab3ffb4da510fc02d5e85ad, type: 3}
+    m_PressedSprite: {fileID: 2616291737498673045, guid: b9866d3adab3ffb4da510fc02d5e85ad, type: 3}
+    m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: -1474472180084312536, guid: b9866d3adab3ffb4da510fc02d5e85ad, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -907,7 +908,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 3747086444549099417}
   m_OnClick:
     m_PersistentCalls:

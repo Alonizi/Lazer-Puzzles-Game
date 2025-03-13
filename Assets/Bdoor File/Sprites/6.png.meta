@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: 09e25997fd8e4074fb198abed166e6ac
+guid: b23ea085985334141a36c902185867bf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8056759949536843845
-    second: game_ui_level_icons_0
-  - first:
-      213: -2514750905374576532
-    second: game_ui_level_icons_1
-  - first:
-      213: -6766929532867013013
-    second: game_ui_level_icons_2
-  - first:
-      213: 6563656402987159049
-    second: game_ui_level_icons_3
+      213: 3465286685962602723
+    second: 6_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: game_ui_level_icons_0
+      name: 6_0
       rect:
         serializedVersion: 2
-        x: 46
-        y: 461
-        width: 158
-        height: 119
+        x: 0
+        y: 0
+        width: 1081
+        height: 615
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,74 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 548dcb0dc7c5fcf60800000000000000
-      internalID: 8056759949536843845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: game_ui_level_icons_1
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 315
-        width: 158
-        height: 119
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c607e82106fc91dd0800000000000000
-      internalID: -2514750905374576532
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: game_ui_level_icons_2
-      rect:
-        serializedVersion: 2
-        x: 46
-        y: 168
-        width: 158
-        height: 119
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b669c5d41790712a0800000000000000
-      internalID: -6766929532867013013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: game_ui_level_icons_3
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 38
-        width: 92
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 90e84c709bac61b50800000000000000
-      internalID: 6563656402987159049
+      spriteID: 3e801b981eb271030800000000000000
+      internalID: 3465286685962602723
       vertices: []
       indices: 
       edges: []
@@ -222,11 +147,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      game_ui_level_icons_0: 8056759949536843845
-      game_ui_level_icons_1: -2514750905374576532
-      game_ui_level_icons_2: -6766929532867013013
-      game_ui_level_icons_3: 6563656402987159049
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

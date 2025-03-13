@@ -128,7 +128,7 @@ public class SimpleColorReceiver : MonoBehaviour
             }
         }
 
-        bool onlyTargetColors = laserColors.Count == 1 && color1Reached || (two && laserColors.Count == 2 && color1Reached && color2Reached);
+        bool onlyTargetColors = (two && laserColors.Count == 2 && color1Reached && color2Reached) || (!two && laserColors.Count == 1 && color1Reached);
 
         if (two)
         {

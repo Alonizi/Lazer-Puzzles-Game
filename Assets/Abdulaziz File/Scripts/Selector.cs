@@ -58,7 +58,11 @@ public class Selector : MonoBehaviour
     {
         if (undoStackCounter <= 0)
         {
-            /// do something  
+            UndoButton.interactable = false; 
+        }
+        else
+        {
+            UndoButton.interactable = true; 
         }
         if (mirrorsCount <= 0)
         {
