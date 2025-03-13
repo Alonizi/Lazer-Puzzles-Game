@@ -4823,9 +4823,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1244962404704781426, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244962404704781426, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244962404704781426, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1244962404704781426, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
       value: Items Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4781253413287847479, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_VertexColorAlwaysGammaSpace
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
