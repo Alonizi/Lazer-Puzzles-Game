@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d788503200af944f4a725207c417c462, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mirror: {fileID: 7318572934273207160, guid: 04d57ca614acc074e9f22bea6f71d503, type: 3}
-  Splitter: {fileID: 8040208715707939523, guid: 7eea3b202baa84e7d86cad0565c74136, type: 3}
-  Splitter_RGB: {fileID: 8040208715707939523, guid: 42fad795381087c459a81893e1286bfe, type: 3}
+  Mirror: {fileID: 285943186690765125, guid: c4b7988d6148840b39212421b20dbf55, type: 3}
+  Splitter: {fileID: 4357663343211543017, guid: d8aab298038b1407eb47ee94e164d27a, type: 3}
+  Splitter_RGB: {fileID: 1183876641986952093, guid: 2b624b0f369104b70bf65d43d8d6b868, type: 3}
   Mirrors_MaxCount: 3
-  Splitter_RGB_MaxCount: 3
-  Splitter_MaxCount: 3
+  Splitter_RGB_MaxCount: 1
+  Splitter_MaxCount: 0
