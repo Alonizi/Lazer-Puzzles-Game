@@ -17,16 +17,15 @@ public class LaserSplitter : MonoBehaviour
     public float spawnOffset = 0.5f;
     
     [Tooltip("Set if the Splitter should match or split the received color")]
-    [SerializeField]private bool MatchColors;
+    [SerializeField] private bool MatchColors;
     
     [Header("Red-Green-Blue")]
-    [Tooltip("set the color-hex values of the 3 primary color (Red-Green-Blue) in order.")]
+    [Tooltip("Set the color-hex values of the 3 primary colors (Red-Green-Blue) in order.")]
     private CustomColors[] PrimaryColors = { CustomColors.red, CustomColors.green, CustomColors.blue };
 
     // Flag to ensure we only split once per hit.
     private bool hasSplit = false;
 
-    //private List<LaserScript> AllLazersDevices;
     private List<GameObject> EmittedLazers;
 
     [SerializeField] private Light2D SingleColorSplitterLight; 
@@ -37,20 +36,8 @@ public class LaserSplitter : MonoBehaviour
 
     private void Awake()
     {
-        // if (MatchColors)
-        // {
-        //     LightInitialIntensity = SingleColorSplitterLight.intensity;
-        // }
-
         EmittedLazers = new List<GameObject>();
-        //AllLazersDevices = FindObjectsByType<LaserScript>(sortMode: FindObjectsSortMode.None).ToList();
     }
-
-    // private void Update()
-    // {
-    //     LightTimer += Time.deltaTime; 
-    //     SingleColorSplitterLightToggle(IncomingColor);
-    // }
 
     /// <summary>
     /// Splits an incoming white laser into three beams: red, green, blue.
@@ -58,10 +45,18 @@ public class LaserSplitter : MonoBehaviour
     /// </summary>
     /// <param name="hitPoint">World point where the laser hit the splitter.</param>
     /// <param name="incomingDirection">Direction from which the laser is coming.</param>
-    /// <param name="incomingLazerColor">Color of the Lazer hitting the splitter.</param>
-    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection,CustomColors incomingLazerColor )
+    /// <param name="incomingLazerColor">Color of the laser hitting the splitter.</param>
+    public void SplitLaser(Vector2 hitPoint, Vector2 incomingDirection, CustomColors incomingLazerColor)
     {
         Debug.LogWarning("Splitter Event Activated");
+
+        // Only allow splitting with a white beam when MatchColors is disabled.
+        if (!MatchColors && incomingLazerColor != CustomColors.white)
+        {
+            Debug.Log("Non-white beam received. Splitting aborted since only white beams are accepted.");
+            return;
+        }
+
         if (hasSplit)
         {
             Debug.Log("Splitter has already split the laser. Skipping further splits.");
@@ -101,9 +96,6 @@ public class LaserSplitter : MonoBehaviour
             }
             outputSides.Add(side);
         }
-
-        // Define the three primary RGB colors.
-        // Color[] splitColors = new Color[] { Color.red, Color.green, Color.blue };
 
         // Spawn one laser for each output side.
         for (int i = 0; i < outputSides.Count; i++)
@@ -156,7 +148,7 @@ public class LaserSplitter : MonoBehaviour
     {
         SingleColorSplitterLight.color = lightColor; 
         
-        if (LightTimer > 0.1)
+        if (LightTimer > 0.1f)
         {
             if (hasSplit)
             {
@@ -174,6 +166,5 @@ public class LaserSplitter : MonoBehaviour
             }
             LightTimer = 0; 
         }
-
     }
 }
