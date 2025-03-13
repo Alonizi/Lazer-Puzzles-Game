@@ -54,7 +54,7 @@ public class ItemSpawner : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
+        ItemSelector.UpdateButtons(AddedItems.Count,Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public class ItemSpawner : MonoBehaviour
                 Quaternion.Euler(new Vector3(0, 0, 0)), parent: parentTile);
             AddedItems.Push(item.gameObject); // keep track of added items
             Mirrors_MaxCount--; // reduce available mirrors count 
-            ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount); // update buttons text
+            ItemSelector.UpdateButtons(AddedItems.Count,Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount); // update buttons text
         }
     }
     
@@ -186,7 +186,7 @@ public class ItemSpawner : MonoBehaviour
             AddedItems.Push(item.gameObject);
             Splitter_MaxCount--;
         }
-        ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
+        ItemSelector.UpdateButtons(AddedItems.Count,Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
     }
 
     /// <summary>
@@ -209,7 +209,7 @@ public class ItemSpawner : MonoBehaviour
                break;
        }
        Destroy(item);
-       ItemSelector.UpdateButtons(Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
+       ItemSelector.UpdateButtons(AddedItems.Count,Mirrors_MaxCount,Splitter_MaxCount,Splitter_RGB_MaxCount);
     }
     
     /// <summary>
