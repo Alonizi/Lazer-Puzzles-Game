@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 4dd3eb3943dd8405c9fb04174866915f
+guid: dbcc67b95d27a4bfc8befd03ba9e59ee
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2913542101061349048
-    second: IMG_1791_0
+      213: 3946114814425742384
+    second: IMG_1783_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,43 +109,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_1791_0
+      name: IMG_1783_0
       rect:
         serializedVersion: 2
-        x: 44
-        y: 44
-        width: 113
-        height: 113
+        x: 0
+        y: 14
+        width: 200
+        height: 172
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8be28e3ba1bfe6820800000000000000
-      internalID: 2913542101061349048
+      spriteID: 03cb0cc248a63c630800000000000000
+      internalID: 3946114814425742384
       vertices: []
       indices: 
       edges: []
@@ -174,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_1791_0: 2913542101061349048
+      IMG_1783_0: 3946114814425742384
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
