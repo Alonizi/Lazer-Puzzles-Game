@@ -1107,6 +1107,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4639738424743004253, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4821907775161175190, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -1117,17 +1121,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5793508011574507725, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 40
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6118747603146849098, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648879559555183724, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8712595348396554159, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: -50
+      objectReference: {fileID: 0}
+    - target: {fileID: 9090984292856223049, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1739916489108769640, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
     - {fileID: 372139825795016571, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
     - {fileID: 4193619769476640409, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+    - {fileID: 9090984292856223049, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+    - {fileID: 7648879559555183724, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2584526599238063077, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       insertIndex: 2

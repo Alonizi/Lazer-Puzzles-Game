@@ -27,20 +27,22 @@ public class AudioManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        LoadAudioSettings();
     }
 
     private void Start()
     {
-        VolumeSettings volumeSettings = FindObjectOfType<VolumeSettings>();
-        if (volumeSettings != null)
-        {
-            volumeSettings.LoadVolume(); 
-        }
-        PlayMusic(0);
+        int savedTrackIndex = PlayerPrefs.GetInt("currentTrackIndex", 0); 
+        PlayMusic(savedTrackIndex);
     }
 
     public void PlayMusic(int index)
     {
+        if (Music.clip != null && Music.clip == MusicClips[index] && Music.isPlaying)
+        {
+            return;
+        }
+
         if (index >= 0 && index < MusicClips.Length)
         {
             Music.clip = MusicClips[index];
@@ -54,4 +56,35 @@ public class AudioManager : MonoBehaviour
         //6:00
     }
 
+    private void LoadAudioSettings()
+    {
+        if (PlayerPrefs.HasKey("musicVolume"))
+        {
+            float musicVolume = PlayerPrefs.GetFloat("musicVolume");
+            Music.volume = musicVolume;
+        }
+
+        if (PlayerPrefs.HasKey("SFXVolume"))
+        {
+            float sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+            SFX.volume = sfxVolume;
+        }
+
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            float masterVolume = PlayerPrefs.GetFloat("MasterVolume");
+            AudioListener.volume = masterVolume;
+        }
+    }
+
+    public void ApplyVolumeSettings(float musicVolume, float sfxVolume, float masterVolume)
+    {
+        Music.volume = musicVolume;
+        SFX.volume = sfxVolume;
+        AudioListener.volume = masterVolume;
+
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume);
+        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+    }
 }
