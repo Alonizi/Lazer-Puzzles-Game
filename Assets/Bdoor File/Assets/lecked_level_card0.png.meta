@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      lecked_level_card0_0: -5878290949936707075
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
