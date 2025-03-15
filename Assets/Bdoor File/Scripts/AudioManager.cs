@@ -13,6 +13,8 @@ public class AudioManager : MonoBehaviour
 
     [Header("SFX :")]
     public AudioClip mirror;
+    //public AudioClip xx;
+    //AudioManager.instance.PlaySFX(AudioManager.instance.xx);
 
     public static AudioManager instance;
 

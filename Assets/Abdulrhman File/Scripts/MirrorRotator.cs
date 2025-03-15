@@ -17,6 +17,7 @@ public class MirrorRotator : MonoBehaviour
     {
         if (!isRotating)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.mirror);
             StartCoroutine(RotateMirror());
         }
     }
