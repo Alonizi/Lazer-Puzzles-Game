@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxReflections: 15
   maxDistance: 100
-  hexColor: '#FFFFFF'
+  LaserColor: 5
   reflectionMask:
     serializedVersion: 2
     m_Bits: 456

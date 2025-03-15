@@ -160,7 +160,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      bdoory_grid_0: -7451224601201410950
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
