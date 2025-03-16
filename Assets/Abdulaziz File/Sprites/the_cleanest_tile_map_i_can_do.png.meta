@@ -29,6 +29,12 @@ TextureImporter:
   - first:
       213: -1700632638545347796
     second: the_cleanest_tile_map_i_can_do_8
+  - first:
+      213: 7032924733563518849
+    second: the_cleanest_tile_map_i_can_do_9
+  - first:
+      213: 8738214999796601782
+    second: the_cleanest_tile_map_i_can_do_10
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,8 +146,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_0
       rect:
         serializedVersion: 2
-        x: 125
-        y: 800
+        x: 0
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -162,8 +168,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_1
       rect:
         serializedVersion: 2
-        x: 325
-        y: 800
+        x: 200
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -184,8 +190,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_2
       rect:
         serializedVersion: 2
-        x: 525
-        y: 800
+        x: 400
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -206,8 +212,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_3
       rect:
         serializedVersion: 2
-        x: 725
-        y: 800
+        x: 600
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -228,8 +234,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_4
       rect:
         serializedVersion: 2
-        x: 925
-        y: 800
+        x: 800
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -250,8 +256,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_5
       rect:
         serializedVersion: 2
-        x: 1125
-        y: 800
+        x: 1000
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -272,8 +278,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_6
       rect:
         serializedVersion: 2
-        x: 125
-        y: 600
+        x: 1200
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -294,8 +300,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_7
       rect:
         serializedVersion: 2
-        x: 325
-        y: 600
+        x: 1600
+        y: 825
         width: 200
         height: 200
       alignment: 0
@@ -316,8 +322,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_8
       rect:
         serializedVersion: 2
-        x: 525
-        y: 600
+        x: 0
+        y: 625
         width: 200
         height: 200
       alignment: 0
@@ -338,8 +344,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_9
       rect:
         serializedVersion: 2
-        x: 925
-        y: 600
+        x: 200
+        y: 625
         width: 200
         height: 200
       alignment: 0
@@ -348,10 +354,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 62575febc957543878137ba9970bc500
-      internalID: -324951536
+      spriteID: 18fbc1c78c7f99160800000000000000
+      internalID: 7032924733563518849
       vertices: []
       indices: 
       edges: []
@@ -360,8 +366,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_10
       rect:
         serializedVersion: 2
-        x: 125
-        y: 400
+        x: 400
+        y: 625
         width: 200
         height: 200
       alignment: 0
@@ -370,10 +376,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 98f6901df266a4af392f7184c156c132
-      internalID: 1779807889
+      spriteID: 6b3ddd9ce30644970800000000000000
+      internalID: 8738214999796601782
       vertices: []
       indices: 
       edges: []
@@ -382,8 +388,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_11
       rect:
         serializedVersion: 2
-        x: 325
-        y: 400
+        x: 600
+        y: 625
         width: 200
         height: 200
       alignment: 0
@@ -394,8 +400,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 47a9d8ef2494742d5a118b834e693b41
-      internalID: -229867477
+      spriteID: 478a292725a354eff9c8794b911c3118
+      internalID: 1892247988
       vertices: []
       indices: 
       edges: []
@@ -404,8 +410,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_12
       rect:
         serializedVersion: 2
-        x: 525
-        y: 400
+        x: 1000
+        y: 625
         width: 200
         height: 200
       alignment: 0
@@ -416,8 +422,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: de5627b62c53743d9bf3b994aa8898d7
-      internalID: 1515116500
+      spriteID: b1453b149332e4c13b347618e491d226
+      internalID: -1603409737
       vertices: []
       indices: 
       edges: []
@@ -426,8 +432,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_13
       rect:
         serializedVersion: 2
-        x: 725
-        y: 400
+        x: 0
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -438,8 +444,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61866fb96c5ad44c39ef3a014d11456e
-      internalID: -179889861
+      spriteID: 7c1c613f770e345618e73d981ae0143c
+      internalID: 1595087736
       vertices: []
       indices: 
       edges: []
@@ -448,8 +454,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_14
       rect:
         serializedVersion: 2
-        x: 925
-        y: 400
+        x: 200
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -460,8 +466,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe305eebdd21649b3a64649e6e012241
-      internalID: 1855759719
+      spriteID: 98f7390724f8b4c0b8b67bf48c400c24
+      internalID: 336773896
       vertices: []
       indices: 
       edges: []
@@ -470,8 +476,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_15
       rect:
         serializedVersion: 2
-        x: 1125
-        y: 400
+        x: 400
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -482,8 +488,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60f19c5d4682d47e2a9dc59ec1dbac80
-      internalID: 1272672156
+      spriteID: 8af4bbc6e06ab46948619c2f5fc8690c
+      internalID: -788080585
       vertices: []
       indices: 
       edges: []
@@ -492,8 +498,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_16
       rect:
         serializedVersion: 2
-        x: 125
-        y: 200
+        x: 600
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -504,8 +510,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b511ebb62f2146ec8cc16b13af82c5e
-      internalID: 613083596
+      spriteID: 0ce6e20e60cf9407584c07e7f26aaa71
+      internalID: -1569932384
       vertices: []
       indices: 
       edges: []
@@ -514,8 +520,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_17
       rect:
         serializedVersion: 2
-        x: 525
-        y: 0
+        x: 800
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -526,8 +532,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 56935c02ec8484a038b0d8e49157cdb8
-      internalID: 34975545
+      spriteID: ff26f320b9ce2435ca51b3c3d1071297
+      internalID: 1854685193
       vertices: []
       indices: 
       edges: []
@@ -536,8 +542,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_18
       rect:
         serializedVersion: 2
-        x: 725
-        y: 0
+        x: 1000
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -548,8 +554,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a42eff477d08846a7b8cd0f814410b03
-      internalID: -505451857
+      spriteID: f58b1a0e86bd241438ca0afce8097d62
+      internalID: -1696804542
       vertices: []
       indices: 
       edges: []
@@ -558,8 +564,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_19
       rect:
         serializedVersion: 2
-        x: 925
-        y: 0
+        x: 1200
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -570,8 +576,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2351875b25b124d7a9c15a38f064f96b
-      internalID: -921990923
+      spriteID: 3b3c727e735da462eba62ceffd208be4
+      internalID: 1647948505
       vertices: []
       indices: 
       edges: []
@@ -580,8 +586,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_20
       rect:
         serializedVersion: 2
-        x: 1125
-        y: 0
+        x: 1600
+        y: 425
         width: 200
         height: 200
       alignment: 0
@@ -592,8 +598,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d2cadde4758714a5891610accf4de6b3
-      internalID: 607969530
+      spriteID: 703eab36b3f044ae0a30c59a931c8d46
+      internalID: 904159993
       vertices: []
       indices: 
       edges: []
@@ -602,8 +608,8 @@ TextureImporter:
       name: the_cleanest_tile_map_i_can_do_21
       rect:
         serializedVersion: 2
-        x: 1325
-        y: 0
+        x: 200
+        y: 225
         width: 200
         height: 200
       alignment: 0
@@ -614,8 +620,162 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40c766b8d0c3f479c8aa2bea4816541c
-      internalID: -53560111
+      spriteID: 4b1f02ee71fa846fd9b99239b422f02d
+      internalID: -1146305207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the_cleanest_tile_map_i_can_do_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 25
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90ade0a32c6ad43a0bbb36572d0207e0
+      internalID: 700494573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the_cleanest_tile_map_i_can_do_23
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 25
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7807804ee877f496c8e6d31dae697551
+      internalID: 889147987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the_cleanest_tile_map_i_can_do_24
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 25
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1bd285f63c134446ab143a5ef76f8f8
+      internalID: -1730784983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the_cleanest_tile_map_i_can_do_25
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 25
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 119020f51ba944db9b0b4322d40c6edd
+      internalID: 1940463948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the_cleanest_tile_map_i_can_do_26
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 25
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7609913d73134906add820bb4b07b28
+      internalID: -1283994898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the_cleanest_tile_map_i_can_do_27
+      rect:
+        serializedVersion: 2
+        x: 1400
+        y: 25
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55487be701c69481e828d25739ff00d2
+      internalID: 1963305460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: the_cleanest_tile_map_i_can_do_28
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 25
+        width: 200
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33249aab304ae4541a3ccff4aca14c4e
+      internalID: -1753639893
       vertices: []
       indices: 
       edges: []
@@ -624,7 +784,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 45d2d381af2894e25bac58402f48340c
+    spriteID: 6f1369556429c46baaa74a6945b8e281
     internalID: 0
     vertices: []
     indices: 
@@ -636,26 +796,33 @@ TextureImporter:
     nameFileIdTable:
       the_cleanest_tile_map_i_can_do_0: -6940390525245540234
       the_cleanest_tile_map_i_can_do_1: 3488732735011072410
-      the_cleanest_tile_map_i_can_do_10: 1779807889
-      the_cleanest_tile_map_i_can_do_11: -229867477
-      the_cleanest_tile_map_i_can_do_12: 1515116500
-      the_cleanest_tile_map_i_can_do_13: -179889861
-      the_cleanest_tile_map_i_can_do_14: 1855759719
-      the_cleanest_tile_map_i_can_do_15: 1272672156
-      the_cleanest_tile_map_i_can_do_16: 613083596
-      the_cleanest_tile_map_i_can_do_17: 34975545
-      the_cleanest_tile_map_i_can_do_18: -505451857
-      the_cleanest_tile_map_i_can_do_19: -921990923
+      the_cleanest_tile_map_i_can_do_10: 8738214999796601782
+      the_cleanest_tile_map_i_can_do_11: 1892247988
+      the_cleanest_tile_map_i_can_do_12: -1603409737
+      the_cleanest_tile_map_i_can_do_13: 1595087736
+      the_cleanest_tile_map_i_can_do_14: 336773896
+      the_cleanest_tile_map_i_can_do_15: -788080585
+      the_cleanest_tile_map_i_can_do_16: -1569932384
+      the_cleanest_tile_map_i_can_do_17: 1854685193
+      the_cleanest_tile_map_i_can_do_18: -1696804542
+      the_cleanest_tile_map_i_can_do_19: 1647948505
       the_cleanest_tile_map_i_can_do_2: 1869029966261356191
-      the_cleanest_tile_map_i_can_do_20: 607969530
-      the_cleanest_tile_map_i_can_do_21: -53560111
+      the_cleanest_tile_map_i_can_do_20: 904159993
+      the_cleanest_tile_map_i_can_do_21: -1146305207
+      the_cleanest_tile_map_i_can_do_22: 700494573
+      the_cleanest_tile_map_i_can_do_23: 889147987
+      the_cleanest_tile_map_i_can_do_24: -1730784983
+      the_cleanest_tile_map_i_can_do_25: 1940463948
+      the_cleanest_tile_map_i_can_do_26: -1283994898
+      the_cleanest_tile_map_i_can_do_27: 1963305460
+      the_cleanest_tile_map_i_can_do_28: -1753639893
       the_cleanest_tile_map_i_can_do_3: -2251510281510828726
       the_cleanest_tile_map_i_can_do_4: 475832555245198240
       the_cleanest_tile_map_i_can_do_5: 5090459402986760911
       the_cleanest_tile_map_i_can_do_6: 3969523110899686947
       the_cleanest_tile_map_i_can_do_7: 203045017111922107
       the_cleanest_tile_map_i_can_do_8: -1700632638545347796
-      the_cleanest_tile_map_i_can_do_9: -324951536
+      the_cleanest_tile_map_i_can_do_9: 7032924733563518849
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
