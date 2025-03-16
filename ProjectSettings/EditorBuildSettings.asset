@@ -13,22 +13,22 @@ EditorBuildSettings:
     guid: cd044a67d048144498f678fff35864a1
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 1.unity
-    guid: 2a63fd7f307ebcf49973d825bd8d6fd4
+    guid: 38513c389bf10444896ec67f76e35b8d
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 2.unity
-    guid: 9f848162f4c2e23409d28ef6792a032d
+    guid: 2a63fd7f307ebcf49973d825bd8d6fd4
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 3.unity
     guid: 79ff7c56b8dcad649ad4f8a83c42426d
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 4.unity
-    guid: 38513c389bf10444896ec67f76e35b8d
+    guid: 9f848162f4c2e23409d28ef6792a032d
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 5.unity
-    guid: 319e13d4ec34a1946b65e40b60414cf2
+    guid: 6ea4e30a61ece2f4fb88bee393d443e8
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 6.unity
-    guid: 6ea4e30a61ece2f4fb88bee393d443e8
+    guid: 319e13d4ec34a1946b65e40b60414cf2
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 7.unity
     guid: b8ed6250fff11374eae5dc5749da2259
