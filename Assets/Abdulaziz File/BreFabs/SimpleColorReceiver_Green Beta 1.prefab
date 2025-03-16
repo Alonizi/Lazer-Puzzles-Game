@@ -366,6 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetColor: 2
   targetColor2: 2
+  MixedColor: 2
   two: 0
   requiredHitTime: 3
   PanelWin: {fileID: 0}
@@ -379,6 +380,7 @@ MonoBehaviour:
   Reactor_ON: {fileID: 1999244538971562411}
   Reactor_OFF: {fileID: 5864298824952680992}
   Reactor_Running: {fileID: 341252610453948088}
+  cameraShake: {fileID: 0}
 --- !u!61 &5068379393791088943
 BoxCollider2D:
   m_ObjectHideFlags: 0
