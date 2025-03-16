@@ -6327,6 +6327,10 @@ PrefabInstance:
       value: Items Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
+      propertyPath: SmokePrefab
+      value: 
+      objectReference: {fileID: 4699933795175041280, guid: bdd3738d0d498ed4381dbc7e6e75a60a, type: 3}
+    - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
       propertyPath: Mirrors_MaxCount
       value: 3
       objectReference: {fileID: 0}

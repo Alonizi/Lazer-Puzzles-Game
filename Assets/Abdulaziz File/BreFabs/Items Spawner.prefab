@@ -50,3 +50,6 @@ MonoBehaviour:
   Mirrors_MaxCount: 3
   Splitter_RGB_MaxCount: 1
   Splitter_MaxCount: 0
+  SmokePrefab: {fileID: 4699933795175041280, guid: bdd3738d0d498ed4381dbc7e6e75a60a, type: 3}
+  PlaceSound: {fileID: 8300000, guid: e34c9da81d39c9444a98bcacc96d182e, type: 3}
+  SoundVolume: 1
