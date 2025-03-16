@@ -33,7 +33,7 @@ public class LaserSplitter : MonoBehaviour
     private float LightTimer = 0;
     private float LightInitialIntensity;
 
-    private Color IncomingColor = CustomColorsUtility.CustomColorToUnityColor(CustomColors.white); 
+    private CustomColors IncomingColor = CustomColors.white; 
 
     private void Awake()
     {
@@ -128,8 +128,8 @@ public class LaserSplitter : MonoBehaviour
                 if (MatchColors)
                 {
                     laserScript.SetLaserColor(incomingLazerColor);
-                    IncomingColor = CustomColorsUtility.CustomColorToUnityColor(incomingLazerColor);
-                    transform.GetChild(0).GetComponent<SpriteRenderer>().color = IncomingColor;
+                    IncomingColor = incomingLazerColor;
+                    transform.GetChild(0).GetComponent<SpriteRenderer>().color = CustomColorsUtility.CustomColorToUnityColor(incomingLazerColor);
                     //SingleColorSplitterLightToggle(IncomingColor);
                 }
                 else
@@ -158,12 +158,12 @@ public class LaserSplitter : MonoBehaviour
             Destroy(laser);
         }
         hasSplit = false; 
-        IncomingColor = CustomColorsUtility.CustomColorToUnityColor(CustomColors.white); 
+        IncomingColor = CustomColors.white; 
     }
 
-    private void SingleColorSplitterLightToggle(Color lightColor)
+    private void SingleColorSplitterLightToggle(CustomColors lightColor)
     {
-        SingleColorSplitterLight.color = lightColor; 
+        SingleColorSplitterLight.color = CustomColorsUtility.CustomColorToUnityColor(lightColor); 
         
         if (true)
         {

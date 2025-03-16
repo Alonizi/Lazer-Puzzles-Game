@@ -31,4 +31,23 @@ public static class CustomColorsUtility
         ColorUtility.TryParseHtmlString(ColorHex(color), out outputColor);
         return outputColor;
     }
+
+    public static Color CustomColorToDefaultUnityColor(CustomColors color)
+    {
+        switch (color)
+        {
+            case CustomColors.blue:
+                return Color.blue;
+            case CustomColors.green:
+                return Color.green;
+            case CustomColors.red:
+                return Color.red;
+            case CustomColors.purple:
+                return Color.magenta;
+            case CustomColors.yellow:
+                return Color.yellow;
+        }
+        
+        return Color.white;
+    }
 }
