@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -134,7 +134,7 @@ TextureImporter:
         width: 2006
         height: 2006
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -147,11 +147,99 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: bdoory_grid_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1406
+        height: 2006
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9a3e299906aea04a91b59df9828ad79
+      internalID: -1203977695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bdoory_grid_2
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 0
+        width: 607
+        height: 1806
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8002bcb71b041214190a72386d2b7c02
+      internalID: 866822610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bdoory_grid_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1606
+        height: 2006
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c3379263d5674145bf0c50f8c4387ac
+      internalID: 1180509531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bdoory_grid_4
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 0
+        width: 607
+        height: 206
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc0c62d807d545749a88c50c1fa8fd46
+      internalID: -1337354461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bd449055d231e6a4985f41ee36d73533
     internalID: 0
     vertices: []
     indices: 
@@ -162,6 +250,10 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       bdoory_grid_0: -7451224601201410950
+      bdoory_grid_1: -1203977695
+      bdoory_grid_2: 866822610
+      bdoory_grid_3: 1180509531
+      bdoory_grid_4: -1337354461
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
