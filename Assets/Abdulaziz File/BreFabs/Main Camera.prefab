@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5225894738025639465}
   - component: {fileID: 6435870290106067694}
   - component: {fileID: 7413470579237560933}
+  - component: {fileID: 1354458139958973566}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -155,3 +156,17 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: b373dc286339545c6a0c7eeeab498911, type: 2}
+--- !u!114 &1354458139958973566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5651554535387636454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77c0ac8e28484d4fa67b230a190bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.2
+  shakeMagnitude: 0.04
