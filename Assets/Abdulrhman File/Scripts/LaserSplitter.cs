@@ -28,6 +28,7 @@ public class LaserSplitter : MonoBehaviour
 
     private List<GameObject> EmittedLazers;
 
+    [SerializeField] private AudioSource SplitterSFX; 
     [SerializeField] private Light2D SingleColorSplitterLight; 
     private float LightTimer = 0;
     private float LightInitialIntensity;
@@ -37,6 +38,16 @@ public class LaserSplitter : MonoBehaviour
     private void Awake()
     {
         EmittedLazers = new List<GameObject>();
+    }
+
+    private void Update()
+    {
+        LightTimer += Time.deltaTime;
+        if (MatchColors)
+        {
+            SingleColorSplitterLightToggle(IncomingColor);
+        }
+
     }
 
     /// <summary>
@@ -119,6 +130,7 @@ public class LaserSplitter : MonoBehaviour
                     laserScript.SetLaserColor(incomingLazerColor);
                     IncomingColor = CustomColorsUtility.CustomColorToUnityColor(incomingLazerColor);
                     transform.GetChild(0).GetComponent<SpriteRenderer>().color = IncomingColor;
+                    //SingleColorSplitterLightToggle(IncomingColor);
                 }
                 else
                 {
@@ -130,6 +142,11 @@ public class LaserSplitter : MonoBehaviour
             {
                 Debug.LogWarning("LaserScript component not found on the instantiated laser prefab.");
             }
+        }
+
+        if (hasSplit)
+        {
+            SplitterSFX.Play();
         }
     }
 
@@ -148,13 +165,13 @@ public class LaserSplitter : MonoBehaviour
     {
         SingleColorSplitterLight.color = lightColor; 
         
-        if (LightTimer > 0.1f)
+        if (true)
         {
             if (hasSplit)
             {
-                if (SingleColorSplitterLight.intensity < LightInitialIntensity)
+                if (SingleColorSplitterLight.intensity < 2)
                 {
-                    SingleColorSplitterLight.intensity += 0.01f;
+                    SingleColorSplitterLight.intensity += .01f;
                 }
             }
             else
@@ -164,7 +181,6 @@ public class LaserSplitter : MonoBehaviour
                     SingleColorSplitterLight.intensity -= 0.01f;
                 } 
             }
-            LightTimer = 0; 
         }
     }
 }
