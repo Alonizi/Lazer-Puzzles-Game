@@ -43,7 +43,10 @@ public class LaserSplitter : MonoBehaviour
     private void Update()
     {
         LightTimer += Time.deltaTime;
-        SingleColorSplitterLightToggle(IncomingColor);
+        if (MatchColors)
+        {
+            SingleColorSplitterLightToggle(IncomingColor);
+        }
 
     }
 
