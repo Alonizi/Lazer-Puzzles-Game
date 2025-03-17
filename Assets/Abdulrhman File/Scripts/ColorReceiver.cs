@@ -6,27 +6,17 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
-
 public class SimpleColorReceiver : MonoBehaviour
 {
     [Header("Target Color")]
     [Tooltip("The color the receiver is looking for (e.g., white, purple, etc.).")]
-    public CustomColors targetColor ;
-    public CustomColors targetColor2 ;
-    public CustomColors MixedColor ;
-
+    public CustomColors targetColor;
+    public CustomColors targetColor2;
+    public CustomColors MixedColor;
 
     [Header("Use Two Target Colors")]
     [Tooltip("If true, the receiver will look for two colors.")]
     public bool two = false;
-
-    // [Header("Hit Color (When Activated)")]
-    // [Tooltip("The color the receiver changes to when activated.")]
-    // public Color activatedColor = Color.white;
-
-    // [Header("Default Color (Base Color)")]
-    // [Tooltip("The base color of the receiver before any laser hits it.")]
-    // public Color baseDefaultColor = Color.gray;
 
     [Header("Time to Activate")]
     [Tooltip("How long the laser must hit the receiver to activate it.")]
@@ -37,7 +27,6 @@ public class SimpleColorReceiver : MonoBehaviour
     private bool isActivated = false;
 
     private List<CustomColors> laserColors = new List<CustomColors>(); // Stores all laser colors hitting the receiver
-    // private Color combinedColor = Color.gray; // Stores the dynamically mixed color
 
     [Header("Win Panel")]
     public GameObject PanelWin;
@@ -47,22 +36,21 @@ public class SimpleColorReceiver : MonoBehaviour
     public static int totalReceivers = 0;
     public static int activatedReceivers = 0;
 
-    [Header("effects")] 
+    [Header("effects")]
     public Light2D[] DiagonalLights;
     public Light2D CenterLight;
 
     private Rigidbody2D[] ReactorRigids;
-
     private float ReactorSpinSpeed = 0f;
     private float InitialCenterLightIntensity;
     private float InitialDiagonalLightIntensity;
-    private float LightTimer = 0;
+    private float LightTimer = 0f;
     
     [SerializeField] private AudioSource Reactor_ON;
     [SerializeField] private AudioSource Reactor_OFF;
     [SerializeField] private AudioSource Reactor_Running;
-    private int OnCounter= 0;
-    private int OffCounter =0;
+    private int OnCounter = 0;
+    private int OffCounter = 0;
     
     [Header("Camera Shake")]
     [Tooltip("Optional: Reference to the CameraShake component. If left empty, the script will try to find one on the main camera.")]
@@ -70,7 +58,6 @@ public class SimpleColorReceiver : MonoBehaviour
     
     private void Awake()
     {
-        //Reactor_Running.loop = true; 
         InitialCenterLightIntensity = CenterLight.intensity;
         InitialDiagonalLightIntensity = DiagonalLights[0].intensity;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -78,9 +65,9 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             Debug.LogError("No SpriteRenderer found on the receiver! Please add one.");
         }
-        // spriteRenderer.color = baseDefaultColor;
         
-        totalReceivers = FindObjectsOfType<SimpleColorReceiver>().Length; 
+        // Updated API call using FindObjectsByType with no sorting for speed.
+        totalReceivers = UnityEngine.Object.FindObjectsByType<SimpleColorReceiver>(FindObjectsSortMode.None).Length;
         activatedReceivers = 0;
         ReactorRigids = transform.GetComponentsInChildren<Rigidbody2D>();
     }
@@ -90,7 +77,7 @@ public class SimpleColorReceiver : MonoBehaviour
     /// </summary>
     public void LaserHitting(CustomColors laserColor)
     {
-        if (!laserColors.Contains(laserColor)) 
+        if (!laserColors.Contains(laserColor))
         {
             laserColors.Add(laserColor);
         }
@@ -127,13 +114,14 @@ public class SimpleColorReceiver : MonoBehaviour
             {
                 color1Reached = true;
             }
-            if (two && c==targetColor2)
+            if (two && c == targetColor2)
             {
                 color2Reached = true;
             }
         }
 
-        bool onlyTargetColors = (two && laserColors.Count == 2 && color1Reached && color2Reached) || (!two && laserColors.Count == 1 && color1Reached);
+        bool onlyTargetColors = (two && laserColors.Count == 2 && color1Reached && color2Reached) ||
+                                  (!two && laserColors.Count == 1 && color1Reached);
 
         if (two)
         {
@@ -152,7 +140,6 @@ public class SimpleColorReceiver : MonoBehaviour
                 {
                     isActivated = false;
                     activatedReceivers--;
-                    //spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
                 }
             }
         }
@@ -173,7 +160,6 @@ public class SimpleColorReceiver : MonoBehaviour
                 {
                     isActivated = false;
                     activatedReceivers--;
-                    //spriteRenderer.color = combinedColor; // Reset to mixed color instead of base color
                 }
             }
         }
@@ -197,10 +183,34 @@ public class SimpleColorReceiver : MonoBehaviour
     {
         isActivated = true;
         activatedReceivers++;
-        //spriteRenderer.color = activatedColor;
-        Debug.Log("Receiver activated with colors");
+        // Removed camera shake call from here; it now triggers only after the win panel appears.
+        CheckWinCondition();
+    }
 
-        // Trigger camera shake here
+    private void CheckWinCondition()
+    {
+        // Updated to use the new FindObjectsByType API.
+        SimpleColorReceiver[] receivers = UnityEngine.Object.FindObjectsByType<SimpleColorReceiver>(FindObjectsSortMode.None);
+        foreach (SimpleColorReceiver receiver in receivers)
+        {
+            if (!receiver.isActivated)
+            {
+                return;
+            }
+        }
+
+        if (PanelWin != null)
+        {
+            PanelWin.SetActive(true);
+            // Updated to use the new FindAnyObjectByType API.
+            var buttons = UnityEngine.Object.FindAnyObjectByType<Buttons>();
+            if (buttons != null)
+            {
+                buttons.Win();
+            }
+        }
+
+        // Trigger camera shake only after the win panel appears.
         if (cameraShake != null)
         {
             cameraShake.TriggerShake();
@@ -211,32 +221,6 @@ public class SimpleColorReceiver : MonoBehaviour
             if (shake != null)
                 shake.TriggerShake();
         }
-        
-        CheckWinCondition();
-    }
-
-    private void CheckWinCondition()
-    {
-        SimpleColorReceiver[] receivers = FindObjectsOfType<SimpleColorReceiver>();
-        foreach (SimpleColorReceiver receiver in receivers)
-        {
-            if (!receiver.isActivated)
-            {
-                return; 
-            }
-        }
-
-        if (PanelWin != null)
-        {
-            PanelWin.SetActive(true);
-            var buttons = FindObjectOfType<Buttons>();
-            if (buttons != null)
-            {
-                buttons.Win(); 
-            }
-        }
-
-        Debug.Log("All receivers activated! You win!");
 
         UnlockNewLevel();
     }
@@ -278,39 +262,35 @@ public class SimpleColorReceiver : MonoBehaviour
                Mathf.Abs(a.b - b.b) < tolerance;
     }
 
-    private void ActivateEffects(bool color1 , bool color2)
+    private void ActivateEffects(bool color1, bool color2)
     {
-        //CenterLight.enabled = color1 && color2 ;
         CenterLight.enabled = true;
         if (color1 && color2)
         {
             if (CenterLight.intensity < InitialCenterLightIntensity)
             {
-                CenterLight.intensity += .01f;
+                CenterLight.intensity += 0.01f;
             }
         }
         else
         {
             if (CenterLight.intensity > 0)
             {
-                CenterLight.intensity -= .015f;
+                CenterLight.intensity -= 0.015f;
             }
         }
 
-        float freq = Random.Range(.25f, 1f);
+        float freq = Random.Range(0.25f, 1f);
         foreach (var light in DiagonalLights)
         {
             light.enabled = true;
-            //light.enabled = color1 || color2 ;
             if (color1 && color2)
             {
                 light.color = CustomColorsUtility.CustomColorToDefaultUnityColor(MixedColor);
-
                 if (light.intensity < InitialDiagonalLightIntensity)
                 {
-                    light.intensity += .01f;
+                    light.intensity += 0.01f;
                 }
-                
             }
             else if (color1 || color2)
             {
@@ -321,22 +301,19 @@ public class SimpleColorReceiver : MonoBehaviour
             {
                 if (light.intensity > 0)
                 {
-                    light.intensity -= .01f;
+                    light.intensity -= 0.01f;
                 }
             }
         }
     }
 
-    private void RotateBase( bool color1 , bool color2)
-    { 
-        //ReactorRigids[0].rotation += 60f * Time.deltaTime * (color1 || color2 ? 1:0);
-        // ReactorRigids[1].rotation -= ReactorSpinSpeed * Time.deltaTime * (color1 && color2 ? 1:0);
-       
-        if( color1 && color2)
+    private void RotateBase(bool color1, bool color2)
+    {
+        if (color1 && color2)
         {
             if (ReactorSpinSpeed < 250f)
             {
-                ReactorSpinSpeed += .5f;
+                ReactorSpinSpeed += 0.5f;
             }
         }
         else
@@ -355,28 +332,28 @@ public class SimpleColorReceiver : MonoBehaviour
         if (LightTimer > freq)
         {
             light.intensity = Random.Range(0f, 3f);
-            LightTimer = 0; 
+            LightTimer = 0f;
         }
     }
 
-    private void PlayAudio(bool on )
+    private void PlayAudio(bool on)
     {
-        if (on && OnCounter <1)
+        if (on && OnCounter < 1)
         {
             Reactor_Running.Stop();
             Reactor_OFF.Stop();
             Reactor_ON.Play();
             OnCounter++;
-            OffCounter = 0; 
+            OffCounter = 0;
         }
         if (on && !Reactor_ON.isPlaying && !Reactor_Running.isPlaying)
         {
             Reactor_Running.Play();
         }
-        if (!on && OffCounter<1 )
+        if (!on && OffCounter < 1)
         {
             OffCounter++;
-            OnCounter = 0; 
+            OnCounter = 0;
             Reactor_ON.Stop();
             Reactor_Running.Stop();
             Reactor_OFF.Play();
