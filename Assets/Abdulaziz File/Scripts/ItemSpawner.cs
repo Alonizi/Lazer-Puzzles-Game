@@ -292,6 +292,8 @@ public class ItemSpawner : MonoBehaviour
                     Splitter_RGB_MaxCount++;
                     break;
             }
+
+            AddedItemsDictionary.Remove(ItemPositionInGrid);
             Destroy(item);
             ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
         }
