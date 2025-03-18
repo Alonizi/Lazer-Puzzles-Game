@@ -45,6 +45,10 @@ public class SimpleColorReceiver : MonoBehaviour
     private float InitialCenterLightIntensity;
     private float InitialDiagonalLightIntensity;
     private float LightTimer = 0f;
+    private float LightMax = 5f;
+    private float LightMin = 0f;
+    private float LightInterpolate = 0f;
+    private bool LightToggle = false; 
     
     [SerializeField] private AudioSource Reactor_ON;
     [SerializeField] private AudioSource Reactor_OFF;
@@ -264,47 +268,49 @@ public class SimpleColorReceiver : MonoBehaviour
 
     private void ActivateEffects(bool color1, bool color2)
     {
-        CenterLight.enabled = true;
-        if (color1 && color2)
-        {
-            if (CenterLight.intensity < InitialCenterLightIntensity)
-            {
-                CenterLight.intensity += 0.01f;
-            }
-        }
-        else
-        {
-            if (CenterLight.intensity > 0)
-            {
-                CenterLight.intensity -= 0.015f;
-            }
-        }
+        // CenterLight.enabled = true;
+        // if (color1 && color2)
+        // {
+        //     if (CenterLight.intensity < InitialCenterLightIntensity)
+        //     {
+        //         CenterLight.intensity += 0.01f;
+        //     }
+        // }
+        // else
+        // {
+        //     if (CenterLight.intensity > 0)
+        //     {
+        //         CenterLight.intensity -= 0.015f;
+        //     }
+        // }
+        
+        LightFlashing(CenterLight);
 
-        float freq = Random.Range(0.25f, 1f);
-        foreach (var light in DiagonalLights)
-        {
-            light.enabled = true;
-            if (color1 && color2)
-            {
-                light.color = CustomColorsUtility.CustomColorToDefaultUnityColor(MixedColor);
-                if (light.intensity < InitialDiagonalLightIntensity)
-                {
-                    light.intensity += 0.01f;
-                }
-            }
-            else if (color1 || color2)
-            {
-                light.color = CustomColorsUtility.CustomColorToDefaultUnityColor(laserColors[0]);
-                LightStrobe(light, freq);
-            }
-            else
-            {
-                if (light.intensity > 0)
-                {
-                    light.intensity -= 0.01f;
-                }
-            }
-        }
+        // float freq = Random.Range(0.25f, 1f);
+        // foreach (var light in DiagonalLights)
+        // {
+        //     light.enabled = true;
+        //     if (color1 && color2)
+        //     {
+        //         light.color = CustomColorsUtility.CustomColorToDefaultUnityColor(MixedColor);
+        //         if (light.intensity < InitialDiagonalLightIntensity)
+        //         {
+        //             light.intensity += 0.01f;
+        //         }
+        //     }
+        //     else if (color1 || color2)
+        //     {
+        //         light.color = CustomColorsUtility.CustomColorToDefaultUnityColor(laserColors[0]);
+        //         LightStrobe(light, freq);
+        //     }
+        //     else
+        //     {
+        //         if (light.intensity > 0)
+        //         {
+        //             light.intensity -= 0.01f;
+        //         }
+        //     }
+        // }
     }
 
     private void RotateBase(bool color1, bool color2)
@@ -359,4 +365,31 @@ public class SimpleColorReceiver : MonoBehaviour
             Reactor_OFF.Play();
         }
     }
+
+    private void LightPulsing(Light2D light)
+    {
+        LightInterpolate += .1f * Time.deltaTime;
+        light.intensity = Mathf.Lerp(LightMin, LightMax, LightInterpolate);
+
+        if (LightInterpolate > 1f)
+        {
+            float intensity = LightMax;
+            LightMax = LightMin;
+            LightMin = intensity;
+            LightInterpolate = 0f; 
+        }
+    }
+
+    private void LightFlashing(Light2D light)
+    {
+        LightTimer += Time.deltaTime;
+        if (LightTimer > 0.24f)
+        {
+            LightToggle = !LightToggle; 
+            LightTimer = 0;
+            light.intensity = 5f*(LightToggle ? 1 : 0); 
+        }
+    }
+    
+    
 }

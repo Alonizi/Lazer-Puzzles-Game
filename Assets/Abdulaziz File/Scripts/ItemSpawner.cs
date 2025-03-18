@@ -53,7 +53,7 @@ public class ItemSpawner : MonoBehaviour
             TilesTransforms.Add(tile.gameObject.layer, tile.transform);
         }
     }
-    1
+    
     /// <summary>
     /// Subscribe to item selected event
     /// </summary>
