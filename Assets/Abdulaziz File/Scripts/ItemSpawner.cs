@@ -53,7 +53,7 @@ public class ItemSpawner : MonoBehaviour
             TilesTransforms.Add(tile.gameObject.layer, tile.transform);
         }
     }
-    
+    1
     /// <summary>
     /// Subscribe to item selected event
     /// </summary>
@@ -173,11 +173,10 @@ public class ItemSpawner : MonoBehaviour
     {
         SelectedItem = item;
         Debug.LogWarning($"{SelectedItem} Was Selected");
-        
-        if (SelectedItem == Mechanic.Delete && AddedItems.Count > 0)
-        {
-            DeleteItem();
-        }
+        // if (SelectedItem == Mechanic.Delete && AddedItems.Count > 0)
+        // {
+        //     DeleteItem();
+        // }
     }
     
     /// <summary>
@@ -251,28 +250,28 @@ public class ItemSpawner : MonoBehaviour
         return false;
     }
     
-    /// <summary>
-    /// Delete the last item added by the user and update item counts accordingly.
-    /// </summary>
-    private void DeleteItem()
-    {
-        var item = AddedItems.Pop();
-        Debug.Log($"Delete item {item.tag}");
-        switch (item.tag)
-        {
-            case "Mirror":
-                Mirrors_MaxCount++;
-                break;
-            case "Splitter":
-                Splitter_MaxCount++;
-                break;
-            case "Splitter_RGB":
-                Splitter_RGB_MaxCount++;
-                break;
-        }
-        Destroy(item);
-        ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
-    }
+    // /// <summary>
+    // /// Delete the last item added by the user and update item counts accordingly.
+    // /// </summary>
+    // private void DeleteItem()
+    // {
+    //     var item = AddedItems.Pop();
+    //     Debug.Log($"Delete item {item.tag}");
+    //     switch (item.tag)
+    //     {
+    //         case "Mirror":
+    //             Mirrors_MaxCount++;
+    //             break;
+    //         case "Splitter":
+    //             Splitter_MaxCount++;
+    //             break;
+    //         case "Splitter_RGB":
+    //             Splitter_RGB_MaxCount++;
+    //             break;
+    //     }
+    //     Destroy(item);
+    //     ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+    // }
 
     private void RemoveSelectedItem(Vector3Int ItemPositionInGrid)
     {
