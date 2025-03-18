@@ -52,7 +52,7 @@ public class Selector : MonoBehaviour
     /// <param name="mirrorsCount"> number of available mirrors </param>
     /// <param name="splittersCount"> number of available Splitters</param>
     /// <param name="splittersRgbCount"> number of available Splitter_RGB</param>
-    /// <param name="undoStackCounter"> number of available Splitter_RGB</param>
+    /// <param name="undoStackCounter"> number of Items spawned by user</param>
 
     public void UpdateButtons(int undoStackCounter,int mirrorsCount, int splittersCount, int splittersRgbCount)
     {
