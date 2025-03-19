@@ -7,6 +7,10 @@ using UnityEngine.EventSystems;
 
 public class TutorialManager : MonoBehaviour
 {
+    [Header("General Settings")]
+    [Tooltip("Delay before the tutorial starts (in seconds).")]
+    public float startDelay = 0f;
+
     [Header("Tutorial Steps")]
     [Tooltip("List of tutorial steps to configure in the Inspector.")]
     public List<TutorialStep> steps = new List<TutorialStep>();
@@ -41,6 +45,10 @@ public class TutorialManager : MonoBehaviour
     [Tooltip("Additional padding (in pixels) around the target area for the mask hole.")]
     public float maskHolePadding = 10f;
 
+    [Header("Animation Settings")]
+    [Tooltip("Duration for the mask hole animations (in seconds).")]
+    public float animationDuration = 0.5f;
+
     private int currentStepIndex = 0;
     private bool waitingForClick = false;
     private Canvas canvas; // Reference to the canvas where the tutorial lives
@@ -49,45 +57,89 @@ public class TutorialManager : MonoBehaviour
     {
         canvas = GetComponentInParent<Canvas>();
 
+        // Set the mask hole to 0 when the scene loads
+        if (blurMask != null && blurMask.material != null)
+        {
+            blurMask.material.SetFloat("_HoleRadius", 0f);
+        }
+
         // Set up exit button listener
         if (exitButton != null)
             exitButton.onClick.AddListener(OnExitButtonClicked);
         
-        // Ensure the exit confirmation panel is hidden at start
+        // Hide the exit confirmation panel at start
         if (exitConfirmationPanel != null)
             exitConfirmationPanel.SetActive(false);
     }
 
     private void Start()
     {
-        if(steps.Count > 0)
-            StartTutorialStep(currentStepIndex);
+        if (startDelay > 0)
+            StartCoroutine(StartAfterDelay());
         else
+            BeginTutorial();
+    }
+
+    private IEnumerator StartAfterDelay()
+    {
+        yield return new WaitForSeconds(startDelay);
+        BeginTutorial();
+    }
+
+    private void BeginTutorial()
+    {
+        if (steps.Count > 0)
+        {
+            TutorialStep firstStep = steps[0];
+            if (firstStep.target != null)
+            {
+                // Update the mask center based on the target
+                UpdateMaskHole(firstStep.target);
+                float targetRadius = GetHoleRadius(firstStep.target);
+                // Animate the hole radius from 0 to the computed size and then start step 0
+                StartCoroutine(BeginTutorialAfterAnimation(targetRadius));
+            }
+            else
+            {
+                StartTutorialStep(0);
+            }
+        }
+        else
+        {
             EndTutorial();
+        }
+    }
+
+    private IEnumerator BeginTutorialAfterAnimation(float targetRadius)
+    {
+        yield return StartCoroutine(AnimateHoleRadius(0, targetRadius, animationDuration));
+        StartTutorialStep(0);
     }
 
     private void StartTutorialStep(int index)
     {
-        if(index >= steps.Count) {
+        if (index >= steps.Count)
+        {
             EndTutorial();
             return;
         }
         TutorialStep step = steps[index];
 
-        // Reposition the hand icon on the target (if available)
-        if(step.target != null && handIcon != null)
+        // Position the hand icon on the target, applying the offset and rotation
+        if (step.target != null && handIcon != null)
         {
-            handIcon.rectTransform.position = step.target.position;
+            handIcon.rectTransform.position = step.target.position + (Vector3)step.handOffset;
+            handIcon.rectTransform.rotation = Quaternion.Euler(0f, 0f, step.handRotation);
         }
 
-        // Update the mask’s hole position and size based on the target
+        // Update the mask's hole based on the target (calculation remains unchanged)
         UpdateMaskHole(step.target);
 
-        // Start the typewriter effect for the instruction text
-        if(instructionText != null)
+        // Begin the typewriter effect for the instruction text
+        if (instructionText != null)
         {
             instructionText.text = "";
-            StopAllCoroutines(); // In case any previous typewriter coroutine is running
+            StopAllCoroutines();
             StartCoroutine(TypeText(step.instruction));
         }
 
@@ -109,30 +161,60 @@ public class TutorialManager : MonoBehaviour
     }
 
     // Updates the mask material to cut a hole around the target area.
-    // This assumes your material has properties _HoleCenter (Vector2) and _HoleRadius (float)
     private void UpdateMaskHole(RectTransform target)
     {
-        if(blurMask == null || target == null) return;
+        if (blurMask == null || target == null) return;
         
-        // Convert target position from world space to screen space
+        // Convert target position to screen space
         Vector2 screenPos = RectTransformUtility.WorldToScreenPoint(null, target.position);
-        Vector2 canvasSize = canvas.GetComponent<RectTransform>().sizeDelta;
-        Vector2 localPos;
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas.transform as RectTransform, screenPos, canvas.worldCamera, out localPos);
-        // Normalize position (0 to 1) based on the canvas size (assuming canvas pivot is at 0.5,0.5)
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        Vector2 canvasSize = canvasRect.sizeDelta;
+        
+        // Convert to local coordinates
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(
+            canvasRect,
+            screenPos,
+            canvas.worldCamera,
+            out Vector2 localPos
+        );
+
+        // Normalize position (assuming canvas pivot is at 0.5, 0.5)
         Vector2 pivotAdjusted = new Vector2(localPos.x / canvasSize.x + 0.5f, localPos.y / canvasSize.y + 0.5f);
 
-        // Set shader properties for the mask (custom material used on blurMask)
         Material mat = blurMask.material;
-        if(mat != null)
+        if (mat != null)
         {
             mat.SetVector("_HoleCenter", pivotAdjusted);
-            // Calculate a radius based on the target's size (plus padding) normalized to the canvas size.
-            Vector2 targetSize = target.rect.size;
-            Vector2 normalizedSize = new Vector2(targetSize.x / canvasSize.x, targetSize.y / canvasSize.y);
-            float radius = (normalizedSize.magnitude * 0.5f) + (maskHolePadding / Mathf.Max(canvasSize.x, canvasSize.y));
+            // Calculate and immediately set the correct radius (used during steps)
+            float radius = GetHoleRadius(target);
             mat.SetFloat("_HoleRadius", radius);
         }
+    }
+
+    // Returns the calculated hole radius based on the target's size and padding.
+    private float GetHoleRadius(RectTransform target)
+    {
+        RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+        Vector2 canvasSize = canvasRect.sizeDelta;
+        Vector2 targetSize = target.rect.size;
+        Vector2 normalizedSize = new Vector2(targetSize.x / canvasSize.x, targetSize.y / canvasSize.y);
+        float radius = (normalizedSize.magnitude * 0.5f) + (maskHolePadding / Mathf.Max(canvasSize.x, canvasSize.y));
+        return radius;
+    }
+
+    // Coroutine to animate the _HoleRadius property of the blur mask.
+    private IEnumerator AnimateHoleRadius(float startRadius, float endRadius, float duration)
+    {
+        Material mat = blurMask.material;
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            float newRadius = Mathf.Lerp(startRadius, endRadius, elapsed / duration);
+            mat.SetFloat("_HoleRadius", newRadius);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        mat.SetFloat("_HoleRadius", endRadius);
     }
 
     private void Update()
@@ -140,13 +222,16 @@ public class TutorialManager : MonoBehaviour
         if (!waitingForClick)
             return;
 
-        // Listen for player click
         if (Input.GetMouseButtonDown(0))
         {
             TutorialStep step = steps[currentStepIndex];
-            // Only process clicks that fall inside the target's area
-            if (step.target != null && RectTransformUtility.RectangleContainsScreenPoint(step.target, Input.mousePosition, canvas.worldCamera))
+            if (step.target != null &&
+                RectTransformUtility.RectangleContainsScreenPoint(step.target, Input.mousePosition, canvas.worldCamera))
             {
+                if (step.simulateUnderlyingClick)
+                {
+                    SimulateClickOnTarget(step.target.gameObject);
+                }
                 waitingForClick = false;
                 currentStepIndex++;
                 StartTutorialStep(currentStepIndex);
@@ -154,18 +239,35 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    // Called when the exit button (X) is clicked.
-    // It displays a confirmation dialog.
+    /// <summary>
+    /// Sends pointerDown, pointerUp, and pointerClick events to the specified GameObject.
+    /// </summary>
+    private void SimulateClickOnTarget(GameObject targetObject)
+    {
+        if (EventSystem.current == null) return;
+
+        PointerEventData pointerData = new PointerEventData(EventSystem.current)
+        {
+            position = Input.mousePosition
+        };
+
+        ExecuteEvents.Execute(targetObject, pointerData, ExecuteEvents.pointerEnterHandler);
+        ExecuteEvents.Execute(targetObject, pointerData, ExecuteEvents.pointerDownHandler);
+        ExecuteEvents.Execute(targetObject, pointerData, ExecuteEvents.pointerUpHandler);
+        ExecuteEvents.Execute(targetObject, pointerData, ExecuteEvents.pointerClickHandler);
+    }
+
     private void OnExitButtonClicked()
     {
-        if(exitConfirmationPanel != null)
+        if (exitConfirmationPanel != null)
         {
             exitConfirmationPanel.SetActive(true);
-            // Assumes the confirmation panel has child buttons named "YesButton" and "NoButton"
             Button yesButton = exitConfirmationPanel.transform.Find("YesButton").GetComponent<Button>();
             Button noButton = exitConfirmationPanel.transform.Find("NoButton").GetComponent<Button>();
+
             yesButton.onClick.RemoveAllListeners();
             noButton.onClick.RemoveAllListeners();
+
             yesButton.onClick.AddListener(() => {
                 exitConfirmationPanel.SetActive(false);
                 EndTutorial();
@@ -176,10 +278,18 @@ public class TutorialManager : MonoBehaviour
         }
     }
 
-    // Ends the tutorial by disabling the tutorial UI.
     private void EndTutorial()
     {
+        // Animate the hole radius back to 0 before disabling the tutorial.
+        StartCoroutine(EndTutorialAnimation());
+    }
+
+    private IEnumerator EndTutorialAnimation()
+    {
+        Material mat = blurMask.material;
+        float currentRadius = mat.GetFloat("_HoleRadius");
+        yield return StartCoroutine(AnimateHoleRadius(currentRadius, 0, animationDuration));
         gameObject.SetActive(false);
-        // Optionally, you can notify other game systems that the tutorial is finished.
+        // Optionally, notify other systems that the tutorial has finished.
     }
 }
