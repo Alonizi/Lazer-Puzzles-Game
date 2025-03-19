@@ -150,6 +150,11 @@ public class LaserSplitter : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        DestroyAllEmittingLazers();
+    }
+
     public void DestroyAllEmittingLazers()
     {
         Debug.LogWarning("Splitter Exit Collision Event");
