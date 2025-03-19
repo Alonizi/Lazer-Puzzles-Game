@@ -647,6 +647,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2628170156541818328, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2639398167260834614, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 4.9001465
@@ -655,13 +659,25 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 4.9001465
       objectReference: {fileID: 0}
+    - target: {fileID: 3858228169071956854, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
       value: Items Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4958660621856138423, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4970625174115266954, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 9.5998535
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7320350178601017298, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6278,7 +6294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
       propertyPath: Mirrors_MaxCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
       propertyPath: Splitter_MaxCount
@@ -6509,6 +6525,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 17a51982023db6249bac50f851afc789, type: 3}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
+      propertyPath: typingSpeed
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[1].target
       value: 
       objectReference: {fileID: 1180153256}
@@ -6518,11 +6538,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[1].handOffset.x
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[1].handOffset.y
-      value: -25
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[2].handOffset.y
