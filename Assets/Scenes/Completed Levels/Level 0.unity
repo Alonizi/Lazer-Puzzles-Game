@@ -1952,6 +1952,14 @@ PrefabInstance:
       propertyPath: nextTransition
       value: 
       objectReference: {fileID: 11400000, guid: 4493669f12f2be84d916b7233a706e72, type: 2}
+    - target: {fileID: 1559563980335007578, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 7064318729047467667, guid: 4331675c76ad7b04f8e5f76c55cdc7b2, type: 3}
+    - target: {fileID: 1559563980335007578, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1946264065657204871, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_SpriteState.m_HighlightedSprite
       value: 
@@ -2056,6 +2064,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690755296063705203, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690755296063705203, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690755296063705203, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -21.313965
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690755296063705203, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -119.48804
+      objectReference: {fileID: 0}
     - target: {fileID: 4821907775161175190, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -2100,6 +2124,26 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8300303974695144225, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 168282292963769031, guid: 4331675c76ad7b04f8e5f76c55cdc7b2, type: 3}
+    - target: {fileID: 8381584314163053556, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: f4db55dd57f77604ab9eedbd32deb838, type: 3}
+    - target: {fileID: 8381584314163053556, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c40fab9e828ef146accddbfa1c4872c, type: 3}
+    - target: {fileID: 8593708188158827090, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 5bbb169ea5068e644a8adf713f8fe10c, type: 3}
+    - target: {fileID: 8593708188158827090, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c40fab9e828ef146accddbfa1c4872c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -8773,6 +8817,14 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.052
       objectReference: {fileID: 0}
+    - target: {fileID: 7294741767193040533, guid: a2beb605fb71e6647bb920e1a7976be5, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: f4db55dd57f77604ab9eedbd32deb838, type: 3}
+    - target: {fileID: 7294741767193040533, guid: a2beb605fb71e6647bb920e1a7976be5, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: f4db55dd57f77604ab9eedbd32deb838, type: 3}
     - target: {fileID: 7340359233744079737, guid: a2beb605fb71e6647bb920e1a7976be5, type: 3}
       propertyPath: m_Name
       value: Audio Manager
