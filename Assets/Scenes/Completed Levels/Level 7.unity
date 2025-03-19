@@ -3515,8 +3515,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1085603553311463669, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_text
-      value: Level 7
+      value: Level 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1528958066805912385, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: nextTransition
+      value: 
+      objectReference: {fileID: 11400000, guid: 932d11db377b4844f8322fb73bd0a2cf, type: 2}
     - target: {fileID: 2584526599238063077, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13395,9 +13399,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3858228169071956854, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
       value: Items Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958660621856138423, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

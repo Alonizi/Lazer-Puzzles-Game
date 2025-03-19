@@ -8,7 +8,7 @@ public class LevelMenu : MonoBehaviour
 {
     public Button[] buttons;
     public Image[] lockImages;
-    public TransitionSettings transition; 
+    public TransitionSettings[] transitions;
     public float startDelay = 0.5f;
 
     private void Awake()
@@ -29,7 +29,10 @@ public class LevelMenu : MonoBehaviour
     public void OpenLevel(int levelId)
     {
         string levelName = "Level " + levelId;
-        TransitionManager.Instance().Transition(levelName, transition, startDelay);
+        if (levelId >= 0 && levelId < transitions.Length)
+        {
+            TransitionManager.Instance().Transition(levelName, transitions[levelId], startDelay);
+        }
     }
 
     public void ResetProgress()
