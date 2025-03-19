@@ -959,9 +959,41 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1790113845710037095, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_Volume
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2628170156541818328, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911786951419167084, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_Name
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858228169071956854, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_Name
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3858228169071956854, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
       value: Items Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4958660621856138423, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_Name
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1886,10 +1918,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 860610271332836521, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -4490364071563036899, guid: 4ff2a637c23eeb94b9ebe1ea65e91a1f, type: 3}
     - target: {fileID: 1085603553311463669, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_text
-      value: Level 0
+      value: Level 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1528958066805912385, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: nextTransition
+      value: 
+      objectReference: {fileID: 11400000, guid: 4493669f12f2be84d916b7233a706e72, type: 2}
+    - target: {fileID: 1946264065657204871, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 7708219543788459330, guid: 4ff2a637c23eeb94b9ebe1ea65e91a1f, type: 3}
     - target: {fileID: 2480558283682842824, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8700,6 +8744,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4816383753931942595, guid: a2beb605fb71e6647bb920e1a7976be5, type: 3}
+      propertyPath: m_Volume
+      value: 0.052
+      objectReference: {fileID: 0}
     - target: {fileID: 7340359233744079737, guid: a2beb605fb71e6647bb920e1a7976be5, type: 3}
       propertyPath: m_Name
       value: Audio Manager
