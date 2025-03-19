@@ -403,6 +403,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -2597,7 +2610,106 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      buttons_2_0: -8709443449330583512
+      buttons_2_1: 7266799036350238372
+      buttons_2_10: -4878827622957473509
+      buttons_2_11: -8628239291590397463
+      buttons_2_12: 5911355277431904091
+      buttons_2_13: -6523435727014180066
+      buttons_2_14: 4592237847554202197
+      buttons_2_15: 2757630801268284753
+      buttons_2_16: 4403381903542303089
+      buttons_2_17: 5706229135400175297
+      buttons_2_18: -7571182206791973476
+      buttons_2_19: -5843764071748531917
+      buttons_2_2: -2746285829971350052
+      buttons_2_20: -424630484651526854
+      buttons_2_21: 382074112693050061
+      buttons_2_22: 2306402658891787068
+      buttons_2_23: -2845000847059499432
+      buttons_2_24: 443544002039097349
+      buttons_2_25: -263688445925026950
+      buttons_2_26: -1494952335104245191
+      buttons_2_27: -666698448602433741
+      buttons_2_28: -8756449933274085805
+      buttons_2_29: -4415716273128623792
+      buttons_2_3: -749072357969699097
+      buttons_2_30: 3540506768568836363
+      buttons_2_31: 3788062219791183922
+      buttons_2_32: 3322040539882534338
+      buttons_2_33: 766239216307930925
+      buttons_2_34: 2363292611763099998
+      buttons_2_35: -215190167159365496
+      buttons_2_36: -8272725618667600975
+      buttons_2_37: 8734974244064910692
+      buttons_2_38: 5247949199369115463
+      buttons_2_39: -7523856355618913954
+      buttons_2_4: 8784852291458843485
+      buttons_2_40: 1752818006840162825
+      buttons_2_41: -4494656974335060098
+      buttons_2_42: -778214394478347236
+      buttons_2_43: -5323385928341893806
+      buttons_2_44: -2942532096186329532
+      buttons_2_45: -4651182849870321181
+      buttons_2_46: -1911142238251656351
+      buttons_2_47: -1369966493012793651
+      buttons_2_48: 5695760319831196202
+      buttons_2_49: 663249903454355859
+      buttons_2_5: 6181096061652536754
+      buttons_2_50: -88112442348149201
+      buttons_2_51: 475730420814772606
+      buttons_2_52: 536759677371384000
+      buttons_2_53: 3235100995658661366
+      buttons_2_54: -965255284958801676
+      buttons_2_55: 8768415320468859588
+      buttons_2_56: 5536905569140979000
+      buttons_2_57: 3259917685589228589
+      buttons_2_58: -7481741209510625887
+      buttons_2_59: 5101490541051647847
+      buttons_2_6: -8107341398595348168
+      buttons_2_60: -5230790705063619101
+      buttons_2_61: -7408544501111143485
+      buttons_2_62: -8734952674356226949
+      buttons_2_63: 5115063727891663595
+      buttons_2_64: 4373368423817008644
+      buttons_2_65: -4438330236027269592
+      buttons_2_66: -7108217579384957323
+      buttons_2_67: -284377929215748309
+      buttons_2_68: 7733715207320963854
+      buttons_2_69: 338034947829650371
+      buttons_2_7: -2926644222109615113
+      buttons_2_70: -8635798562192942964
+      buttons_2_71: -8429625997874394579
+      buttons_2_72: -3625303952134085501
+      buttons_2_73: 4117479065867659460
+      buttons_2_74: 4983701499179686691
+      buttons_2_75: 9175481661862009146
+      buttons_2_76: 7906790956049035873
+      buttons_2_77: 6380820019194857098
+      buttons_2_78: -8411874827011062791
+      buttons_2_79: -8638487476545415644
+      buttons_2_8: -244399265092204380
+      buttons_2_80: -1442431754232078163
+      buttons_2_81: 8287980971351360477
+      buttons_2_82: -504895471142441239
+      buttons_2_83: -2621047517223070934
+      buttons_2_84: 2591393376952885340
+      buttons_2_85: 2212621165735636632
+      buttons_2_86: 3064774004759600672
+      buttons_2_87: -6218520710074821972
+      buttons_2_88: -1269859122463641475
+      buttons_2_89: -1553056535218623420
+      buttons_2_9: -8428052924701648424
+      buttons_2_90: -1896518088038522338
+      buttons_2_91: 1658191572811098423
+      buttons_2_92: 5756762320881433018
+      buttons_2_93: -8565915462881544171
+      buttons_2_94: 3330761288311278809
+      buttons_2_95: 6971472004661122332
+      buttons_2_96: -6576576165143050514
+      buttons_2_97: 462183609145381223
+      buttons_2_98: -8866457664641289559
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
