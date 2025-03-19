@@ -355,7 +355,7 @@ public class SimpleColorReceiver : MonoBehaviour
         LightTimer += Time.deltaTime;
         if (LightTimer > freq)
         {
-            light.intensity = Random.Range(0f, 2f);
+            light.intensity = Random.Range(0f, 10f);
             LightTimer = 0f;
         }
     }
@@ -435,7 +435,7 @@ public class SimpleColorReceiver : MonoBehaviour
                 Pulse_VFX.Play();
             }
             TriangleSymbol.gameObject.SetActive(true);
-            if (TriangleLight.intensity < 3)
+            if (TriangleLight.intensity < 15)
             {
                 TriangleLight.intensity += 0.005f;
             }
@@ -445,14 +445,14 @@ public class SimpleColorReceiver : MonoBehaviour
         {
             Pulse_VFX.Stop();
             TriangleSymbol.gameObject.SetActive(true);
-            LightStrobe(TriangleLight, Random.Range(0,1.5f));
+            LightStrobe(TriangleLight, Random.Range(0f,2f));
         }
         else
         {
             Pulse_VFX.Stop();
             if (TriangleLight.intensity > 0)
             {
-                TriangleLight.intensity -= 0.0025f;
+                TriangleLight.intensity -= 0.02f;
             }
 
             if (TriangleLight.intensity <= 0)
