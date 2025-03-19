@@ -10379,9 +10379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[4].instruction
-      value: These blockers prevent you from placing devices on certain spots. In
-        some cases, they can help guide your setup, but other times, they might create
-        obstacles you need to work around.
+      value: These blockers prevent you from placing devices on certain spots.
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[5].instruction
@@ -10445,11 +10443,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[5].handOffset.x
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[5].handOffset.y
-      value: -35
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[6].handOffset.y
@@ -10469,11 +10467,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[9].handOffset.x
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[9].handOffset.y
-      value: -35
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[10].handOffset.y

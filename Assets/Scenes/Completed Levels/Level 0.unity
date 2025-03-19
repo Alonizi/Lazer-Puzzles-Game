@@ -1927,6 +1927,14 @@ PrefabInstance:
       propertyPath: orthographic size
       value: 6.5
       objectReference: {fileID: 0}
+    - target: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+      propertyPath: shakeDuration
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+      propertyPath: shakeMagnitude
+      value: 0.05
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
