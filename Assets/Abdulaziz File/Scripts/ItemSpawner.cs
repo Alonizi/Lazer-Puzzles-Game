@@ -1,5 +1,6 @@
 // Copyright © Abdulaziz Alonizi 2025
 
+using System;
 using System.Collections.Generic;
 using Abdulaziz_File.Scripts;
 using UnityEngine;
@@ -31,7 +32,8 @@ public class ItemSpawner : MonoBehaviour
     private Mechanic? SelectedItem;
     private Dictionary<int, Transform> TilesTransforms;
     private Stack<GameObject> AddedItems;
-    private Selector ItemSelector; 
+    private Selector ItemSelector;
+    private Dictionary<Vector3Int,GameObject> AddedItemsDictionary; 
     
     /// <summary>
     /// Cache/instantiate necessary objects
@@ -41,6 +43,7 @@ public class ItemSpawner : MonoBehaviour
         ItemSelector = FindAnyObjectByType<Selector>();
         AddedItems = new Stack<GameObject>();
         TilesTransforms = new Dictionary<int, Transform>();
+        AddedItemsDictionary = new Dictionary<Vector3Int, GameObject>();
         SelectedItem = null; 
         World = FindAnyObjectByType<Grid>();
         Tiles = FindObjectsByType<Tilemap>(FindObjectsSortMode.None);
@@ -72,7 +75,14 @@ public class ItemSpawner : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1)) // right click (Remove)
+        {
+            Vector3Int cellPosition = MousePositionToGrid();
+            
+            RemoveSelectedItem(cellPosition);
+
+        }
+        if (Input.GetMouseButtonDown(0)) // left click (Spwan)
         {
             Vector3Int cellPosition = MousePositionToGrid();
             
@@ -163,11 +173,10 @@ public class ItemSpawner : MonoBehaviour
     {
         SelectedItem = item;
         Debug.LogWarning($"{SelectedItem} Was Selected");
-        
-        if (SelectedItem == Mechanic.Delete && AddedItems.Count > 0)
-        {
-            DeleteItem();
-        }
+        // if (SelectedItem == Mechanic.Delete && AddedItems.Count > 0)
+        // {
+        //     DeleteItem();
+        // }
     }
     
     /// <summary>
@@ -204,6 +213,7 @@ public class ItemSpawner : MonoBehaviour
             var item = Instantiate(Mirror, World.GetCellCenterWorld(cellPosition),
                 Quaternion.Euler(new Vector3(0, 0, 0)), parent: parentTile);
             AddedItems.Push(item.gameObject); // Keep track of added items
+            AddedItemsDictionary.Add(cellPosition,item.gameObject);
             Mirrors_MaxCount--;             // Reduce available mirrors count
             ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
             return true;
@@ -222,13 +232,16 @@ public class ItemSpawner : MonoBehaviour
         {
             var item = Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
             AddedItems.Push(item.gameObject);
+            AddedItemsDictionary.Add(cellPosition,item.gameObject);
             Splitter_RGB_MaxCount--;
             ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+            
             return true;
         }
         else if (!isRGB && Splitter_MaxCount > 0)
         {
             var item = Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
+            AddedItemsDictionary.Add(cellPosition,item.gameObject);
             AddedItems.Push(item.gameObject);
             Splitter_MaxCount--;
             ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
@@ -237,27 +250,57 @@ public class ItemSpawner : MonoBehaviour
         return false;
     }
     
-    /// <summary>
-    /// Delete the last item added by the user and update item counts accordingly.
-    /// </summary>
-    private void DeleteItem()
+    // /// <summary>
+    // /// Delete the last item added by the user and update item counts accordingly.
+    // /// </summary>
+    // private void DeleteItem()
+    // {
+    //     var item = AddedItems.Pop();
+    //     Debug.Log($"Delete item {item.tag}");
+    //     switch (item.tag)
+    //     {
+    //         case "Mirror":
+    //             Mirrors_MaxCount++;
+    //             break;
+    //         case "Splitter":
+    //             Splitter_MaxCount++;
+    //             break;
+    //         case "Splitter_RGB":
+    //             Splitter_RGB_MaxCount++;
+    //             break;
+    //     }
+    //     Destroy(item);
+    //     ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+    // }
+
+    private void RemoveSelectedItem(Vector3Int ItemPositionInGrid)
     {
-        var item = AddedItems.Pop();
-        Debug.Log($"Delete item {item.tag}");
-        switch (item.tag)
+        try
         {
-            case "Mirror":
-                Mirrors_MaxCount++;
-                break;
-            case "Splitter":
-                Splitter_MaxCount++;
-                break;
-            case "Splitter_RGB":
-                Splitter_RGB_MaxCount++;
-                break;
+            var item = AddedItemsDictionary[ItemPositionInGrid];
+            Debug.Log($"Delete item {item.tag}");
+            switch (item.tag)
+            {
+                case "Mirror":
+                    Mirrors_MaxCount++;
+                    break;
+                case "Splitter":
+                    Splitter_MaxCount++;
+                    break;
+                case "Splitter_RGB":
+                    Splitter_RGB_MaxCount++;
+                    break;
+            }
+
+            AddedItemsDictionary.Remove(ItemPositionInGrid);
+            Destroy(item);
+            ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
         }
-        Destroy(item);
-        ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+        catch (KeyNotFoundException e)
+        {
+            Debug.LogWarning("selected item was not spawned by user");
+            //throw;
+        }
     }
     
     /// <summary>

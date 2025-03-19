@@ -18,7 +18,30 @@ public class Selector : MonoBehaviour
     [SerializeField] private Button UndoButton;
     public event Action<Mechanic?> OnItemSelected;
     private Mechanic? CurrentSelection;
-    
+
+    private void Update()
+    {
+        if (Input.GetKeyDown("1"))
+        {
+            MirrorButton.Select();
+            CurrentSelection = Mechanic.Mirror;
+            OnItemSelected(CurrentSelection);
+        }
+
+        if (Input.GetKeyDown("2"))
+        {
+            SplitterButton.Select();
+            CurrentSelection = Mechanic.Splitter;
+            OnItemSelected(CurrentSelection);
+        }
+        if (Input.GetKeyDown("3"))
+        {
+            SplitterRgbButton.Select();
+            CurrentSelection = Mechanic.Splitter_RGB;
+            OnItemSelected(CurrentSelection);
+        }
+    }
+
     /// <summary>
     /// identify and cache the selected mechanic , and trigger an event signaling an item was selected 
     /// </summary>
@@ -52,7 +75,7 @@ public class Selector : MonoBehaviour
     /// <param name="mirrorsCount"> number of available mirrors </param>
     /// <param name="splittersCount"> number of available Splitters</param>
     /// <param name="splittersRgbCount"> number of available Splitter_RGB</param>
-    /// <param name="undoStackCounter"> number of available Splitter_RGB</param>
+    /// <param name="undoStackCounter"> number of Items spawned by user</param>
 
     public void UpdateButtons(int undoStackCounter,int mirrorsCount, int splittersCount, int splittersRgbCount)
     {
