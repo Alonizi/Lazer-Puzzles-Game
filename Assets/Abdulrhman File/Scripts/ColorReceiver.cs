@@ -31,38 +31,56 @@ public class SimpleColorReceiver : MonoBehaviour
     [Header("Win Panel")]
     public GameObject PanelWin;
 
+    [Header("Symbols")] 
+    [SerializeField]private Transform HazardSymbol;
+    [SerializeField] private Transform TriangleSymbol; 
+    
+    
+
     [Header("Receivers")]
     public int receiverIndex;
     public static int totalReceivers = 0;
     public static int activatedReceivers = 0;
 
-    [Header("effects")]
+    [Header("Lights")]
     public Light2D[] DiagonalLights;
-    public Light2D CenterLight;
+    public Light2D[] CenterLight;
+    public Light2D TriangleLight;
 
     private Rigidbody2D[] ReactorRigids;
     private float ReactorSpinSpeed = 0f;
     private float InitialCenterLightIntensity;
     private float InitialDiagonalLightIntensity;
     private float LightTimer = 0f;
-    private float LightMax = 5f;
+    private float LightMax = 1f;
     private float LightMin = 0f;
     private float LightInterpolate = 0f;
-    private bool LightToggle = false; 
+    private bool LightToggle = false;
     
+    [Header("SFX")]
     [SerializeField] private AudioSource Reactor_ON;
     [SerializeField] private AudioSource Reactor_OFF;
     [SerializeField] private AudioSource Reactor_Running;
+    [SerializeField] private AudioSource Hazard_Beep;
+    
+    [Header("SFX")]
+    [SerializeField] private ParticleSystem Pulse_VFX;
+
+    
+
     private int OnCounter = 0;
     private int OffCounter = 0;
+    
     
     [Header("Camera Shake")]
     [Tooltip("Optional: Reference to the CameraShake component. If left empty, the script will try to find one on the main camera.")]
     public CameraShake cameraShake;
-    
+
+    public float F =.5f;
+
     private void Awake()
     {
-        InitialCenterLightIntensity = CenterLight.intensity;
+        //InitialCenterLightIntensity = CenterLight.intensity;
         InitialDiagonalLightIntensity = DiagonalLights[0].intensity;
         spriteRenderer = GetComponent<SpriteRenderer>();
         if (spriteRenderer == null)
@@ -111,6 +129,7 @@ public class SimpleColorReceiver : MonoBehaviour
     {
         bool color1Reached = false;
         bool color2Reached = false;
+        bool wrongColorReached = false; 
 
         foreach (CustomColors c in laserColors)
         {
@@ -124,6 +143,15 @@ public class SimpleColorReceiver : MonoBehaviour
             }
         }
 
+        if (laserColors.Count == 1)
+        {
+            wrongColorReached = !color1Reached && !color2Reached;
+        }
+        else if (laserColors.Count > 1)
+        {
+            wrongColorReached =  !color1Reached || !color2Reached;
+        }
+        
         bool onlyTargetColors = (two && laserColors.Count == 2 && color1Reached && color2Reached) ||
                                   (!two && laserColors.Count == 1 && color1Reached);
 
@@ -170,15 +198,15 @@ public class SimpleColorReceiver : MonoBehaviour
         
         if (two)
         {
-            PlayAudio(color1Reached && color2Reached);
+            PlayAudio(color1Reached && color2Reached,wrongColorReached);
             RotateBase(color1Reached, color2Reached);
-            ActivateEffects(color1Reached, color2Reached);
+            ActivateLightEffects(color1Reached, color2Reached , wrongColorReached);
         }
         else
         {
-            PlayAudio(color1Reached);
+            PlayAudio(color1Reached,wrongColorReached);
             RotateBase(color1Reached, color1Reached);
-            ActivateEffects(color1Reached, color1Reached);
+            ActivateLightEffects(color1Reached, color1Reached, wrongColorReached);
         }
         laserColors.Clear(); // Reset for the next frame
     }
@@ -266,70 +294,60 @@ public class SimpleColorReceiver : MonoBehaviour
                Mathf.Abs(a.b - b.b) < tolerance;
     }
 
-    private void ActivateEffects(bool color1, bool color2)
+    private void ActivateLightEffects(bool color1, bool color2 , bool wrongColor)
     {
-        // CenterLight.enabled = true;
-        // if (color1 && color2)
-        // {
-        //     if (CenterLight.intensity < InitialCenterLightIntensity)
-        //     {
-        //         CenterLight.intensity += 0.01f;
-        //     }
-        // }
-        // else
-        // {
-        //     if (CenterLight.intensity > 0)
-        //     {
-        //         CenterLight.intensity -= 0.015f;
-        //     }
-        // }
         
-        LightFlashing(CenterLight);
-
-        // float freq = Random.Range(0.25f, 1f);
-        // foreach (var light in DiagonalLights)
-        // {
-        //     light.enabled = true;
-        //     if (color1 && color2)
-        //     {
-        //         light.color = CustomColorsUtility.CustomColorToDefaultUnityColor(MixedColor);
-        //         if (light.intensity < InitialDiagonalLightIntensity)
-        //         {
-        //             light.intensity += 0.01f;
-        //         }
-        //     }
-        //     else if (color1 || color2)
-        //     {
-        //         light.color = CustomColorsUtility.CustomColorToDefaultUnityColor(laserColors[0]);
-        //         LightStrobe(light, freq);
-        //     }
-        //     else
-        //     {
-        //         if (light.intensity > 0)
-        //         {
-        //             light.intensity -= 0.01f;
-        //         }
-        //     }
-        // }
+        HazradLightEffect(wrongColor);
+        DiagonalLightsEffect(color1, color2,wrongColor);
+        
+        
+            // if (color1 && color2)
+            // {
+            //     //color = CustomColorsUtility.CustomColorToDefaultUnityColor(MixedColor);
+            //     if (GetComponent<Light>().intensity < InitialDiagonalLightIntensity)
+            //     {
+            //         GetComponent<Light>().intensity += 0.01f;
+            //     }
+            // }
+            // else if (color1 || color2)
+            // {
+            //     GetComponent<Light>().color = CustomColorsUtility.CustomColorToDefaultUnityColor(laserColors[0]);
+            //     LightStrobe(GetComponent<Light>(), freq);
+            // }
+            // else
+            // {
+            //     if (GetComponent<Light>().intensity > 0)
+            //     {
+            //         GetComponent<Light>().intensity -= 0.01f;
+            //     }
+            // }
     }
 
     private void RotateBase(bool color1, bool color2)
     {
-        if (color1 && color2)
+        var multiplier = (color1 && color2 ? 4 : 1);
+        
+        if (color1 || color2)
         {
-            if (ReactorSpinSpeed < 250f)
+            if (ReactorSpinSpeed < 40f * multiplier)
             {
-                ReactorSpinSpeed += 0.5f;
+                ReactorSpinSpeed += 0.35f;
+            }
+            else if (ReactorSpinSpeed > 40f * multiplier)
+            {
+                ReactorSpinSpeed -= 0.25f;
+
             }
         }
-        else
+        else 
         {
             if (ReactorSpinSpeed > 0)
             {
-                ReactorSpinSpeed -= 0.5f;
+                ReactorSpinSpeed -= 0.1f;
             }
         }
         ReactorRigids[1].rotation -= ReactorSpinSpeed * Time.deltaTime;
+        ReactorRigids[0].rotation += ReactorSpinSpeed * Time.deltaTime;
     }
 
     private void LightStrobe(Light2D light, float freq)
@@ -337,18 +355,18 @@ public class SimpleColorReceiver : MonoBehaviour
         LightTimer += Time.deltaTime;
         if (LightTimer > freq)
         {
-            light.intensity = Random.Range(0f, 3f);
+            light.intensity = Random.Range(0f, 2f);
             LightTimer = 0f;
         }
     }
 
-    private void PlayAudio(bool on)
+    private void PlayAudio(bool on , bool wrongColor)
     {
         if (on && OnCounter < 1)
         {
             Reactor_Running.Stop();
             Reactor_OFF.Stop();
-            Reactor_ON.Play();
+            //Reactor_ON.Play();
             OnCounter++;
             OffCounter = 0;
         }
@@ -364,11 +382,17 @@ public class SimpleColorReceiver : MonoBehaviour
             Reactor_Running.Stop();
             Reactor_OFF.Play();
         }
+
+        if (wrongColor && !Hazard_Beep.isPlaying)
+        {
+            Hazard_Beep.Play();
+        }
     }
 
-    private void LightPulsing(Light2D light)
+    private void LightPulsing(Light2D light, float f )
     {
-        LightInterpolate += .1f * Time.deltaTime;
+        
+        LightInterpolate += F * Time.deltaTime;
         light.intensity = Mathf.Lerp(LightMin, LightMax, LightInterpolate);
 
         if (LightInterpolate > 1f)
@@ -380,16 +404,79 @@ public class SimpleColorReceiver : MonoBehaviour
         }
     }
 
-    private void LightFlashing(Light2D light)
+    private void HazradLightEffect(bool wrongColor)
     {
-        LightTimer += Time.deltaTime;
-        if (LightTimer > 0.24f)
+        if (wrongColor) 
         {
-            LightToggle = !LightToggle; 
-            LightTimer = 0;
-            light.intensity = 5f*(LightToggle ? 1 : 0); 
+            TriangleSymbol.gameObject.SetActive(false);
+            LightTimer += Time.deltaTime;
+            if (LightTimer > 0.24f)
+            {
+                HazardSymbol.gameObject.SetActive(true);
+                LightToggle = !LightToggle;
+                LightTimer = 0;
+                CenterLight[0].intensity = 5f * (LightToggle ? 1 : 0);
+                CenterLight[1].intensity = 5f * (LightToggle ? 1 : 0);
+                CenterLight[2].intensity = 5f * (LightToggle ? 1 : 0);
+            }
+        }
+        else
+        {
+            HazardSymbol.gameObject.SetActive(false);
         }
     }
-    
+
+    private void DiagonalLightsEffect(bool color1, bool color2 ,bool wrongColor)
+    {
+        if (color1 && color2)
+        {
+            if (!Pulse_VFX.isPlaying)
+            {
+                Pulse_VFX.Play();
+            }
+            TriangleSymbol.gameObject.SetActive(true);
+            if (TriangleLight.intensity < 3)
+            {
+                TriangleLight.intensity += 0.005f;
+            }
+            
+        }
+        else if (two && (color1 || color2) && !wrongColor)
+        {
+            Pulse_VFX.Stop();
+            TriangleSymbol.gameObject.SetActive(true);
+            LightStrobe(TriangleLight, Random.Range(0,1.5f));
+        }
+        else
+        {
+            Pulse_VFX.Stop();
+            if (TriangleLight.intensity > 0)
+            {
+                TriangleLight.intensity -= 0.0025f;
+            }
+
+            if (TriangleLight.intensity <= 0)
+            {
+                TriangleSymbol.gameObject.SetActive(false);
+            }
+        }
+        
+        
+        
+        foreach (var light in DiagonalLights)
+        {
+            if (color1 && color2)
+            { 
+                LightPulsing(light,0.075f);
+            }
+            else
+            {
+                if (light.intensity > 0)
+                {
+                    light.intensity -= 0.015f;
+                }
+            }
+        }
+    }
     
 }
