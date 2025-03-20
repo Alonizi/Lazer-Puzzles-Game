@@ -241,6 +241,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -1247,7 +1260,52 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Last version buttons_0: 1560212632958979135
+      Last version buttons_1: 3255695705822009161
+      Last version buttons_10: 7075746405349150744
+      Last version buttons_11: -2585093537257564562
+      Last version buttons_12: 3469532201443677014
+      Last version buttons_13: -1601404232955619722
+      Last version buttons_14: 3813670399692504096
+      Last version buttons_15: 5960649364402072061
+      Last version buttons_16: 1285781465501993679
+      Last version buttons_17: 4542658008635353768
+      Last version buttons_18: 573103399758748562
+      Last version buttons_19: -6890691712969838919
+      Last version buttons_2: -6200710166414140401
+      Last version buttons_20: -512420611254400656
+      Last version buttons_21: -3682487282079507076
+      Last version buttons_22: 182724130522602246
+      Last version buttons_23: 711331525963293308
+      Last version buttons_24: 3939234495346089532
+      Last version buttons_25: 2963688393905356733
+      Last version buttons_26: 7277722064344919193
+      Last version buttons_27: 103758722627526525
+      Last version buttons_28: -2137193896284946728
+      Last version buttons_29: 6408369133715059018
+      Last version buttons_3: -5722915789584840111
+      Last version buttons_30: 4492624278837433260
+      Last version buttons_31: -5965545652474626600
+      Last version buttons_32: 7669031429209135174
+      Last version buttons_33: 7746988657029060976
+      Last version buttons_34: -5386347400985063707
+      Last version buttons_35: -8152693611179312904
+      Last version buttons_36: -4453407413724412107
+      Last version buttons_37: 2590160335786700322
+      Last version buttons_38: 815568441146690277
+      Last version buttons_39: 2506452723408313655
+      Last version buttons_4: 2381395796941630802
+      Last version buttons_40: 3873403739983611209
+      Last version buttons_41: 7052384852791990129
+      Last version buttons_42: 8899059993491873450
+      Last version buttons_43: -8620760613219670707
+      Last version buttons_44: -995796000744042480
+      Last version buttons_5: 5390860450509090136
+      Last version buttons_6: 5340350217852341931
+      Last version buttons_7: -4909675123056760031
+      Last version buttons_8: -267497330642690498
+      Last version buttons_9: 1549849956757895262
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
