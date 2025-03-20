@@ -16,37 +16,37 @@ EditorBuildSettings:
     guid: 0941acbd63090b7489f10878242d0f4a
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 2.unity
-    guid: cd044a67d048144498f678fff35864a1
-  - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 3.unity
-    guid: 38513c389bf10444896ec67f76e35b8d
-  - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 4.unity
-    guid: 2a63fd7f307ebcf49973d825bd8d6fd4
-  - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 5.unity
-    guid: 79ff7c56b8dcad649ad4f8a83c42426d
-  - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 6.unity
     guid: 9f848162f4c2e23409d28ef6792a032d
   - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 7.unity
-    guid: 6ea4e30a61ece2f4fb88bee393d443e8
+    path: Assets/Scenes/Completed Levels/Level 3.unity
+    guid: 79ff7c56b8dcad649ad4f8a83c42426d
   - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 8.unity
+    path: Assets/Scenes/Completed Levels/Level 4.unity
+    guid: 38513c389bf10444896ec67f76e35b8d
+  - enabled: 1
+    path: Assets/Scenes/Completed Levels/Level 5.unity
     guid: 319e13d4ec34a1946b65e40b60414cf2
   - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 9.unity
+    path: Assets/Scenes/Completed Levels/Level 6.unity
+    guid: 6ea4e30a61ece2f4fb88bee393d443e8
+  - enabled: 1
+    path: Assets/Scenes/Completed Levels/Level 7.unity
     guid: b8ed6250fff11374eae5dc5749da2259
   - enabled: 1
-    path: Assets/Scenes/Completed Levels/Level 10.unity
+    path: Assets/Scenes/Completed Levels/Level 8.unity
     guid: a346b61edda4fcc4db5df60b954c8628
   - enabled: 1
+    path: Assets/Scenes/Completed Levels/Level 9.unity
+    guid: b503ab60cbf90994d95e676a2d53bd5d
+  - enabled: 1
+    path: Assets/Scenes/Completed Levels/Level 10.unity
+    guid: c357cec2b405a4d4a8feb70bd1f46d91
+  - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 11.unity
-    guid: 22ea6361288643c47b8758e99005bc19
+    guid: 7186ed67ec3f944d3b6bc2a09183ecce
   - enabled: 1
     path: Assets/Scenes/Completed Levels/Level 12.unity
-    guid: c162ae7177c57474da6c86be4faafb36
+    guid: f2a16369ab77040b9a11e12a0cfb22db
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

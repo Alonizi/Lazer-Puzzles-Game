@@ -1156,7 +1156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2628170156541818328, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2911786951419167084, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
@@ -1168,7 +1168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3858228169071956854, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
@@ -1176,7 +1176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958660621856138423, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
@@ -1184,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1261,6 +1261,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 823047145}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 819457463}
     - target: {fileID: 3604533099410779579, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Volume
       value: 0.5
@@ -2106,6 +2114,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+--- !u!114 &819457463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+  m_PrefabInstance: {fileID: 819457462}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77c0ac8e28484d4fa67b230a190bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &823047144
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9778,6 +9797,14 @@ PrefabInstance:
       propertyPath: PanelWin
       value: 
       objectReference: {fileID: 823047145}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 823047145}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 819457463}
     - target: {fileID: 7499259341554461123, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.5

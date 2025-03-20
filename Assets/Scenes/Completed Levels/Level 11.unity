@@ -1028,6 +1028,14 @@ PrefabInstance:
       propertyPath: PanelWin
       value: 
       objectReference: {fileID: 912179013}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 7499259341554461123, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.5
@@ -2381,6 +2389,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3946019579311470643, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.5
@@ -6588,6 +6604,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
@@ -11837,6 +11861,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+--- !u!114 &1383546100132725825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+  m_PrefabInstance: {fileID: 1383546100132725824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77c0ac8e28484d4fa67b230a190bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7459574632118978045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11847,7 +11882,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3416899457490039, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -240
+      value: -335
       objectReference: {fileID: 0}
     - target: {fileID: 136239153409597797, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Pivot.x
@@ -11943,11 +11978,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2628170156541818328, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2993251718112374565, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -207.8
+      value: -301.8
       objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
@@ -11955,15 +11990,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7492575976201040736, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -335
+      value: -240
       objectReference: {fileID: 0}
     - target: {fileID: 8928189775506515048, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -301.8
+      value: -207.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

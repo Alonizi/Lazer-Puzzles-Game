@@ -2711,6 +2711,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
@@ -4379,6 +4387,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 544644475361553567, guid: 4b36d53cc7fa84f9b95cc0e470de5b27, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 544644475361553567, guid: 4b36d53cc7fa84f9b95cc0e470de5b27, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 5775427036432539314, guid: 4b36d53cc7fa84f9b95cc0e470de5b27, type: 3}
       propertyPath: PanelWin
       value: 
@@ -6644,6 +6660,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
@@ -11774,6 +11798,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 544644475361553567, guid: 4b36d53cc7fa84f9b95cc0e470de5b27, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 544644475361553567, guid: 4b36d53cc7fa84f9b95cc0e470de5b27, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 5775427036432539314, guid: 4b36d53cc7fa84f9b95cc0e470de5b27, type: 3}
       propertyPath: PanelWin
       value: 
@@ -12327,6 +12359,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+--- !u!114 &1383546100132725825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+  m_PrefabInstance: {fileID: 1383546100132725824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77c0ac8e28484d4fa67b230a190bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7459574632118978045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12429,7 +12472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3858228169071956854, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
@@ -12437,7 +12480,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958660621856138423, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
