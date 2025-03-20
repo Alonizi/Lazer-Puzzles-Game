@@ -135,6 +135,14 @@ PrefabInstance:
       propertyPath: PanelWin
       value: 
       objectReference: {fileID: 912179013}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1047677277}
     - target: {fileID: 7499259341554461123, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.5
@@ -6531,6 +6539,14 @@ PrefabInstance:
       propertyPath: PanelWin
       value: 
       objectReference: {fileID: 912179013}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3783834543272605057, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1047677277}
     - target: {fileID: 7499259341554461123, guid: 31dba4fc738114e2088e6fd04c16c332, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7.5
@@ -7612,6 +7628,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+--- !u!114 &1047677277 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+  m_PrefabInstance: {fileID: 1047677276}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77c0ac8e28484d4fa67b230a190bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1048002933
 GameObject:
   m_ObjectHideFlags: 0
@@ -10085,6 +10112,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1375681725}
     m_Modifications:
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1047677277}
     - target: {fileID: 3946019579311470643, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.5
@@ -11500,6 +11535,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1375681725}
     m_Modifications:
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1047677277}
     - target: {fileID: 3946019579311470643, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 6.5
@@ -11743,11 +11786,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2628170156541818328, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3858228169071956854, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
@@ -11759,11 +11802,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4958660621856138423, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

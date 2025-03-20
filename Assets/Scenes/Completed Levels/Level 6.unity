@@ -2513,6 +2513,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+--- !u!114 &1494096332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+  m_PrefabInstance: {fileID: 1494096331}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77c0ac8e28484d4fa67b230a190bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1689957937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3681899952381882844, guid: e5dccc728e37e414397f4998184aebfe, type: 3}
@@ -2704,6 +2715,14 @@ PrefabInstance:
       propertyPath: PanelWin
       value: 
       objectReference: {fileID: 912179013}
+    - target: {fileID: 7011620301364950395, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 7011620301364950395, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1494096332}
     - target: {fileID: 8219677469056060449, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Purple Beta
@@ -7544,7 +7563,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3416899457490039, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -240
+      value: -335
       objectReference: {fileID: 0}
     - target: {fileID: 136239153409597797, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Pivot.x
@@ -7640,11 +7659,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2628170156541818328, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2993251718112374565, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -207.8
+      value: -301.8
       objectReference: {fileID: 0}
     - target: {fileID: 4172453522651430742, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_Name
@@ -7652,15 +7671,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7000443669881989891, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7492575976201040736, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -335
+      value: -240
       objectReference: {fileID: 0}
     - target: {fileID: 8928189775506515048, guid: 4a938c06247384729a02ea6af2eb2683, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -301.8
+      value: -207.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
