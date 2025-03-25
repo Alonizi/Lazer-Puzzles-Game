@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 537a3e0d3511fa641ade8b829f53f13d
+guid: ec9d87d0c504e6349b8dc9c6b78b68af
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 168282292963769031
-    second: color button_0
-  - first:
-      213: 7064318729047467667
-    second: color button_1
+      213: 3385855733523892640
+    second: left-arrow_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -142,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: color button_0
+      name: left-arrow_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 7
-        width: 487
-        height: 487
+        x: 37
+        y: 71
+        width: 214
+        height: 146
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -157,30 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7caf7169adbd55200800000000000000
-      internalID: 168282292963769031
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: color button_1
-      rect:
-        serializedVersion: 2
-        x: 506
-        y: 7
-        width: 487
-        height: 487
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3966309a470890260800000000000000
-      internalID: 7064318729047467667
+      spriteID: 0a94961c9d9fcfe20800000000000000
+      internalID: 3385855733523892640
       vertices: []
       indices: 
       edges: []
@@ -198,9 +173,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      color button_0: 168282292963769031
-      color button_1: 7064318729047467667
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
