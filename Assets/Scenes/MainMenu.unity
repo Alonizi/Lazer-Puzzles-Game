@@ -506,7 +506,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.000047, y: -158}
+  m_AnchoredPosition: {x: -12.000047, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &66253995
@@ -529,8 +529,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
+  m_text: 'Reactors: 2
 
+    Lasers: 2
+
+    Existing items: 4
+
+    Dropped items:
     4'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -558,8 +563,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2959,7 +2964,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.999952, y: -158}
+  m_AnchoredPosition: {x: -12.999952, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357532016
@@ -2982,9 +2987,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
-
-    5'
+  m_text: "Reactors: 1\nLasers: 1\nExisting items: 0 \nDropped items: 4"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -3011,8 +3014,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4595,7 +4598,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.000006, y: -158}
+  m_AnchoredPosition: {x: -14.000006, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733059539
@@ -4618,8 +4621,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
+  m_text: 'Reactors: 3
 
+    Lasers: 1
+
+    Existing items: 8
+
+    Dropped items:
     5'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -4647,8 +4655,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4884,7 +4892,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.000006, y: -158}
+  m_AnchoredPosition: {x: -14.000006, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752972117
@@ -4907,9 +4915,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
-
-    4'
+  m_text: "Reactors: 2\nLasers: 1\nExisting items: 16 \nDropped items: 3"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -4936,8 +4942,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7861,7 +7867,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.000006, y: -158}
+  m_AnchoredPosition: {x: -14.000006, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154112548
@@ -7884,9 +7890,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
-
-    2'
+  m_text: "Reactors: 1\nLasers: 2\nExisting items: 2 \nDropped items: 5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -7913,8 +7917,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8375,7 +8379,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.001409, y: -157.99994}
+  m_AnchoredPosition: {x: -12.001409, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1244229910
@@ -8398,9 +8402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
-
-    2'
+  m_text: "Reactors: 2\nLasers: 2\nExisting items: 1 \nDropped items: 2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -8427,8 +8429,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8726,7 +8728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.000006, y: -158}
+  m_AnchoredPosition: {x: -14.000006, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1260165682
@@ -8776,8 +8778,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9018,7 +9020,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.000006, y: -158}
+  m_AnchoredPosition: {x: -14.000006, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1282469926
@@ -9041,9 +9043,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
+  m_text: 'Reactors: 4
 
-    5'
+    Lasers: 1
+
+    Existing items: 10
+
+    Dropped items:
+    2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -9070,8 +9077,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14589,7 +14596,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.000006, y: -158}
+  m_AnchoredPosition: {x: -14.000006, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662140034
@@ -14612,9 +14619,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
-
-    4'
+  m_text: "Reactors: 4\nLasers: 2\nExisting items: 10 \nDropped items: 6"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -14641,8 +14646,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14727,7 +14732,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.001409, y: -157.99994}
+  m_AnchoredPosition: {x: -12.001409, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1662232571
@@ -14750,7 +14755,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Laser Cloner \r\nPrism Splitter"
+  m_text: "Reactors: 2\nLasers: 1\nExisting items: 0 \nDropped items: 2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -14777,8 +14782,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15387,7 +15392,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -16.99997, y: -159}
+  m_AnchoredPosition: {x: -16.99997, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1734038845
@@ -15410,9 +15415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
-
-    1'
+  m_text: "Reactors: 2\nLasers: 2\nExisting items: 1 \nDropped items: 2"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -15439,8 +15442,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15820,7 +15823,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -12.001409, y: -157.99994}
+  m_AnchoredPosition: {x: -12.001409, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1792918659
@@ -15843,7 +15846,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mirror
+  m_text: 'Reactors: 1
+
+    Lasers: 1
+
+    Existing items: 0
+
+    Dropped items:
+    2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -15870,8 +15880,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16605,7 +16615,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.000006, y: -158}
+  m_AnchoredPosition: {x: -14.000006, y: -205}
   m_SizeDelta: {x: 260, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1894975008
@@ -16628,9 +16638,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Dropped Objects:
+  m_text: 'Reactors: 2
 
-    6'
+    Lasers: 3
+
+    Existing items: 4
+
+    Dropped items:
+    5'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
   m_sharedMaterial: {fileID: 115941798199265601, guid: c280708f9c44d3343b66314357ff5ff6, type: 2}
@@ -16657,8 +16672,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 25
-  m_fontSizeBase: 25
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
