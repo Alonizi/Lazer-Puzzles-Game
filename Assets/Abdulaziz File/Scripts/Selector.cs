@@ -12,14 +12,14 @@ using System.Collections.Generic;
 /// </summary>
 public class Selector : MonoBehaviour
 {
-    [SerializeField] private Button SplitterRgbButton;
-    [SerializeField] private Button SplitterButton;
-    [SerializeField] private Button MirrorButton;
-    [SerializeField] private Button UndoButton;
+    [SerializeField] public Button SplitterRgbButton;
+    [SerializeField] public Button SplitterButton;
+    [SerializeField] public Button MirrorButton;
+    [SerializeField] public Button UndoButton;
     public event Action<Mechanic?> OnItemSelected;
-    private Mechanic? CurrentSelection;
+    public Mechanic? CurrentSelection;
 
-    private void Update()
+    public void Update()
     {
         if (Input.GetKeyDown("1"))
         {
