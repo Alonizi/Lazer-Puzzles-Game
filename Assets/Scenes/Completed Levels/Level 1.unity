@@ -2288,6 +2288,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3690755296063705203, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -22.599854
+      objectReference: {fileID: 0}
+    - target: {fileID: 3690755296063705203, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -97.900024
+      objectReference: {fileID: 0}
     - target: {fileID: 4668539698018116569, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -10572,8 +10580,7 @@ PrefabInstance:
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[4].instruction
       value: These blockers prevent you from placing devices on certain spots. In
-        some cases, they can help guide your setup, but other times, they might create
-        obstacles you need to work around.
+        some cases, they can help guide your setup.
       objectReference: {fileID: 0}
     - target: {fileID: 831786963044668669, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: steps.Array.data[5].instruction
@@ -10805,19 +10812,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5411747069930799645, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 435
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 5411747069930799645, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 475
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 5411747069930799645, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -600
+      value: -620
       objectReference: {fileID: 0}
     - target: {fileID: 5411747069930799645, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -165
+      value: -200
       objectReference: {fileID: 0}
     - target: {fileID: 5416072839711442003, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: m_SizeDelta.x
