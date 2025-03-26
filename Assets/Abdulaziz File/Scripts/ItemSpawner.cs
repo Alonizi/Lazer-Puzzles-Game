@@ -31,7 +31,7 @@ public class ItemSpawner : MonoBehaviour
     private Tilemap[] Tiles;
     private Mechanic? SelectedItem;
     private Dictionary<int, Transform> TilesTransforms;
-    private Stack<GameObject> AddedItems;
+    //private Stack<GameObject> AddedItems;
     private Selector ItemSelector;
     private Dictionary<Vector3Int,GameObject> AddedItemsDictionary; 
     
@@ -41,7 +41,7 @@ public class ItemSpawner : MonoBehaviour
     private void Awake()
     {
         ItemSelector = FindAnyObjectByType<Selector>();
-        AddedItems = new Stack<GameObject>();
+        //AddedItems = new Stack<GameObject>();
         TilesTransforms = new Dictionary<int, Transform>();
         AddedItemsDictionary = new Dictionary<Vector3Int, GameObject>();
         SelectedItem = null; 
@@ -67,7 +67,7 @@ public class ItemSpawner : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+        ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
     }
     
     /// <summary>
@@ -89,7 +89,11 @@ public class ItemSpawner : MonoBehaviour
             bool noWallExist       = !CheckWallExist(cellPosition);    // Check if no wall was drawn on cell
             bool cellAvailable     = !ItemExistInGrid(cellPosition);   // Check if no item is available on cell
             bool cellWithinBorders = WithinGridBorders(cellPosition);  // Check if cell is within allowed borders
-            
+
+            if (SelectedItem == Mechanic.Delete)
+            {
+                RemoveSelectedItem(cellPosition);
+            }
             if (SelectedItem is not null && cellAvailable && cellWithinBorders && noWallExist)
             {
                 Debug.Log($"Spawning {SelectedItem} Item");
@@ -212,10 +216,11 @@ public class ItemSpawner : MonoBehaviour
             Transform parentTile = TilesTransforms[LayerMask.NameToLayer("Mirror")];
             var item = Instantiate(Mirror, World.GetCellCenterWorld(cellPosition),
                 Quaternion.Euler(new Vector3(0, 0, 0)), parent: parentTile);
-            AddedItems.Push(item.gameObject); // Keep track of added items
+            item.transform.GetChild(0).gameObject.SetActive(false); // deactivate background noise sprite 
+            //AddedItemsDictionary.Push(item.gameObject); // Keep track of added items
             AddedItemsDictionary.Add(cellPosition,item.gameObject);
             Mirrors_MaxCount--;             // Reduce available mirrors count
-            ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+            ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
             return true;
         }
         return false;
@@ -231,10 +236,10 @@ public class ItemSpawner : MonoBehaviour
         if (isRGB && Splitter_RGB_MaxCount > 0)
         {
             var item = Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
-            AddedItems.Push(item.gameObject);
+            //AddedItems.Push(item.gameObject);
             AddedItemsDictionary.Add(cellPosition,item.gameObject);
             Splitter_RGB_MaxCount--;
-            ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+            ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
             
             return true;
         }
@@ -242,9 +247,9 @@ public class ItemSpawner : MonoBehaviour
         {
             var item = Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
             AddedItemsDictionary.Add(cellPosition,item.gameObject);
-            AddedItems.Push(item.gameObject);
+            //AddedItems.Push(item.gameObject);
             Splitter_MaxCount--;
-            ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+            ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
             return true;
         }
         return false;
@@ -294,7 +299,7 @@ public class ItemSpawner : MonoBehaviour
 
             AddedItemsDictionary.Remove(ItemPositionInGrid);
             Destroy(item);
-            ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
+            ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
         }
         catch (KeyNotFoundException e)
         {

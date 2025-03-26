@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using System.Collections;
 
@@ -11,6 +12,14 @@ public class MirrorRotator : MonoBehaviour
 
     // Flag to ensure one rotation at a time
     private bool isRotating = false;
+    
+    // transform of the mirror sprite 
+    private Transform MirrorTransform;
+
+    private void Start()
+    {
+        MirrorTransform = transform.GetChild(1);
+    }
 
     // Called when the object is clicked/tapped
     private void OnMouseDown()
@@ -28,21 +37,21 @@ public class MirrorRotator : MonoBehaviour
         isRotating = true;
 
         // Get the current Z rotation and calculate the target rotation
-        float startAngle = transform.eulerAngles.z;
+        float startAngle = MirrorTransform.eulerAngles.z;
         float targetAngle = startAngle + rotationAngle;
         targetAngle = NormalizeAngle(targetAngle);
 
         // Rotate until the angle difference is minimal
-        while (Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.z, targetAngle)) > 0.1f)
+        while (Mathf.Abs(Mathf.DeltaAngle(MirrorTransform.eulerAngles.z, targetAngle)) > 0.1f)
         {
             float step = rotationSpeed * Time.deltaTime;
-            float newAngle = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, step);
-            transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, newAngle);
+            float newAngle = Mathf.MoveTowardsAngle(MirrorTransform.eulerAngles.z, targetAngle, step);
+            MirrorTransform.eulerAngles = new Vector3(MirrorTransform.eulerAngles.x, MirrorTransform.eulerAngles.y, newAngle);
             yield return null;
         }
 
         // Snap to the target angle and finish
-        transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, targetAngle);
+        MirrorTransform.eulerAngles = new Vector3(MirrorTransform.eulerAngles.x, MirrorTransform.eulerAngles.y, targetAngle);
         isRotating = false;
     }
 
