@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 626380397039754495}
   - component: {fileID: 4790436138376411889}
   m_Layer: 0
-  m_Name: 303e0429e6523dfeddff302b72b1073c_0
-  m_TagString: Untagged
+  m_Name: Blocker
+  m_TagString: Blockers
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

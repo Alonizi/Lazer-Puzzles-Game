@@ -10294,6 +10294,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+--- !u!114 &1383546100132725825 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7860355248959663711, guid: 5981761284c6d482cab81bf4bde7943e, type: 3}
+  m_PrefabInstance: {fileID: 1383546100132725824}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77c0ac8e28484d4fa67b230a190bb4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7459574632118978045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10432,6 +10443,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Items Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
       propertyPath: Mirrors_MaxCount
       value: 4

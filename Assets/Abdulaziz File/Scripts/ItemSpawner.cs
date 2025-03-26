@@ -26,14 +26,26 @@ public class ItemSpawner : MonoBehaviour
     [SerializeField] private AudioClip PlaceSound;
     // Volume for the placement sound (0 to 1)
     [SerializeField] private float SoundVolume = 1f;
-    
+
+    // Error feedback sound for wrong placement (on Blockers)
+    [SerializeField] private AudioClip ErrorSound;
+    [SerializeField] private float ErrorSoundVolume = 1f;
+
+    // Serialized reference for the CameraShake component
+    [SerializeField] private CameraShake cameraShake;
+    // Shake settings override (update the cameraShake component before triggering shake)
+    [SerializeField] private float shakeDurationOverride = 0.5f;
+    [SerializeField] private float shakeMagnitudeOverride = 0.1f;
+    // Cooldown between error feedback triggers (in seconds)
+    [SerializeField] private float shakeCooldown = 1f;
+    private float lastErrorFeedbackTime = -Mathf.Infinity;
+
     private Grid World;
     private Tilemap[] Tiles;
     private Mechanic? SelectedItem;
     private Dictionary<int, Transform> TilesTransforms;
-    //private Stack<GameObject> AddedItems;
     private Selector ItemSelector;
-    private Dictionary<Vector3Int,GameObject> AddedItemsDictionary; 
+    private Dictionary<Vector3Int, GameObject> AddedItemsDictionary; 
     
     /// <summary>
     /// Cache/instantiate necessary objects
@@ -41,7 +53,6 @@ public class ItemSpawner : MonoBehaviour
     private void Awake()
     {
         ItemSelector = FindAnyObjectByType<Selector>();
-        //AddedItems = new Stack<GameObject>();
         TilesTransforms = new Dictionary<int, Transform>();
         AddedItemsDictionary = new Dictionary<Vector3Int, GameObject>();
         SelectedItem = null; 
@@ -78,11 +89,9 @@ public class ItemSpawner : MonoBehaviour
         if (Input.GetMouseButtonDown(1)) // right click (Remove)
         {
             Vector3Int cellPosition = MousePositionToGrid();
-            
             RemoveSelectedItem(cellPosition);
-
         }
-        if (Input.GetMouseButtonDown(0)) // left click (Spwan)
+        if (Input.GetMouseButtonDown(0)) // left click (Spawn)
         {
             Vector3Int cellPosition = MousePositionToGrid();
             
@@ -90,10 +99,7 @@ public class ItemSpawner : MonoBehaviour
             bool cellAvailable     = !ItemExistInGrid(cellPosition);   // Check if no item is available on cell
             bool cellWithinBorders = WithinGridBorders(cellPosition);  // Check if cell is within allowed borders
 
-            if (SelectedItem == Mechanic.Delete)
-            {
-                RemoveSelectedItem(cellPosition);
-            }
+            // Check for valid placement conditions.
             if (SelectedItem is not null && cellAvailable && cellWithinBorders && noWallExist)
             {
                 Debug.Log($"Spawning {SelectedItem} Item");
@@ -104,6 +110,11 @@ public class ItemSpawner : MonoBehaviour
                     PlaySmokeEffect(cellPosition);
                     PlayPlaceSound(cellPosition);
                 }
+            }
+            // Trigger error feedback ONLY if the cell contains a blocker.
+            else if (CheckBlockerExist(cellPosition))
+            {
+                TriggerErrorFeedback(cellPosition);
             }
         }
     }
@@ -171,16 +182,12 @@ public class ItemSpawner : MonoBehaviour
     }
     
     /// <summary>
-    /// Store the item that was selected by the user or delete the last item.
+    /// Store the item that was selected by the user.
     /// </summary>
     private void ItemSelected(Mechanic? item)
     {
         SelectedItem = item;
         Debug.LogWarning($"{SelectedItem} Was Selected");
-        // if (SelectedItem == Mechanic.Delete && AddedItems.Count > 0)
-        // {
-        //     DeleteItem();
-        // }
     }
     
     /// <summary>
@@ -206,6 +213,24 @@ public class ItemSpawner : MonoBehaviour
     }
     
     /// <summary>
+    /// Checks if the cell contains a GameObject with the tag "Blockers".
+    /// </summary>
+    private bool CheckBlockerExist(Vector3Int cellPosition)
+    {
+        foreach (Tilemap tile in Tiles)
+        {
+            foreach (Transform child in tile.transform)
+            {
+                if (World.WorldToCell(child.position) == cellPosition && child.CompareTag("Blockers"))
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    
+    /// <summary>
     /// Spawn a Mirror item in the Grid.
     /// Returns true if the item is successfully spawned.
     /// </summary>
@@ -217,8 +242,7 @@ public class ItemSpawner : MonoBehaviour
             var item = Instantiate(Mirror, World.GetCellCenterWorld(cellPosition),
                 Quaternion.Euler(new Vector3(0, 0, 0)), parent: parentTile);
             item.transform.GetChild(0).gameObject.SetActive(false); // deactivate background noise sprite 
-            //AddedItemsDictionary.Push(item.gameObject); // Keep track of added items
-            AddedItemsDictionary.Add(cellPosition,item.gameObject);
+            AddedItemsDictionary.Add(cellPosition, item.gameObject);
             Mirrors_MaxCount--;             // Reduce available mirrors count
             ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
             return true;
@@ -236,18 +260,15 @@ public class ItemSpawner : MonoBehaviour
         if (isRGB && Splitter_RGB_MaxCount > 0)
         {
             var item = Instantiate(Splitter_RGB, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
-            //AddedItems.Push(item.gameObject);
-            AddedItemsDictionary.Add(cellPosition,item.gameObject);
+            AddedItemsDictionary.Add(cellPosition, item.gameObject);
             Splitter_RGB_MaxCount--;
             ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
-            
             return true;
         }
         else if (!isRGB && Splitter_MaxCount > 0)
         {
             var item = Instantiate(Splitter, World.GetCellCenterWorld(cellPosition), Quaternion.identity, parent: parentTile);
-            AddedItemsDictionary.Add(cellPosition,item.gameObject);
-            //AddedItems.Push(item.gameObject);
+            AddedItemsDictionary.Add(cellPosition, item.gameObject);
             Splitter_MaxCount--;
             ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
             return true;
@@ -255,29 +276,6 @@ public class ItemSpawner : MonoBehaviour
         return false;
     }
     
-    // /// <summary>
-    // /// Delete the last item added by the user and update item counts accordingly.
-    // /// </summary>
-    // private void DeleteItem()
-    // {
-    //     var item = AddedItems.Pop();
-    //     Debug.Log($"Delete item {item.tag}");
-    //     switch (item.tag)
-    //     {
-    //         case "Mirror":
-    //             Mirrors_MaxCount++;
-    //             break;
-    //         case "Splitter":
-    //             Splitter_MaxCount++;
-    //             break;
-    //         case "Splitter_RGB":
-    //             Splitter_RGB_MaxCount++;
-    //             break;
-    //     }
-    //     Destroy(item);
-    //     ItemSelector.UpdateButtons(AddedItems.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
-    // }
-
     private void RemoveSelectedItem(Vector3Int ItemPositionInGrid)
     {
         try
@@ -296,15 +294,13 @@ public class ItemSpawner : MonoBehaviour
                     Splitter_RGB_MaxCount++;
                     break;
             }
-
             AddedItemsDictionary.Remove(ItemPositionInGrid);
             Destroy(item);
             ItemSelector.UpdateButtons(AddedItemsDictionary.Count, Mirrors_MaxCount, Splitter_MaxCount, Splitter_RGB_MaxCount);
         }
         catch (KeyNotFoundException e)
         {
-            Debug.LogWarning("selected item was not spawned by user");
-            //throw;
+            Debug.LogWarning("Selected item was not spawned by user");
         }
     }
     
@@ -331,6 +327,38 @@ public class ItemSpawner : MonoBehaviour
             }
         }
         return false;
+    }
+    
+    /// <summary>
+    /// Trigger error feedback (sound and camera shake) when an invalid placement is attempted on a Blockers cell.
+    /// </summary>
+    private void TriggerErrorFeedback(Vector3Int cellPosition)
+    {
+        if (Time.time - lastErrorFeedbackTime >= shakeCooldown)
+        {
+            // Trigger camera shake if a reference is set.
+            if (cameraShake != null)
+            {
+                cameraShake.shakeDuration = shakeDurationOverride;
+                cameraShake.shakeMagnitude = shakeMagnitudeOverride;
+                cameraShake.TriggerShake();
+            }
+            else
+            {
+                Debug.LogWarning("CameraShake reference is not set in the Inspector!");
+            }
+            // Play error sound at the cell's center position.
+            if (ErrorSound != null)
+            {
+                Vector3 spawnPosition = World.GetCellCenterWorld(cellPosition);
+                AudioSource.PlayClipAtPoint(ErrorSound, spawnPosition, ErrorSoundVolume);
+            }
+            else
+            {
+                Debug.LogWarning("ErrorSound AudioClip is not assigned in the Inspector!");
+            }
+            lastErrorFeedbackTime = Time.time;
+        }
     }
     
     /// <summary>

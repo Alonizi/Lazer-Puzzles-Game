@@ -12,6 +12,7 @@ TagManager:
   - Cloner
   - Audio
   - Splitter_RGB
+  - Blockers
   layers:
   - Default
   - TransparentFX

@@ -53,3 +53,9 @@ MonoBehaviour:
   SmokePrefab: {fileID: 4699933795175041280, guid: bdd3738d0d498ed4381dbc7e6e75a60a, type: 3}
   PlaceSound: {fileID: 8300000, guid: e34c9da81d39c9444a98bcacc96d182e, type: 3}
   SoundVolume: 1
+  ErrorSound: {fileID: 8300000, guid: bba724956ade8a54d9876963907c936f, type: 3}
+  ErrorSoundVolume: 1
+  cameraShake: {fileID: 0}
+  shakeDurationOverride: 0.5
+  shakeMagnitudeOverride: 0.1
+  shakeCooldown: 1

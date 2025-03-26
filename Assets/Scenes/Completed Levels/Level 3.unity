@@ -11306,6 +11306,10 @@ PrefabInstance:
       value: Items Spawner
       objectReference: {fileID: 0}
     - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
+    - target: {fileID: 1689573183259325570, guid: 4ce95c112a27b4c24964d83b7e5aa9f2, type: 3}
       propertyPath: Mirrors_MaxCount
       value: 4
       objectReference: {fileID: 0}
