@@ -302,6 +302,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
@@ -708,6 +716,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
@@ -1122,6 +1138,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 7011620301364950395, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 7011620301364950395, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 8219677469056060449, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Purple Beta
@@ -2786,6 +2810,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3946019579311470643, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.5
@@ -3004,6 +3036,11 @@ PrefabInstance:
       addedObject: {fileID: 7459574632118978046}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+--- !u!1 &912179013 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1739916489108769640, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
+  m_PrefabInstance: {fileID: 912179012}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &912179014 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2584526599238063077, guid: 2fc225cc5d7851344ab4cbb5797b5359, type: 3}
@@ -3788,6 +3825,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 7011620301364950395, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 7011620301364950395, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 8219677469056060449, guid: 40c9998c01a99481ea33ef4c86a0f4d7, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Purple Beta
@@ -4026,6 +4071,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3946019579311470643, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.5
@@ -4155,6 +4208,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 3580606021357113691, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3946019579311470643, guid: 470778c35c5d14791b2f38da87925deb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.5
@@ -5472,6 +5533,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
@@ -11866,6 +11935,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
@@ -12287,6 +12364,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 45031186}
     m_Modifications:
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 912179013}
+    - target: {fileID: 709843020555591183, guid: be84dd25b11b5405abe82db8825277de, type: 3}
+      propertyPath: cameraShake
+      value: 
+      objectReference: {fileID: 1383546100132725825}
     - target: {fileID: 3640164902313410998, guid: be84dd25b11b5405abe82db8825277de, type: 3}
       propertyPath: m_Name
       value: SimpleColorReceiver_Red Beta
