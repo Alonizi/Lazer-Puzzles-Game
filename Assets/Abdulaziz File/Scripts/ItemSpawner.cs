@@ -98,7 +98,11 @@ public class ItemSpawner : MonoBehaviour
             bool noWallExist       = !CheckWallExist(cellPosition);    // Check if no wall was drawn on cell
             bool cellAvailable     = !ItemExistInGrid(cellPosition);   // Check if no item is available on cell
             bool cellWithinBorders = WithinGridBorders(cellPosition);  // Check if cell is within allowed borders
-
+            
+            if (SelectedItem == Mechanic.Delete)
+            {
+                RemoveSelectedItem(cellPosition);
+            }
             // Check for valid placement conditions.
             if (SelectedItem is not null && cellAvailable && cellWithinBorders && noWallExist)
             {
