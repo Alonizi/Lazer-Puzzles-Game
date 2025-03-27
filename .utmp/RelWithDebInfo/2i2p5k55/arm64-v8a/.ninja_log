@@ -1,12 +1,12 @@
 # ninja log v5
-24	171	7647464612959537	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	464208375bdd72e
-172	265	7647464613894285	C:/Neom/Lazer-Puzzles-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2i2p5k55/obj/arm64-v8a/libswappywrapper.so	6a98e37b28ac00a4
-12	560	7647464616817408	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	43fb9a452095c44f
-4	571	7647464616937810	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1440d6152c100aa6
-21	589	7647464617103218	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	112722c9fe6fe9e
-9	619	7647464617414162	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	7c964ef4b5da0b4b
-18	620	7647464617399167	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	f14f448da0db9823
-6	647	7647464617674943	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	eac18220becad626
-15	722	7647464618462458	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	dc037409a58c0b0e
-1	789	7647464619104634	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	29c209bb33f7bdd4
-789	853	7647464619775820	C:/Neom/Lazer-Puzzles-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2i2p5k55/obj/arm64-v8a/libgame.so	3618a2823127f452
+25	109	7647497834840582	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	464208375bdd72e
+110	192	7647497835690744	C:/Neom/Lazer-Puzzles-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2i2p5k55/obj/arm64-v8a/libswappywrapper.so	6a98e37b28ac00a4
+8	406	7647497837801776	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	7c964ef4b5da0b4b
+0	426	7647497837988037	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	1440d6152c100aa6
+16	453	7647497838239016	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	43fb9a452095c44f
+19	473	7647497838490442	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	f14f448da0db9823
+22	495	7647497838731719	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	112722c9fe6fe9e
+6	511	7647497838862272	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	eac18220becad626
+12	599	7647497839770274	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	dc037409a58c0b0e
+3	670	7647497840434298	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	29c209bb33f7bdd4
+670	746	7647497841245918	C:/Neom/Lazer-Puzzles-Game/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/2i2p5k55/obj/arm64-v8a/libgame.so	3618a2823127f452
