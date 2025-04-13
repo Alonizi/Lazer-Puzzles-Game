@@ -13123,7 +13123,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4916415825652855335, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Home
+      value: Next
       objectReference: {fileID: 0}
     - target: {fileID: 4916415825652855335, guid: 773a0cbcd225dd14d825f5fa26be2f0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
